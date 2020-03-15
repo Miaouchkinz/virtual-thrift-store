@@ -1,21 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import useApplicationData from './hooks/useApplicationData';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+function App() {
+  const { state, dispatch } = useApplicationData();
+
+  const userList = state.users.map(user => (
+    <li key={user.email}>
+      {user.name} {user.email} {user.image_url}
+    </li>
+  ));
+
+  return (
+    <div className='App'>
+      <h1>Users</h1>
+
+      {state.loading && <h3>Loading...</h3>}
+
+      <ul>{!state.loading && userList}</ul>
+    </div>
+  );
 }
 
 export default App;
