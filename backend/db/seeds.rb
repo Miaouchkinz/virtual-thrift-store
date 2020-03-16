@@ -8,13 +8,17 @@
 
 require ('faker')
 
-3.times do
-User.create(name: Faker::Movies::LordOfTheRings.character, email: Faker::Internet.email, 
-            password: Faker::Internet.password, avatar_url: Faker::LoremPixel.image(size: "730x411"))
+Clothing.destroy_all
+ClothingCategory.destroy_all
+User.destroy_all
+
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
 end
 
 5.times do
-Clothing.create(size: 'S', image_url: Faker::LoremPixel.image(size: "730x411"), available_for_exchange: Faker::Boolean)
+  User.create(name: Faker::Movies::LordOfTheRings.character, email: Faker::Internet.email, 
+              password: Faker::Internet.password, avatar_url: Faker::LoremPixel.image(size: "730x411"))
 end
 
 ClothingCategory.create(name: "tshirt")
@@ -22,3 +26,7 @@ ClothingCategory.create(name: "sweater")
 ClothingCategory.create(name: "dress")
 ClothingCategory.create(name: "shorts")
 ClothingCategory.create(name: "pants")
+
+1..5.times do |i|
+  Clothing.create(size: 'S', image_url: Faker::LoremPixel.image(size: "730x411"), available_for_exchange: Faker::Boolean, user_id: User.all[i].id, clothing_category_id: ClothingCategory.all[i].id)
+end
