@@ -11,28 +11,36 @@ function Feed(props) {
     document.getElementById("typeForm").submit();
     document.getElementById("sizeForm").submit();
   }
-  // const { state, dispatch } = useApplicationData();
 
-  // const [setType, type] = useState("");
-  // const [setSize, size] = useState("");
+  const [setType, type] = useState("");
+  const [setSize, size] = useState("");
 
-  // const clothingList = state.clothings
-  //   .filter(cloting => condition filter)
-  //   .map(clothing => (
-  //     <li>
-  //       <img src={clothing.image_url} alt={clothing.id}></img >
-  //     </li>
-  //   ));
+  const clothingList = props.state.clothings
+    // .filter(cloting => condition filter)
+    .map(clothing => (
+      <li key={clothing.id}>
+        <img src={clothing.image_url} alt={clothing.id}></img >
+      </li>
+    ));
 
-  // const handleSubmit = event => {
+  const handleSubmitFilters = event => {
 
-  // call a function for filtering the state.clothes
-  // It must be called from app. Here it's passed a prop
+    setType({
+      type: event.target.value
+    });
 
-  // in the filtering function in app -> dispatch({type: SET_FILTERS, action: {type: '', size: ''}) // filter
-  // add a filter key in the state
+    setSize({
+      size: event.target.value
+    });
 
-  // }
+    props.setClothingFilters(type, size)
+    // call a function for filtering the state.clothes
+    // It must be called from app. Here it's passed a prop
+
+    // in the filtering function in app -> dispatch({type: SET_FILTERS, action: {type: '', size: ''}) // filter
+    // add a filter key in the state
+
+  };
 
   return (
     <div className='Feed'>
@@ -98,17 +106,17 @@ function Feed(props) {
             // onChange={handleSubmitFilters}
             />
           </label>
-          <input type="submit" value="Filter please!" onclick={submitForms} />
+          <input type="submit" value="Filter please!" onClick={submitForms} />
         </form>
 
 
       </div>
 
-      {/* <div className='availables_grid'>
+      <div className='availables_grid'>
         <h1>Clothings</h1>
         {props.state.loading && <h3>Loading...</h3>}
         <ul>{!props.state.loading && clothingList}</ul>
-      </div> */}
+      </div>
     </div>
 
   );
