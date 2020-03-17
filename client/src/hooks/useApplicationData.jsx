@@ -1,12 +1,12 @@
 import { useEffect, useReducer } from 'react';
-import dataReducer, { SET_USERS, SET_AVAILABLE_CLOTHINGS } from '../reducers/dataReducer';
+import dataReducer, { SET_USERS, SET_AVAILABLE_CLOTHING } from '../reducers/dataReducer';
 import axios from 'axios';
 
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(dataReducer, {
     users: [],
-    clothings: [],
+    clothing: [],
     loading: true,
     filters: { type: '', size: '' }
   });
@@ -38,7 +38,7 @@ const useApplicationData = () => {
     })
       .then(({ data }) => {
         console.log(data);
-        dispatch({ type: SET_AVAILABLE_CLOTHINGS, clothing: data });
+        dispatch({ type: SET_AVAILABLE_CLOTHING, clothing: data });
       })
       .catch(err => console.log(err));
   }, []);

@@ -1,5 +1,5 @@
 export const SET_USERS = 'SET_USERS';
-export const SET_AVAILABLE_CLOTHINGS = 'SET_CLOTHINGS'
+export const SET_AVAILABLE_CLOTHING = 'SET_AVAILABLE_CLOTHING'
 
 const dataReducer = (state, action) => {
   switch (action.type) {
@@ -9,7 +9,7 @@ const dataReducer = (state, action) => {
         users: action.users,
         loading: false,
       };
-    case SET_AVAILABLE_CLOTHINGS:
+    case SET_AVAILABLE_CLOTHING:
       return {
         ...state,
         clothing: action.clothing,

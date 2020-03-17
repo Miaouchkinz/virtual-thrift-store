@@ -1,9 +1,9 @@
 import React from 'react';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Route, Switch, Link, BrowserRouter as Router } from 'react-router-dom'
 import Feed from './components/Feed'
 import Header from './components/Header'
 import Landing from './components/Landing'
-import useApplicationData from './hooks/useApplicationData';
+import useApplicationData from '../src/hooks/useApplicationData';
 
 function App() {
   const { state, dispatch } = useApplicationData();
