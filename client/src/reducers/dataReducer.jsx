@@ -1,6 +1,5 @@
 export const SET_USERS = 'SET_USERS';
-export const SET_CLOTHINGS = 'SET_CLOTHINGS'
-export const SET_FILTERS = 'SET_FILTERS'
+export const SET_AVAILABLE_CLOTHINGS = 'SET_CLOTHINGS'
 
 const dataReducer = (state, action) => {
   switch (action.type) {
@@ -10,19 +9,12 @@ const dataReducer = (state, action) => {
         users: action.users,
         loading: false,
       };
-    case SET_CLOTHINGS:
+    case SET_AVAILABLE_CLOTHINGS:
       return {
         ...state,
-        clothings: action.clothings,
+        clothing: action.clothing,
         loading: false
       };
-    case SET_FILTERS:
-      return {
-        ...state,
-        filters: action.filters
-      }
-    default:
-      return state;
   };
 };
 

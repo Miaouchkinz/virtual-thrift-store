@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from 'react';
-import dataReducer, { SET_USERS, SET_CLOTHINGS } from '../reducers/dataReducer';
+import dataReducer, { SET_USERS, SET_AVAILABLE_CLOTHINGS } from '../reducers/dataReducer';
 import axios from 'axios';
 
 
@@ -27,9 +27,9 @@ const useApplicationData = () => {
       .catch(err => console.log(err));
   }, []);
 
-  //____________________
-  // GET CLOTHINGS DATA|
-  //___________________|
+  //______________________________
+  // GET AVAILABLE CLOTHINGS DATA|
+  //_____________________________|
 
   useEffect(() => {
     axios({
@@ -38,7 +38,7 @@ const useApplicationData = () => {
     })
       .then(({ data }) => {
         console.log(data);
-        dispatch({ type: SET_CLOTHINGS, clothings: data });
+        dispatch({ type: SET_AVAILABLE_CLOTHINGS, clothing: data });
       })
       .catch(err => console.log(err));
   }, []);
@@ -50,3 +50,5 @@ const useApplicationData = () => {
 };
 
 export default useApplicationData;
+
+// /api/clothing_category
