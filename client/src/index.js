@@ -1,19 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
-import App from './App';
-import Feed from './Feed'
 import './index.scss';
+import App from './App';
+import useApplicationData from './hooks/useApplicationData';
 
 
-const routing = (
-  <Router>
-    <div>
-      <Route exact path="/" component={App} />
-      <Route path="/feed" component={Feed} />
+function IndexPage(props) {
+
+  useApplicationData()
+
+  console.log("Inside IndexPage")
+  const userList = props.state.users.map(user => (
+    <li key={user.email}>
+      {user.name} {user.email} {user.image_url}
+    </li>
+  ));
+
+  return (
+    <div className='App'>
+      <h1>Users</h1>
+
+      {props.state.loading && <h3>Loading...</h3>}
+
+      <ul>{!props.state.loading && userList}</ul>
     </div>
-  </Router>
-)
+  );
+};
 
-ReactDOM.render(routing, document.getElementById('root'));
 
+export default IndexPage;
+
+ReactDOM.render(<App />, document.getElementById('root'));

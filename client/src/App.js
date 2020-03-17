@@ -1,25 +1,25 @@
 import React from 'react';
-import './App.scss';
+import ReactDOM from 'react-dom';
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import IndexPage from './index';
+import Feed from './Feed'
 import useApplicationData from './hooks/useApplicationData';
 
 function App() {
+
   const { state, dispatch } = useApplicationData();
 
-  const userList = state.users.map(user => (
-    <li key={user.email}>
-      {user.name} {user.email} {user.image_url}
-    </li>
-  ));
-
   return (
-    <div className='App'>
-      <h1>Users</h1>
-
-      {state.loading && <h3>Loading...</h3>}
-
-      <ul>{!state.loading && userList}</ul>
-    </div>
-  );
-}
+    <Router>
+      <div>
+        <Route exact path="/" component={() => <IndexPage state={state} dispatch={dispatch} />} />
+        <Route path="/feed" component={() => <Feed state={state} dispatch={dispatch} />} />
+      </div>
+    </Router>
+  )
+};
 
 export default App;
+
+// BELOW WAS THERE BY DEFAULT IN INDEX.JS AT BEGINNING
+

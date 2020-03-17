@@ -2,11 +2,13 @@ import { useEffect, useReducer } from 'react';
 import dataReducer, { SET_USERS, SET_CLOTHINGS } from '../reducers/dataReducer';
 import axios from 'axios';
 
+
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(dataReducer, {
     users: [],
     clothings: [],
     loading: true,
+    filters: { type: '', size: '' }
   });
 
   //_______________
