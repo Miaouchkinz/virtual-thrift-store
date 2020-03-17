@@ -2,7 +2,15 @@ import React from 'react';
 import './Feed.scss';
 import useApplicationData from './hooks/useApplicationData';
 
+
+
 function Feed(props) {
+
+  const submitForms = function () {
+    console.log('yo')
+    document.getElementById("typeForm").submit();
+    document.getElementById("sizeForm").submit();
+  }
   // const { state, dispatch } = useApplicationData();
 
   // const [setType, type] = useState("");
@@ -18,27 +26,81 @@ function Feed(props) {
 
   // const handleSubmit = event => {
 
-  //   // call a function for filtering the state.clothes
-  //   // It must be called from app. Here it's passed a prop
+  // call a function for filtering the state.clothes
+  // It must be called from app. Here it's passed a prop
 
-  //   // in the filtering function in app -> dispatch({type: SET_FILTERS, action: {type: '', size: ''}) // filter
-  //   // add a filter key in the state
+  // in the filtering function in app -> dispatch({type: SET_FILTERS, action: {type: '', size: ''}) // filter
+  // add a filter key in the state
 
   // }
 
   return (
     <div className='Feed'>
 
+      <header>
+        <span>Profile</span>
+        <span>Dressing Room</span>
+      </header>
+
       <div className='filter_availables'>
         Create form here
         Create onSubmit event
         + Local State, control input on the form
 
-        <form>
-
-
-
+          <form id="typeForm">
+          <p>Type:</p>
+          <label>
+            T-Shirt
+            <input
+              name='isShirt'
+              type='checkbox'
+            // checked={props.state.isShirt}
+            // onChange={handleSubmitFilters}
+            />
+          </label>
+          <label>
+            Pants
+            <input
+              name='isPants'
+              type='checkbox'
+            // checked={props.state.isShirt}
+            // onChange={handleSubmitFilters}
+            />
+          </label>
         </form>
+
+        <form id="sizeForm">
+          <p>Size:</p>
+          <label>
+            S
+            <input
+              name='isLarge'
+              type='checkbox'
+            // checked={props.state.isShirt}
+            // onChange={handleSubmitFilters}
+            />
+          </label>
+          <label>
+            M
+            <input
+              name='isMedium'
+              type='checkbox'
+            // checked={props.state.isShirt}
+            // onChange={handleSubmitFilters}
+            />
+          </label>
+          <label>
+            L
+            <input
+              name='isLarge'
+              type='checkbox'
+            // checked={props.state.isShirt}
+            // onChange={handleSubmitFilters}
+            />
+          </label>
+          <input type="submit" value="Filter please!" onclick={submitForms} />
+        </form>
+
 
       </div>
 
