@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import '../Feed.scss'
 
-export default function Feed({ clothing }) {
+export default function Feed({ clothing, clothingCategories }) {
   // clothingCategories GOES ABOVE IN PROPS LATER
 
-  const clothingCategories = {
-    "01": { name: "T-Shirt", id: 1, active: true },
-    "02": { name: "Pants", id: 2, active: true }
-  }
+  // const clothingCategories = {
+  //   "01": { name: "T-Shirt", id: 1, active: true },
+  //   "02": { name: "Pants", id: 2, active: true }
+  // }
 
   const categoryList = (allCategories) => {
     let categoriesResult = [];

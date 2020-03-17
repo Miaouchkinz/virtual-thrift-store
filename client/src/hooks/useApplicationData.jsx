@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from 'react';
-import dataReducer, { SET_USERS, SET_AVAILABLE_CLOTHING } from '../reducers/dataReducer';
+import dataReducer, { SET_USERS, SET_AVAILABLE_CLOTHING, SET_CLOTHING_CATEGORIES } from '../reducers/dataReducer';
 import axios from 'axios';
 
 
@@ -7,6 +7,7 @@ const useApplicationData = () => {
   const [state, dispatch] = useReducer(dataReducer, {
     users: [],
     clothing: [],
+    clothingCategories: [],
     loading: true,
     filters: { type: '', size: '' }
   });
@@ -21,7 +22,6 @@ const useApplicationData = () => {
       url: '/api/users',
     })
       .then(({ data }) => {
-        console.log(data);
         dispatch({ type: SET_USERS, users: data });
       })
       .catch(err => console.log(err));
@@ -37,8 +37,19 @@ const useApplicationData = () => {
       url: '/api/clothings',
     })
       .then(({ data }) => {
-        console.log(data);
         dispatch({ type: SET_AVAILABLE_CLOTHING, clothing: data });
+      })
+      .catch(err => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    axios({
+      method: 'GET',
+      url: '/api/clothing_categories',
+    })
+      .then(({ data }) => {
+        console.log(data);
+        dispatch({ type: SET_CLOTHING_CATEGORIES, clothingCategories: data });
       })
       .catch(err => console.log(err));
   }, []);

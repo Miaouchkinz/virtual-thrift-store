@@ -17,7 +17,7 @@ function App() {
             <Landing />
           </Route>
           <Route path="/feed">
-            <Feed clothing={state.clothing} />
+            <Feed clothing={state.clothing} clothingCategories={state.clothingCategories} />
           </Route>
         </Switch>
         <footer></footer>
