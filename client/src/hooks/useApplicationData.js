@@ -10,7 +10,7 @@ const useApplicationData = () => {
   useEffect(() => {
     axios({
       method: 'GET',
-      url: 'http://localhost:3001/users',
+      url: 'http://localhost:3001/api/users',
     })
       .then(({ data }) => {
         dispatch({ type: SET_USERS, users: data });
