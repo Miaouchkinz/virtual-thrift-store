@@ -1,4 +1,4 @@
-class Api::ClothingsController < ApplicationController
+class ClothingsController < ApplicationController
   def index
     clothings = Clothing.all
     render json: clothings

@@ -1,4 +1,4 @@
-class Api::ClothingCategoriesController < ApplicationController
+class ClothingCategoriesController < ApplicationController
 
   def index
     clothing_categories = ClothingCategory.all
