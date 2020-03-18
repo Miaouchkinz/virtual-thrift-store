@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export default function Registration(props) {
 
+  // TOFIX: NEED TO MOVE TO USEAPPDATA
   const [state, setState] = useState({
     name: "",
     email: "",
@@ -12,7 +13,7 @@ export default function Registration(props) {
   })
 
   const handleSubmit = (e) => {
-
+    // TOFIX: NEED TO MOVE TO USEAPPDATA
     axios.post("http://localhost:3001/registrations", {
       user: {
         name: state.name,
@@ -22,7 +23,11 @@ export default function Registration(props) {
       }
     },
       { withCredentials: true }
-    ).then(res => console.log("registration res", res))
+    ).then(res => {
+      if(res.data.status === "created") {
+        props.handleSuccessfulAuth(res.data)
+      }
+    })
      .catch(err => console.log("registration error", err));
 
     e.preventDefault();
