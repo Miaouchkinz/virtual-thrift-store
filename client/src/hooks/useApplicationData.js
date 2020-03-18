@@ -10,7 +10,7 @@ const useApplicationData = () => {
   useEffect(() => {
     axios({
       method: 'GET',
-      url: '/api/users',
+      url: 'http://localhost:3001/users',
     })
       .then(({ data }) => {
         console.log(data);
