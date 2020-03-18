@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   BrowserRouter as Router, 
   Switch,
@@ -9,6 +9,7 @@ import Home from './components/Home'
 import Dashboard from './components/Dashboard'
 import './App.scss';
 import useApplicationData from './hooks/useApplicationData';
+import axios from 'axios';
 
 export default function App(props) {
  const { state, dispatch } = useApplicationData();
@@ -18,6 +19,24 @@ export default function App(props) {
     loggedInStatus: "NOT_LOGGED_IN",
     user: {}
   })
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/logged_in", { withCredentials: true })
+      .then(res => {
+        if(res.data.logged_in && userLogInfo.loggedInStatus === "NOT_LOGGED_IN") {
+          setUserLogInfo({
+            loggedInStatus: "LOGGED_IN",
+            user: res.data.user
+          })
+        } else if (!res.data.logged_in && userLogInfo.loggedInStatus === "LOGGED_IN") {
+          setUserLogInfo({
+            loggedInStatus: "NOT_LOGGED_IN",
+            user: {}
+          })  
+        }
+      })
+      .catch(err => console.log("check login err", err));
+  }, []);
 
   const handleLogin = (data) => {
     setUserLogInfo({
