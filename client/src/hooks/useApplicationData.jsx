@@ -8,8 +8,7 @@ const useApplicationData = () => {
     users: [],
     clothing: [],
     clothingCategories: [],
-    loading: true,
-    filters: { type: '', size: '' }
+    loading: true
   });
 
   //_______________
