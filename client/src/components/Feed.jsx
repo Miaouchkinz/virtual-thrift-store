@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import '../Feed.scss'
+
+
 
 export default function Feed({ clothing, clothingCategories }) {
 
@@ -16,7 +17,7 @@ export default function Feed({ clothing, clothingCategories }) {
 
     for (let category in allCategories) {
       // SET ALL CATEGORIES TO FALSE WHEN NOT CHECKED YET
-      [category].active = false;
+      allCategories[category].active = false;
 
       categoriesResult.push(
         < label key={allCategories[category].id} >
@@ -24,8 +25,8 @@ export default function Feed({ clothing, clothingCategories }) {
           < input
             name={allCategories[category].id}
             type='checkbox'
-            checked={category[name]}
-            onChange={() => setType({ ...type, active: true })}
+            checked={type.name}
+            onChange={() => setType({ ...type, active: !type.active })}
           />
         </label >
       )
@@ -44,23 +45,16 @@ export default function Feed({ clothing, clothingCategories }) {
   });
 
   const clothingList = clothing && clothing
-    .filter(clothingItem => clothingItem.clothing_category_id === activeList)
+    // .filter(clothingItem => clothingItem.clothing_category_id === activeList)
     .map(clothingItem => (
-      <li key={clothingItem.id}>
+      <div className='item_of_grid_container' key={clothingItem.id}>
         <img src={clothingItem.image_url} alt={clothingItem.id}></img >
-      </li>
+      </div>
     ));
 
   return (
     <div className='Feed'>
-
-      <header>
-        <span>Profile</span>
-        <span>Dressing Room</span>
-      </header>
-
       <div className='filter_availables'>
-
         <form id="typeForm">
           <p>Type:</p>
           {categoryList(clothingCategories)}
@@ -97,9 +91,9 @@ export default function Feed({ clothing, clothingCategories }) {
           </label>
         </form>
       </div>
-      <div className='availables_grid'>
+      <div className='availables_grid_container'>
         <h1>Clothings</h1>
-        <ul>{clothingList}</ul>
+        {clothingList}
       </div>
     </div>
 
