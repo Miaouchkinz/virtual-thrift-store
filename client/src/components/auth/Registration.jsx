@@ -14,7 +14,7 @@ export default function Registration(props) {
 
   const handleSubmit = (e) => {
     // TOFIX: NEED TO MOVE TO USEAPPDATA
-    axios.post("http://localhost:3001/registrations", {
+    axios.post("http://localhost:3001/api/registrations", {
       user: {
         name: state.name,
         email: state.email,
