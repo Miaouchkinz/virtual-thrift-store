@@ -2,12 +2,18 @@ import React from 'react';
 import Registration from './auth/Registration'
 
 export default function Home(props) {
+  const { loggedInStatus, history, handleLogin } = props
   
+  const handleSuccessfulAuth = (data) => {
+    handleLogin(data);
+    history.push('/dashboard')
+  }
 
   return (
     <div>
       <h1>Home</h1>
-      <Registration/>
+      <h2>Status: {loggedInStatus}</h2>
+      <Registration handleSuccessfulAuth={handleSuccessfulAuth}/>
     </div>
   );
 };
