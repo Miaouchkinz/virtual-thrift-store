@@ -13,7 +13,6 @@ const useApplicationData = () => {
       url: 'http://localhost:3001/users',
     })
       .then(({ data }) => {
-        console.log(data);
         dispatch({ type: SET_USERS, users: data });
       })
       .catch(err => console.log(err));
