@@ -38,6 +38,13 @@ export default function App(props) {
       .catch(err => console.log("check login err", err));
   }, []);
 
+  const handleLogout = () => {
+    setUserLogInfo({
+      loggedInStatus: "NOT_LOGGED_IN",
+      user: {}  
+    })
+  }
+
   const handleLogin = (data) => {
     setUserLogInfo({
       loggedInStatus: "LOGGED_IN",
@@ -56,6 +63,7 @@ export default function App(props) {
               <Home 
                 {...props}
                 handleLogin={handleLogin}
+                handleLogout={handleLogout}
                 loggedInStatus={userLogInfo.loggedInStatus}
               />
             )}>
