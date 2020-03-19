@@ -37,7 +37,7 @@ const useApplicationData = () => {
 
   const handleSuccessfulAuth = (data, history) => {
     handleLogin(data);
-    history.push('/dashboard')
+    history.push('/feed')
   }
 
   useEffect(() => {
