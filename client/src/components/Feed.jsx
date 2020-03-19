@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 
-
 export default function Feed({ clothing, clothingCategories }) {
 
   const [size, setSize] = useState({
@@ -12,13 +11,8 @@ export default function Feed({ clothing, clothingCategories }) {
 
   const [activeCategories, setActiveCategories] = useState(clothingCategories);
 
-  console.log(clothingCategories)
   console.log(activeCategories)
   console.log(size)
-
-  // function categoryToggle(e) {
-  //   e.target.checked;
-  // }
 
   const checkBoxDeMARDE = (category, allCategories) => {
     const activeCategoryName = allCategories[category].name
@@ -37,16 +31,12 @@ export default function Feed({ clothing, clothingCategories }) {
     let categoriesResult = [];
 
     for (let category in allCategories) {
-      // SET ALL CATEGORIES TO FALSE WHEN NOT CHECKED YET
-      allCategories[category].active = false;
-
       categoriesResult.push(
         < label key={allCategories[category].id} >
           {allCategories[category].name}
           < input
             name={allCategories[category].id}
             type='checkbox'
-            // checked={allCategories.indexOf(category.id) >= 0}
             checked={activeCategories[name]}
             onChange={() => checkBoxDeMARDE(category, allCategories)}
           />
@@ -57,22 +47,30 @@ export default function Feed({ clothing, clothingCategories }) {
   };
 
   const clothingList = clothing && clothing
-    .map(clothingItem => (
-      <div className='item_of_grid_container' key={clothingItem.id}>
-        <img src={clothingItem.image_url} alt={clothingItem.clothing_category_id} id={clothingItem.size}></img >
-      </div>
-    ));
 
-  const clothingFilteredByType = clothing
+  const clothingFilteredByCategory = clothing
     .filter(clothingItem => Object.values(activeCategories).includes(clothingItem.clothing_category_id));
 
   const clothingFilteredBySize = clothing
-    .filter(clothingItem => Object.keys(size).find(sizeKey => size[sizeKey] === true) === clothingItem.size)
+    .filter(clothingItem => Object.keys(size).find(sizeKey => size[sizeKey] === true) === clothingItem.size);
 
 
   const filteredClothingList = function (clothing, activeCategories, size) {
-    if (activeCategories)
-  }
+    let finalFilteredClothingList = null;
+    if (Object.entries(activeCategories).length === 0 && !Object.values(size).includes(true)) {
+      finalFilteredClothingList = clothingList;
+    } else if (Object.entries(activeCategories).length > 0) {
+      finalFilteredClothingList = clothingFilteredByCategory
+    } else if (Object.values(size).includes(true)) {
+      finalFilteredClothingList = clothingFilteredBySize
+    }
+    return finalFilteredClothingList
+      .map(clothingItem => (
+        <div className='item_of_grid_container' key={clothingItem.id}>
+          <img src={clothingItem.image_url} alt={clothingItem.clothing_category_id} id={clothingItem.size}></img >
+        </div>
+      ));
+  };
 
 
   return (
@@ -116,7 +114,7 @@ export default function Feed({ clothing, clothingCategories }) {
       </div>
       <div className='availables_grid_container'>
         <h1>Clothings</h1>
-        {clothingList}
+        {filteredClothingList(clothing, activeCategories, size)}
       </div>
     </div>
 
