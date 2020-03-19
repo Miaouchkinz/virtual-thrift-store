@@ -1,0 +1,14 @@
+.filter_availables {
+  display: flex;
+  flex-direction: row;
+  margin: 10px; }
+
+.typeForm {
+  display: flex;
+  flex-direction: column;
+  margin: 10px; }
+
+.sizeForm {
+  display: flex;
+  flex-direction: column;
+  margin: 10px; }

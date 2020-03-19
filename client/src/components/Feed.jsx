@@ -98,13 +98,14 @@ export default function Feed({ clothing, clothingCategories }) {
   return (
     <div className="Feed">
       <div className="filter_availables">
-        <form id="typeForm">
-          <p>Type:</p>
+        <h3>Filter by:</h3>
+        <form className="typeForm">
+          <p>Category</p>
           {categoryList(clothingCategories)}
         </form>
 
-        <form id="sizeForm">
-          <p>Size:</p>
+        <form className="sizeForm">
+          <p>Size</p>
           <label>
             S
             <input

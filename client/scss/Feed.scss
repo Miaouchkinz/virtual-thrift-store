@@ -1,11 +1,17 @@
-.Feed {
- 
+.filter_availables {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
 }
 
-
-.availables_grid_container { 
+.typeForm {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
 }
 
-.item_of_grid_container {
- 
+.sizeForm {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
 }
