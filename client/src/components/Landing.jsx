@@ -1,8 +1,7 @@
 import React from 'react';
 import Button from './common/button';
 
-export default function Landing(props) {
-  const { history } = props;
+export default function Landing({ history }) {
 
   return (
     <main id="landing">
