@@ -9,7 +9,7 @@ export default function Feed({ clothing, clothingCategories }) {
 
   const [activeCategories, setActiveCategories] = useState(clothingCategories);
 
-  const checkBoxDeMARDE = (category, allCategories) => {
+  const ifCheckBoxActive = (category, allCategories) => {
     const activeCategoryName = allCategories[category].name;
     if (activeCategories[activeCategoryName]) {
       const updatedActiveCategories = { ...activeCategories };
@@ -33,7 +33,7 @@ export default function Feed({ clothing, clothingCategories }) {
             name={allCategories[category].id}
             type="checkbox"
             checked={activeCategories[name]}
-            onChange={() => checkBoxDeMARDE(category, allCategories)}
+            onChange={() => ifCheckBoxActive(category, allCategories)}
           />
         </label>
       );
