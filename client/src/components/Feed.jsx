@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Header from "../components/Header";
 
 export default function Feed({ clothing, clothingCategories }) {
   const [cart, setCart] = useState({
@@ -110,6 +111,12 @@ export default function Feed({ clothing, clothingCategories }) {
 
   return (
     <div className="Feed">
+      <header>
+        <span>
+          <img src="../images/hanger_logo.png"></img>
+          {cart.totalItem}
+        </span>
+      </header>
       <div className="filters_available">
         <h3>Filter by:</h3>
         <form className="typeForm">
