@@ -93,7 +93,13 @@ export default function Feed({ clothing, clothingCategories }) {
         ></img>
         <footer>
           <button
-            onClick={() => setCart({ ...cart, totalItem: cart.totalItem + 1 })}
+            onClick={() =>
+              setCart({
+                ...cart,
+                totalItem: cart.totalItem + 1,
+                [clothingItem.id]: clothingItem.size
+              })
+            }
           >
             Add to cart
           </button>
