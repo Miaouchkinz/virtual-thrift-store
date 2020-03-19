@@ -1,4 +1,5 @@
 export const SET_USERS = 'SET_USERS';
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
 const dataReducer = (state, action) => {
   switch (action.type) {
@@ -8,9 +9,17 @@ const dataReducer = (state, action) => {
         users: action.users,
         loading: false,
       };
+    case SET_CURRENT_USER:
+      return {
+        ...state,
+        currentUser: action.value.currentUser,
+        loggedInStatus: action.value.loggedInStatus
+      };
     default:
-      return state;
-  }
+      throw new Error(
+        `Tried to reduce with unsupported action type: ${action.type}`
+      );
+    };
 };
 
 export default dataReducer;
