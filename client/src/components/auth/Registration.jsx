@@ -3,7 +3,6 @@ import axios from 'axios';
 
 export default function Registration(props) {
 
-  // TOFIX: NEED TO MOVE TO USEAPPDATA
   const [state, setState] = useState({
     name: "",
     email: "",
@@ -13,7 +12,6 @@ export default function Registration(props) {
   })
 
   const handleSubmit = (e) => {
-    // TOFIX: NEED TO MOVE TO USEAPPDATA
     axios.post("http://localhost:3001/api/registrations", {
       user: {
         name: state.name,

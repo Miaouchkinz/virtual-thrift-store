@@ -3,7 +3,6 @@ import axios from 'axios';
 
 export default function Login(props) {
 
-  // TOFIX: NEED TO MOVE TO USEAPPDATA
   const [state, setState] = useState({
     name: "",
     email: "",
@@ -12,7 +11,6 @@ export default function Login(props) {
   })
 
   const handleSubmit = (e) => {
-    // TOFIX: NEED TO MOVE TO USEAPPDATA
     axios.post("http://localhost:3001/sessions", {
       user: {
         email: state.email,
