@@ -28,6 +28,11 @@ const useApplicationData = () => {
       }});
   };
 
+  const handleSuccessfulAuth = (data, history) => {
+    handleLogin(data);
+    history.push('/dashboard')
+  }
+
   useEffect(() => {
     Promise.all([
       axios.get('http://localhost:3001/api/users'),
@@ -59,7 +64,7 @@ const useApplicationData = () => {
   return {
     state,
     handleLogout,
-    handleLogin
+    handleSuccessfulAuth
   };
 };
 
