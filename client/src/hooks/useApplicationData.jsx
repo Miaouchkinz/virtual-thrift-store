@@ -43,9 +43,12 @@ const useApplicationData = () => {
   useEffect(() => {
     Promise.all([
       axios.get('http://localhost:3001/api/users'),
-      axios.get('http://localhost:3001/logged_in', { withCredentials: true })
+      axios.get('http://localhost:3001/logged_in', { withCredentials: true }),
+      axios.get('/api/clothings'),
+      axios.get('/api/clothing_categories')
     ])
     .then((all) => {
+      // Handle list of all users
       dispatch({ type: SET_USERS, users: all[0].data });
 
       // Handle Login status & current user
@@ -64,35 +67,13 @@ const useApplicationData = () => {
             loggedInStatus: "NOT_LOGGED_IN"
           }});
       }
+      
+      // Handles all clothings that are available for exchange
+      dispatch({ type: SET_AVAILABLE_CLOTHING, clothing: all[2].data })
+      // Handles clothing category types
+      dispatch({ type: SET_CLOTHING_CATEGORIES, clothingCategories: all[3].data })
     })
     .catch(err => console.log(err));
-  }, []);
-
-  //______________________________
-  // GET AVAILABLE CLOTHINGS DATA|
-  //_____________________________|
-
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: "/api/clothings"
-    })
-      .then(({ data }) => {
-        dispatch({ type: SET_AVAILABLE_CLOTHING, clothing: data });
-      })
-      .catch(err => console.log(err));
-  }, []);
-
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: "/api/clothing_categories"
-    })
-      .then(({ data }) => {
-        console.log(data);
-        dispatch({ type: SET_CLOTHING_CATEGORIES, clothingCategories: data });
-      })
-      .catch(err => console.log(err));
   }, []);
 
   return {

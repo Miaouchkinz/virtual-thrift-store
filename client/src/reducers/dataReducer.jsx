@@ -34,7 +34,6 @@ const dataReducer = (state, action) => {
         `Tried to reduce with unsupported action type: ${action.type}`
       );
     };
-  };
 };
 
 export default dataReducer;
