@@ -42,8 +42,8 @@ const useApplicationData = () => {
 
   useEffect(() => {
     Promise.all([
-      axios.get('http://localhost:3001/api/users'),
-      axios.get('http://localhost:3001/logged_in', { withCredentials: true }),
+      axios.get('/api/users'),
+      axios.get('/logged_in', { withCredentials: true }),
       axios.get('/api/clothings'),
       axios.get('/api/clothing_categories')
     ])
