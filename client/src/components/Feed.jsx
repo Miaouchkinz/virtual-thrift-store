@@ -9,9 +9,6 @@ export default function Feed({ clothing, clothingCategories }) {
 
   const [activeCategories, setActiveCategories] = useState(clothingCategories);
 
-  console.log(activeCategories);
-  console.log(size);
-
   const checkBoxDeMARDE = (category, allCategories) => {
     const activeCategoryName = allCategories[category].name;
     if (activeCategories[activeCategoryName]) {
@@ -97,7 +94,7 @@ export default function Feed({ clothing, clothingCategories }) {
 
   return (
     <div className="Feed">
-      <div className="filter_availables">
+      <div className="filters_available">
         <h3>Filter by:</h3>
         <form className="typeForm">
           <p>Category</p>
