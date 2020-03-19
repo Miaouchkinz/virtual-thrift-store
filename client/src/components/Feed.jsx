@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
 export default function Feed({ clothing, clothingCategories }) {
+  const [cart, setCart] = useState({
+    totalItem: 0
+  });
   const [size, setSize] = useState({
     S: false,
     M: false,
@@ -82,12 +85,19 @@ export default function Feed({ clothing, clothingCategories }) {
       }
     }
     return finalFilteredClothingList.map(clothingItem => (
-      <div className="item_of_grid_container" key={clothingItem.id}>
+      <div className="clothingItem_of_grid_container" key={clothingItem.id}>
         <img
           src={clothingItem.image_url}
           alt={clothingItem.clothing_category_id}
           id={clothingItem.size}
         ></img>
+        <footer>
+          <button
+            onClick={() => setCart({ ...cart, totalItem: cart.totalItem + 1 })}
+          >
+            Add to cart
+          </button>
+        </footer>
       </div>
     ));
   };
