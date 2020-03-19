@@ -4,7 +4,12 @@ import Login from './auth/Login';
 import axios from 'axios';
 
 export default function Home(props) {
-  const { loggedInStatus, history, handleLogin, handleLogout } = props
+  const { 
+    loggedInStatus,
+    history,
+    handleLogin,
+    handleLogout
+  } = props
   
   const handleSuccessfulAuth = (data) => {
     handleLogin(data);
