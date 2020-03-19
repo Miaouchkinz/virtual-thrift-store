@@ -2,12 +2,14 @@ import React from 'react';
 import { 
   BrowserRouter as Router, 
   Switch,
-  Route
+  Route,
+  StaticRouter
 } from "react-router-dom";
 import Landing from './components/Landing';
 import Dashboard from './components/Dashboard';
 import Feed from "./components/Feed";
 import Login from './components/auth/Login';
+import Profile from './components/Profile';
 import Registration from './components/auth/Registration';
 import useApplicationData from './hooks/useApplicationData';
 
@@ -45,6 +47,13 @@ export default function App(props) {
             <Feed
               clothing={state.clothing}
               clothingCategories={state.clothingCategories}
+            />
+          </Route>
+          <Route path="/user/profile">
+            <Profile
+              userName={state.currentUser.name}
+              avatar={state.currentUser.avatar_url}
+              handleLogout={handleLogout}
             />
           </Route>
           <Route exact path={"/dashboard"}>
