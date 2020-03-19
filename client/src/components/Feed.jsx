@@ -7,7 +7,7 @@ export default function Feed({ clothing, clothingCategories }) {
     L: false
   });
 
-  const [activeCategories, setActiveCategories] = useState(clothingCategories);
+  const [activeCategories, setActiveCategories] = useState([]);
 
   const ifCheckBoxActive = (category, allCategories) => {
     const activeCategoryName = allCategories[category].name;
