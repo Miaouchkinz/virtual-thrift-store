@@ -25,6 +25,24 @@
   border-radius: .675rem;
   box-sizing: border-box; }
 
+.filters_available {
+  display: flex;
+  flex-direction: row;
+  margin: 10px; }
+
+.typeForm {
+  display: flex;
+  flex-direction: column;
+  margin: 10px; }
+
+.sizeForm {
+  display: flex;
+  flex-direction: column;
+  margin: 10px; }
+
+#hanger_icon_feed_page {
+  height: 45px; }
+
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #DED0B6; }

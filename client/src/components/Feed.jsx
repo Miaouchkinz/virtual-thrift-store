@@ -112,8 +112,11 @@ export default function Feed({ clothing, clothingCategories }) {
   return (
     <div className="Feed">
       <header>
-        <span>
-          <img src="../images/hanger_logo.png"></img>
+        <span className="header_right_icon">
+          <img
+            id="hanger_icon_feed_page"
+            src="https://image.flaticon.com/icons/svg/687/687699.svg"
+          ></img>
           {cart.totalItem}
         </span>
       </header>
