@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import Button from '../common/button'
 import axios from 'axios';
 
-export default function Login(props) {
+export default function Login({ history, handleSuccessfulAuth }) {
 
   const [state, setState] = useState({
     name: "",
@@ -20,7 +21,7 @@ export default function Login(props) {
       { withCredentials: true }
     ).then(res => {
       if(res.data.logged_in) {
-        props.handleSuccessfulAuth(res.data)
+        handleSuccessfulAuth(res.data, history)
       }
     })
      .catch(err => console.log("login error", err));
@@ -35,9 +36,11 @@ export default function Login(props) {
   }
 
   return (
-    <div>
+    <main id="auth">
       <form onSubmit={handleSubmit}>
-        <input 
+        <h1>LOGIN</h1>
+        <input
+          className="text-input"
           type="email" 
           name="email"
           placeholder="Email Address"
@@ -47,6 +50,7 @@ export default function Login(props) {
         </input>
 
         <input 
+          className="text-input"
           type="password" 
           name="password"
           placeholder="Password"
@@ -55,8 +59,9 @@ export default function Login(props) {
           required>
         </input>
 
-        <button type="submit">Login</button>
+        <Button type="submit" onClick={handleSubmit} primary fullWidth label="LOGIN"/>
+        <Button onClick={() => history.push('/register')} secondary fullWidth label="SIGN UP"/>
       </form>
-    </div>
+    </main>
   );
 };
