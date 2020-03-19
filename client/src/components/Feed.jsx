@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
 
 export default function Feed({ clothing, clothingCategories }) {
   const [cart, setCart] = useState({
@@ -11,7 +10,7 @@ export default function Feed({ clothing, clothingCategories }) {
     L: false
   });
 
-  const [activeCategories, setActiveCategories] = useState(clothingCategories);
+  const [activeCategories, setActiveCategories] = useState([]);
 
   const ifCheckBoxActive = (category, allCategories) => {
     const activeCategoryName = allCategories[category].name;
@@ -111,14 +110,22 @@ export default function Feed({ clothing, clothingCategories }) {
 
   return (
     <div className="Feed">
-      <header>
-        <span className="header_right_icon">
-          <img
-            id="hanger_icon_feed_page"
-            src="https://image.flaticon.com/icons/svg/687/687699.svg"
-          ></img>
-          {cart.totalItem}
-        </span>
+      <header className="feed_header">
+        <div className="feed_header_block">
+          <span className="feed_header_profile_icon">
+            <img
+              id="feed_profile_icon"
+              src="../images/feed_profile_logo.png"
+            ></img>
+          </span>
+          <span className="feed_header_hanger_icon">
+            <img
+              id="feed_hanger_icon"
+              src="../images/feed_hanger_logo.png"
+            ></img>
+            {cart.totalItem}
+          </span>
+        </div>
       </header>
       <div className="filters_available">
         <h3>Filter by:</h3>

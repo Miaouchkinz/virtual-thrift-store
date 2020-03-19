@@ -16,6 +16,17 @@
   margin: 10px;
 }
 
-#hanger_icon_feed_page {
-  height: 45px;
+.feed_header_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+#feed_hanger_icon {
+  height: 50px;
+}
+
+#feed_profile_icon {
+  height: 40px;
 }
