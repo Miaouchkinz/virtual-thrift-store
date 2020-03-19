@@ -6,11 +6,9 @@ import {
 } from "react-router-dom";
 import Landing from './components/Landing';
 import Dashboard from './components/Dashboard';
-import Header from "./components/Header";
 import Feed from "./components/Feed";
 import Login from './components/auth/Login';
 import Registration from './components/auth/Registration';
-import './App.scss';
 import useApplicationData from './hooks/useApplicationData';
 
 export default function App(props) {
@@ -22,7 +20,6 @@ export default function App(props) {
   
   return (
     <div className='App'>
-      <Header />
       <Router>
         <Switch>
           <Route 
