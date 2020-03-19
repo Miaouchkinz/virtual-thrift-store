@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import Button from '../common/button'
 import axios from 'axios';
 
-export default function Registration(props) {
+export default function Registration({ handleSuccessfulAuth, history }) {
 
   const [state, setState] = useState({
     name: "",
@@ -23,7 +24,7 @@ export default function Registration(props) {
       { withCredentials: true }
     ).then(res => {
       if(res.data.status === "created") {
-        props.handleSuccessfulAuth(res.data)
+        handleSuccessfulAuth(res.data, history)
       }
     })
      .catch(err => console.log("registration error", err));
@@ -38,9 +39,11 @@ export default function Registration(props) {
   }
 
   return (
-    <div>
+    <main id="auth">
       <form onSubmit={handleSubmit}>
+        <h1>SIGN UP</h1>
         <input 
+          className="text-input"
           type="text" 
           name="name"
           placeholder="Name"
@@ -50,6 +53,7 @@ export default function Registration(props) {
         </input>
 
         <input 
+          className="text-input"
           type="email" 
           name="email"
           placeholder="Email Address"
@@ -59,6 +63,7 @@ export default function Registration(props) {
         </input>
 
         <input 
+          className="text-input"
           type="password" 
           name="password"
           placeholder="Password"
@@ -68,6 +73,7 @@ export default function Registration(props) {
         </input>
 
         <input 
+          className="text-input"
           type="password" 
           name="password_confirmation"
           placeholder="Password confirmation"
@@ -75,8 +81,9 @@ export default function Registration(props) {
           onChange={handleChange}
           required>
         </input>
-        <button type="submit">Register</button>
+        <Button type="submit" onClick={handleSubmit} primary fullWidth label="SIGN UP"/>
+        <Button onClick={() => history.push('/login')} secondary fullWidth label="LOGIN"/>
       </form>
-    </div>
+    </main>
   );
 };
