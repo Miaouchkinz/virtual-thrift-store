@@ -1,10 +1,17 @@
-import { useEffect, useReducer } from 'react';
-import dataReducer, { SET_USERS, SET_CURRENT_USER } from '../reducers/dataReducer';
-import axios from 'axios';
+import { useEffect, useReducer } from "react";
+import dataReducer, {
+  SET_USERS,
+  SET_AVAILABLE_CLOTHING,
+  SET_CLOTHING_CATEGORIES,
+  SET_CURRENT_USER
+} from "../reducers/dataReducer";
+import axios from "axios";
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(dataReducer, {
     users: [],
+    clothing: [],
+    clothingCategories: [],
     loading: true,
     currentUser: {},
     loggedInStatus: "NOT_LOGGED_IN"
@@ -59,6 +66,33 @@ const useApplicationData = () => {
       }
     })
     .catch(err => console.log(err));
+  }, []);
+
+  //______________________________
+  // GET AVAILABLE CLOTHINGS DATA|
+  //_____________________________|
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "/api/clothings"
+    })
+      .then(({ data }) => {
+        dispatch({ type: SET_AVAILABLE_CLOTHING, clothing: data });
+      })
+      .catch(err => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "/api/clothing_categories"
+    })
+      .then(({ data }) => {
+        console.log(data);
+        dispatch({ type: SET_CLOTHING_CATEGORIES, clothingCategories: data });
+      })
+      .catch(err => console.log(err));
   }, []);
 
   return {

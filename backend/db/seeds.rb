@@ -30,3 +30,11 @@ ClothingCategory.create(name: "pants")
 1..5.times do |i|
   Clothing.create(size: 'S', image_url: Faker::LoremPixel.image(size: "730x411"), available_for_exchange: Faker::Boolean, user_id: User.all[i].id, clothing_category_id: ClothingCategory.all[i].id)
 end
+
+1..5.times do |i|
+  Clothing.create(size: 'M', image_url: Faker::LoremPixel.image(size: "730x411"), available_for_exchange: Faker::Boolean, user_id: User.all[i].id, clothing_category_id: ClothingCategory.all[i].id)
+end
+
+1..5.times do |i|
+  Clothing.create(size: 'L', image_url: Faker::LoremPixel.image(size: "730x411"), available_for_exchange: false, user_id: User.all[i].id, clothing_category_id: ClothingCategory.all[i].id)
+end

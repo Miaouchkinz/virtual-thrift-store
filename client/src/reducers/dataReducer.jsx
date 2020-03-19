@@ -1,4 +1,6 @@
 export const SET_USERS = 'SET_USERS';
+export const SET_AVAILABLE_CLOTHING = 'SET_AVAILABLE_CLOTHING'
+export const SET_CLOTHING_CATEGORIES = 'SET_CLOTHING_CATEGORIES'
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
 const dataReducer = (state, action) => {
@@ -8,6 +10,18 @@ const dataReducer = (state, action) => {
         ...state,
         users: action.users,
         loading: false,
+      };
+    case SET_AVAILABLE_CLOTHING:
+      return {
+        ...state,
+        clothing: action.clothing,
+        loading: false
+      };
+    case SET_CLOTHING_CATEGORIES:
+      return {
+        ...state,
+        clothingCategories: action.clothingCategories,
+        loading: false
       };
     case SET_CURRENT_USER:
       return {
@@ -20,6 +34,7 @@ const dataReducer = (state, action) => {
         `Tried to reduce with unsupported action type: ${action.type}`
       );
     };
+  };
 };
 
 export default dataReducer;

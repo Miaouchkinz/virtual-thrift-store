@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import Landing from './components/Landing';
 import Dashboard from './components/Dashboard';
+import Header from "./components/Header";
+import Feed from "./components/Feed";
 import Login from './components/auth/Login';
 import Registration from './components/auth/Registration';
 import './App.scss';
@@ -17,9 +19,10 @@ export default function App(props) {
    handleSuccessfulAuth,
    handleLogout
   } = useApplicationData();
-
+  
   return (
     <div className='App'>
+      <Header />
       <Router>
         <Switch>
           <Route 
@@ -41,11 +44,18 @@ export default function App(props) {
             <Registration {...props} handleSuccessfulAuth={handleSuccessfulAuth}/>
           ))}>
           </Route>
+          <Route path="/feed">
+            <Feed
+              clothing={state.clothing}
+              clothingCategories={state.clothingCategories}
+            />
+          </Route>
           <Route exact path={"/dashboard"}>
             <Dashboard loggedInStatus={state.loggedInStatus} handleLogout={handleLogout}/>
           </Route>
         </Switch>
       </Router>
+      <footer></footer>
     </div>
   );
 }
