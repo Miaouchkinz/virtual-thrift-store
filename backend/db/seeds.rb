@@ -18,7 +18,7 @@ end
 
 5.times do
   User.create(name: Faker::Movies::LordOfTheRings.character, email: Faker::Internet.email, 
-              password: Faker::Internet.password, avatar_url: Faker::LoremPixel.image(size: "730x411"))
+              password: '12345', password_confirmation: '12345', avatar_url: Faker::LoremPixel.image(size: "730x411"))
 end
 
 ClothingCategory.create(name: "tshirt")

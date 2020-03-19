@@ -11,12 +11,14 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "0.9.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "^1.19.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "scss": "node-sass --watch scss -o public/css"
+    "scss": "node-sass --watch scss/index.scss -o public/css"
   }
 }

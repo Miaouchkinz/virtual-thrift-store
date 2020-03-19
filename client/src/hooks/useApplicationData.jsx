@@ -2,7 +2,8 @@ import { useEffect, useReducer } from "react";
 import dataReducer, {
   SET_USERS,
   SET_AVAILABLE_CLOTHING,
-  SET_CLOTHING_CATEGORIES
+  SET_CLOTHING_CATEGORIES,
+  SET_CURRENT_USER
 } from "../reducers/dataReducer";
 import axios from "axios";
 
@@ -11,56 +12,75 @@ const useApplicationData = () => {
     users: [],
     clothing: [],
     clothingCategories: [],
-    loading: true
+    loading: true,
+    currentUser: {},
+    loggedInStatus: "NOT_LOGGED_IN"
   });
 
-  //_______________
-  // GET USERS DATA|
-  //_______________|
+  const handleLogout = () => {
+    dispatch({
+      type: SET_CURRENT_USER,
+      value: { 
+        currentUser:{},
+        loggedInStatus: "NOT_LOGGED_IN"
+      }});
+  };
+
+  const handleLogin = (data) => {
+    dispatch({
+      type: SET_CURRENT_USER,
+      value: { 
+        currentUser: data.user,
+        loggedInStatus: "LOGGED_IN"
+      }});
+  };
+
+  const handleSuccessfulAuth = (data, history) => {
+    handleLogin(data);
+    history.push('/feed')
+  }
 
   useEffect(() => {
-    axios({
-      method: "GET",
-      url: "/api/users"
-    })
-      .then(({ data }) => {
-        dispatch({ type: SET_USERS, users: data });
-      })
-      .catch(err => console.log(err));
-  }, []);
+    Promise.all([
+      axios.get('http://localhost:3001/api/users'),
+      axios.get('http://localhost:3001/logged_in', { withCredentials: true }),
+      axios.get('/api/clothings'),
+      axios.get('/api/clothing_categories')
+    ])
+    .then((all) => {
+      // Handle list of all users
+      dispatch({ type: SET_USERS, users: all[0].data });
 
-  //______________________________
-  // GET AVAILABLE CLOTHINGS DATA|
-  //_____________________________|
-
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: "/api/clothings"
+      // Handle Login status & current user
+      if(all[1].data.logged_in && state.loggedInStatus === "NOT_LOGGED_IN") {
+        dispatch({
+          type: SET_CURRENT_USER,
+          value: { 
+            currentUser: all[1].data.user,
+            loggedInStatus: "LOGGED_IN"
+          }});
+      } else if (!all[1].data.logged_in && state.loggedInStatus === "LOGGED_IN") {
+        dispatch({
+          type: SET_CURRENT_USER,
+          value: { 
+            currentUser:{},
+            loggedInStatus: "NOT_LOGGED_IN"
+          }});
+      }
+      
+      // Handles all clothings that are available for exchange
+      dispatch({ type: SET_AVAILABLE_CLOTHING, clothing: all[2].data })
+      // Handles clothing category types
+      dispatch({ type: SET_CLOTHING_CATEGORIES, clothingCategories: all[3].data })
     })
-      .then(({ data }) => {
-        dispatch({ type: SET_AVAILABLE_CLOTHING, clothing: data });
-      })
-      .catch(err => console.log(err));
-  }, []);
-
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: "/api/clothing_categories"
-    })
-      .then(({ data }) => {
-        console.log(data);
-        dispatch({ type: SET_CLOTHING_CATEGORIES, clothingCategories: data });
-      })
-      .catch(err => console.log(err));
+    .catch(err => console.log(err));
   }, []);
 
   return {
-    state
+    state,
+    handleLogout,
+    handleSuccessfulAuth
   };
 };
 
 export default useApplicationData;
-
-// /api/clothing_category

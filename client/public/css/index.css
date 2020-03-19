@@ -1,5 +1,67 @@
+.btn {
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.75rem; }
+  .btn.full-width {
+    width: 100%; }
+
+.primary {
+  background-color: white; }
+
+.secondary {
+  background-color: transparent;
+  border: .125rem solid white;
+  color: white; }
+
+.text-input,
+.text-input:-webkit-autofill {
+  font-size: 1.25rem;
+  padding: .5rem 1.25rem;
+  margin-bottom: .5rem;
+  background: white;
+  border: 1px solid #999;
+  border-radius: .675rem;
+  box-sizing: border-box; }
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  background: #c4b7a0; }
+  font-family: 'Roboto', sans-serif;
+  background-color: #DED0B6; }
+
+#landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 8rem 2rem; }
+  #landing .welcome-message {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 1.5rem; }
+    #landing .welcome-message .btn {
+      width: 75%; }
+
+#auth {
+  margin: auto;
+  max-width: 85%; }
+  #auth form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 8rem 2rem; }
+    #auth form h1 {
+      letter-spacing: 8px;
+      font-weight: 400;
+      align-self: flex-start; }
+    #auth form .text-input {
+      width: 100%;
+      margin: inherit 8rem; }
+    #auth form .btn {
+      width: 66%;
+      align-self: flex-end; }
+
+.logo-placeholder {
+  width: 8rem;
+  height: 8rem;
+  background-color: pink;
+  border-radius: 100%; }
