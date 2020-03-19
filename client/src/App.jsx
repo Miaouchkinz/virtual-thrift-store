@@ -1,20 +1,45 @@
-import React from "react";
-import { Route, Switch, Link, BrowserRouter as Router } from "react-router-dom";
+import React from 'react';
+import { 
+  BrowserRouter as Router, 
+  Switch,
+  Route
+} from "react-router-dom";
+import Landing from './components/Landing';
+import Dashboard from './components/Dashboard';
 import Feed from "./components/Feed";
-import Header from "./components/Header";
-import Landing from "./components/Landing";
-import useApplicationData from "../src/hooks/useApplicationData";
+import Login from './components/auth/Login';
+import Registration from './components/auth/Registration';
+import useApplicationData from './hooks/useApplicationData';
 
-function App() {
-  const { state } = useApplicationData();
-
+export default function App(props) {
+ const { 
+   state,
+   handleSuccessfulAuth,
+   handleLogout
+  } = useApplicationData();
+  
   return (
-    <Router>
-      <div>
-        <Header />
+    <div className='App'>
+      <Router>
         <Switch>
-          <Route exact path="/">
-            <Landing />
+          <Route 
+            exact 
+            path={"/"}
+            render={props => (
+              <Landing 
+                {...props}
+                handleSuccessfulAuth={handleSuccessfulAuth}
+                handleLogout={handleLogout}
+              />
+            )}>
+          </Route>
+          <Route exact path={"/login"} render={(props) => (
+            <Login {...props} handleSuccessfulAuth={handleSuccessfulAuth}/>
+          )}>
+          </Route>
+          <Route exact path={"/register"} render={(props => (
+            <Registration {...props} handleSuccessfulAuth={handleSuccessfulAuth}/>
+          ))}>
           </Route>
           <Route path="/feed">
             <Feed
@@ -22,11 +47,12 @@ function App() {
               clothingCategories={state.clothingCategories}
             />
           </Route>
+          <Route exact path={"/dashboard"}>
+            <Dashboard loggedInStatus={state.loggedInStatus} handleLogout={handleLogout}/>
+          </Route>
         </Switch>
-        <footer></footer>
-      </div>
-    </Router>
+      </Router>
+      <footer></footer>
+    </div>
   );
 }
-
-export default App;
