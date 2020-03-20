@@ -65,7 +65,9 @@ export default function Cart({ cart, clothing }) {
           </Link>
         </div>
       </header>
-      <h1>This is Cart</h1>
+      <h1>
+        Selected items <span class="numberCircle">{cart.length}</span>
+      </h1>
       <div className="clothingItem_cart_carousel">
         {checkIfCartEmpty(cartItemList)}
       </div>

@@ -40,24 +40,29 @@ a {
 
 .availables_grid_container {
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  justify-content: space-around; }
+
+.clothingItem_image_of_grid_container {
+  width: 190px; }
 
 .clothingItem_of_grid_container {
   position: relative;
   z-index: 1; }
 
-.clothingItem_image_of_grid_container {
-  width: 100%; }
-
 #add_to_cart_button {
-  height: 50px;
+  height: 30px;
   position: relative;
   float: right;
   z-index: 2;
-  top: -60px;
-  right: 6px; }
+  top: -35px;
+  right: 2px; }
   #add_to_cart_button:hover {
-    cursor: pointer; }
+    cursor: pointer;
+    opacity: 70%; }
+  #add_to_cart_button:active {
+    height: 25px;
+    opacity: 30%; }
 
 .typeForm {
   display: flex;
@@ -94,6 +99,16 @@ a {
   border-radius: 50%;
   height: 100px;
   width: 100px; }
+
+.numberCircle {
+  border-radius: 70%;
+  width: 10px;
+  height: 10px;
+  padding: 3px;
+  border: 2px solid black;
+  color: black;
+  text-align: center;
+  font-size: 14px; }
 
 body {
   font-family: "Roboto", sans-serif;

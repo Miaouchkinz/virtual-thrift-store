@@ -17,6 +17,11 @@ a {
 .availables_grid_container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.clothingItem_image_of_grid_container {
+  width: 190px;
 }
 
 .clothingItem_of_grid_container {
@@ -24,20 +29,21 @@ a {
   z-index: 1;
 }
 
-.clothingItem_image_of_grid_container {
-  width: 100%;
-}
-
 #add_to_cart_button {
-  height: 50px;
+  height: 30px;
   position: relative;
   float: right;
   z-index: 2;
-  top: -60px;
-  right: 6px;
+  top: -35px;
+  right: 2px;
 
   &:hover {
     cursor: pointer;
+    opacity: 70%;
+  }
+  &:active {
+    height: 25px;
+    opacity: 30%;
   }
 }
 
