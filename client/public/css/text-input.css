@@ -1,9 +1,0 @@
-.text-input,
-.text-input:-webkit-autofill {
-  font-size: 1.25rem;
-  padding: .5rem 1.25rem;
-  margin-bottom: .5rem;
-  background: white;
-  border: 1px solid #999;
-  border-radius: .675rem;
-  box-sizing: border-box; }
