@@ -1,5 +1,4 @@
 import React from "react";
-import Feed from "./Feed";
 
 export default function Cart({ cart, clothing }) {
   console.log(cart);
@@ -16,8 +15,9 @@ export default function Cart({ cart, clothing }) {
   const cartItemList = clothing
     .filter(item => itemInCartId().includes(item.id))
     .map(clothingItem => (
-      <div className="clothingItem_of_grid_container" key={clothingItem.id}>
+      <div className="clothingItem_of_cart_container" key={clothingItem.id}>
         <img
+          className="clothingItem_image_of_cart_container"
           src={clothingItem.image_url}
           alt={clothingItem.clothing_category_id}
           id={clothingItem.size}
@@ -31,7 +31,7 @@ export default function Cart({ cart, clothing }) {
   return (
     <div>
       <h1>This is Cart</h1>
-      <div>{cartItemList}</div>
+      <div className="clothingItem_cart_carousel">{cartItemList}</div>
     </div>
   );
 }

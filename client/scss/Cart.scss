@@ -1,0 +1,13 @@
+.clothingItem_cart_carousel {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+}
+
+.clothingItem_image_of_cart_container {
+  display: flex;
+  margin: 10px;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
