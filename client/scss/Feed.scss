@@ -19,6 +19,24 @@ a {
   flex-wrap: wrap;
 }
 
+.clothingItem_of_grid_container {
+  position: relative;
+  z-index: 1;
+}
+
+#add_to_cart_button {
+  height: 50px;
+  position: relative;
+  float: right;
+  z-index: 2;
+  top: -60px;
+  right: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .typeForm {
   display: flex;
   flex-direction: column;
@@ -45,7 +63,4 @@ a {
 
 #feed_profile_icon {
   height: 50px;
-}
-
-.add_to_cart_button:focus {
 }

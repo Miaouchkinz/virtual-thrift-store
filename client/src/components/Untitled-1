@@ -1,0 +1,16 @@
+const firstFunction = function(params, params1, params3) {
+let result = params + params1 + params3
+return result
+};
+
+
+firstFunction(5, 6, 7
+
+
+
+const famille = function(param1, param2, param3) {
+  return `Ma famille est composée de ${param1}, ${param2}, ${param3}`
+};
+
+
+

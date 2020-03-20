@@ -115,7 +115,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
           id={clothingItem.size}
         ></img>
         <footer>
-          <button
+          <div
             className="add_to_cart_button"
             onClick={() =>
               addToCartButtonClicked(
@@ -127,10 +127,10 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
             }
           >
             <img
-              id="feed_hanger_icon"
+              id="add_to_cart_button"
               src="./images/feed_hanger_logo.png"
             ></img>
-          </button>
+          </div>
         </footer>
       </div>
     ));
