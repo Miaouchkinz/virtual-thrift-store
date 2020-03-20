@@ -54,10 +54,10 @@ const useApplicationData = () => {
 
   useEffect(() => {
     Promise.all([
-      axios.get("http://localhost:3001/api/users"),
-      axios.get("http://localhost:3001/logged_in", { withCredentials: true }),
-      axios.get("http://localhost:3001/api/clothings"),
-      axios.get("http://localhost:3001/api/clothing_categories")
+      axios.get("/api/users"),
+      axios.get("/logged_in", { withCredentials: true }),
+      axios.get("/api/clothings"),
+      axios.get("/api/clothing_categories")
     ])
       .then(all => {
         // Handle list of all users
