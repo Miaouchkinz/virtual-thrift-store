@@ -1,10 +1,13 @@
 @import './button';
 @import './text-input.scss';
 @import './Feed.scss';
+@import './profile.scss';
+@import './wave.scss';
 
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #DED0B6;
+  margin: 0;
 }
 
 #landing {
@@ -17,10 +20,16 @@ body {
     font-size: 1.5rem;
     font-weight: 400;
     margin: 1.5rem;
-    .btn {
-      width: 75%;
-    }
   }
+
+  .btn {
+    width: 75%;
+    margin-bottom: 0.75rem;
+  }
+}
+
+.login-signup-nav {
+  padding: 1rem 1rem;
 }
 
 #auth {
@@ -47,6 +56,7 @@ body {
     .btn {
       width: 66%;
       align-self: flex-end;
+      margin-bottom: 0.75rem;
     }
   }
 }

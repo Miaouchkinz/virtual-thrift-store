@@ -2,10 +2,32 @@
   font-size: 1.25rem;
   font-weight: 700;
   padding: 0.5rem;
-  margin-bottom: 0.5rem;
-  border-radius: 0.75rem; }
+  border-radius: 0.75rem;
+  border: none; }
   .btn.full-width {
     width: 100%; }
+
+.icon-btn {
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  line-height: 0;
+  font-weight: 700;
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: none; }
+  .icon-btn.full-width {
+    width: 100%; }
+  .icon-btn.large {
+    width: 6rem;
+    height: 6rem; }
+    .icon-btn.large img {
+      max-width: 100%; }
+  .icon-btn.selected {
+    box-shadow: 0 8px 8px 2px rgba(0, 0, 0, 0.25); }
 
 .primary {
   background-color: white; }
@@ -25,9 +47,116 @@
   border-radius: .675rem;
   box-sizing: border-box; }
 
+.filters_available {
+  display: flex;
+  flex-direction: row;
+  margin: 10px; }
+
+.typeForm {
+  display: flex;
+  flex-direction: column;
+  margin: 10px; }
+
+.sizeForm {
+  display: flex;
+  flex-direction: column;
+  margin: 10px; }
+
+#profile-page {
+  display: flex;
+  flex-direction: column; }
+  #profile-page nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem; }
+  #profile-page header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem; }
+    #profile-page header .avatar_url-image {
+      width: 9rem;
+      height: 9rem;
+      border-radius: 100%;
+      padding: 1rem; }
+    #profile-page header .user-name {
+      font-size: 1.5rem;
+      color: white;
+      text-shadow: 2px 2px 2px #555;
+      font-weight: 700; }
+    #profile-page header .icon-btn {
+      margin: 0.75rem; }
+  #profile-page .profile-feed-placeholder {
+    display: flex;
+    position: relative;
+    width: 19rem;
+    height: 19rem;
+    background-color: gray;
+    margin: 5rem 1.75rem;
+    padding: 1rem 1.5rem;
+    opacity: .8; }
+
+#wave {
+  position: absolute;
+  height: 275px;
+  width: 600px;
+  background: #70774B;
+  z-index: -2; }
+
+#wave:before {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 100% 40%;
+  width: 380px;
+  height: 190px;
+  background-color: #DED0B6;
+  right: -5px;
+  top: 190px;
+  z-index: -1; }
+
+#wave:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 30% 100%;
+  width: 150px;
+  height: 150px;
+  background-color: #DED0B6;
+  left: -20px;
+  top: 180px;
+  z-index: -1; }
+
+#inner-wave:before {
+  content: "";
+  position: absolute;
+  border-radius: 85% 70%;
+  width: 13rem;
+  height: 10.25rem;
+  background-color: #70774B;
+  top: 125px;
+  left: 14%; }
+
+#inner-wave:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 2% 100%;
+  width: 150px;
+  height: 150px;
+  background-color: #70774B;
+  left: -10px;
+  top: 130px; }
+
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #DED0B6; }
+  background-color: #DED0B6;
+  margin: 0; }
 
 #landing {
   display: flex;
@@ -38,8 +167,12 @@ body {
     font-size: 1.5rem;
     font-weight: 400;
     margin: 1.5rem; }
-    #landing .welcome-message .btn {
-      width: 75%; }
+  #landing .btn {
+    width: 75%;
+    margin-bottom: 0.75rem; }
+
+.login-signup-nav {
+  padding: 1rem 1rem; }
 
 #auth {
   margin: auto;
@@ -58,7 +191,8 @@ body {
       margin: inherit 8rem; }
     #auth form .btn {
       width: 66%;
-      align-self: flex-end; }
+      align-self: flex-end;
+      margin-bottom: 0.75rem; }
 
 .logo-placeholder {
   width: 8rem;
