@@ -44,22 +44,25 @@ export default function Cart({ cart, clothing }) {
         <div className="feed_header_block">
           <Link
             to={{
+              pathname: "/profile"
+            }}
+          >
+            <span className="feed_header_profile_icon">
+              <img
+                id="feed_profile_icon"
+                src="./images/feed_profile_logo.png"
+              ></img>
+            </span>
+          </Link>
+          <Link
+            to={{
               pathname: "/feed"
             }}
           >
             <span className="feed_header_hanger_icon">
-              <img
-                id="feed_hanger_icon"
-                src="./images/feed_hanger_logo.png"
-              ></img>
+              Acts like back button
             </span>
           </Link>
-          <span className="feed_header_profile_icon">
-            <img
-              id="feed_profile_icon"
-              src="./images/feed_profile_logo.png"
-            ></img>
-          </span>
         </div>
       </header>
       <h1>This is Cart</h1>
