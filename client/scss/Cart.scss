@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
+  background-color: #e0bfbf;
 }
 
 .clothingItem_image_of_cart_container {
@@ -10,4 +11,15 @@
   border-radius: 50%;
   height: 100px;
   width: 100px;
+}
+
+.total_item_in_cart {
+  border-radius: 70%;
+  width: 10px;
+  height: 10px;
+  padding: 3px;
+  border: 2px solid rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-size: 14px;
 }
