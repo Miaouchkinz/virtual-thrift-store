@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Cart({ cart, clothing }) {
   const itemInCartId = function() {
@@ -39,6 +40,28 @@ export default function Cart({ cart, clothing }) {
 
   return (
     <div>
+      <header className="feed_header">
+        <div className="feed_header_block">
+          <Link
+            to={{
+              pathname: "/feed"
+            }}
+          >
+            <span className="feed_header_hanger_icon">
+              <img
+                id="feed_hanger_icon"
+                src="./images/feed_hanger_logo.png"
+              ></img>
+            </span>
+          </Link>
+          <span className="feed_header_profile_icon">
+            <img
+              id="feed_profile_icon"
+              src="./images/feed_profile_logo.png"
+            ></img>
+          </span>
+        </div>
+      </header>
       <h1>This is Cart</h1>
       <div className="clothingItem_cart_carousel">
         {checkIfCartEmpty(cartItemList)}
