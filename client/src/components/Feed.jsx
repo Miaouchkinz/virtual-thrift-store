@@ -67,6 +67,16 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
       )
     );
 
+  const addToCartButtonChecked = function() {
+    let buttonIsCalledOnce = false;
+
+    if (buttonIsCalledOnce === false) {
+      buttonIsCalledOnce = true;
+    } else {
+    }
+    return buttonIsCalledOnce;
+  };
+
   const filteredClothingList = function(clothing, activeCategories, size) {
     let finalFilteredClothingList = null;
     let contentOfStateCategory = Object.entries(activeCategories).length;
@@ -93,11 +103,14 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
         ></img>
         <footer>
           <button
+            className="add_to_cart_button"
             onClick={() =>
-              setCart(
-                clothingItem.id,
-                clothingItem.size,
-                clothingItem.clothing_category_id
+              addToCartButtonChecked(
+                setCart(
+                  clothingItem.id,
+                  clothingItem.size,
+                  clothingItem.clothing_category_id
+                )
               )
             }
           >
@@ -120,8 +133,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
           </span>
           <Link
             to={{
-              pathname: "/cart",
-              state: { cart }
+              pathname: "/cart"
             }}
           >
             <span className="feed_header_hanger_icon">

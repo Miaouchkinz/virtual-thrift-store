@@ -63,7 +63,7 @@ export default function App(props) {
             />
           </Route>
           <Route path={"/cart"}>
-            <Cart />
+            <Cart clothing={state.clothing} cart={state.cart} />
           </Route>
         </Switch>
       </Router>
