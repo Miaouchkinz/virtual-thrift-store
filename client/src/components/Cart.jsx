@@ -10,10 +10,6 @@ export default function Cart({ cart, clothing }) {
     return finalIdList;
   };
 
-  const ifCartEmpty = function() {
-    return <h2>Your cart is emptu</h2>;
-  };
-
   const cartItemList = clothing
     .filter(item => itemInCartId().includes(item.id))
     .map(clothingItem => (
@@ -66,7 +62,7 @@ export default function Cart({ cart, clothing }) {
         </div>
       </header>
       <h1>
-        Selected items <span class="numberCircle">{cart.length}</span>
+        Selected items <span class="total_item_in_cart">{cart.length}</span>
       </h1>
       <div className="clothingItem_cart_carousel">
         {checkIfCartEmpty(cartItemList)}
