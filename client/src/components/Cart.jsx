@@ -9,6 +9,10 @@ export default function Cart({ cart, clothing }) {
     return finalIdList;
   };
 
+  const ifCartEmpty = function() {
+    return <h2>Your cart is emptu</h2>;
+  };
+
   const cartItemList = clothing
     .filter(item => itemInCartId().includes(item.id))
     .map(clothingItem => (
@@ -23,10 +27,22 @@ export default function Cart({ cart, clothing }) {
       </div>
     ));
 
+  const checkIfCartEmpty = function(cartItemList) {
+    let result = null;
+    if (cart.length === 0) {
+      result = <h2>Your cart is empty.</h2>;
+    } else {
+      result = cartItemList;
+    }
+    return result;
+  };
+
   return (
     <div>
       <h1>This is Cart</h1>
-      <div className="clothingItem_cart_carousel">{cartItemList}</div>
+      <div className="clothingItem_cart_carousel">
+        {checkIfCartEmpty(cartItemList)}
+      </div>
     </div>
   );
 }

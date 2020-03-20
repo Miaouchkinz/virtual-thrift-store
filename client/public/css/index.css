@@ -58,7 +58,6 @@ a {
   right: 6px; }
   #add_to_cart_button:hover {
     cursor: pointer; }
-  margin: 10px; }
 
 .typeForm {
   display: flex;
@@ -70,7 +69,6 @@ a {
   flex-direction: column;
   margin: 10px; }
 
-<<<<<<< HEAD
 .feed_header_block {
   display: flex;
   flex-direction: row;
@@ -87,7 +85,8 @@ a {
 .clothingItem_cart_carousel {
   display: flex;
   flex-direction: row;
-  overflow-x: scroll; }
+  overflow-x: scroll;
+  background-color: #e0bfbf; }
 
 .clothingItem_image_of_cart_container {
   display: flex;
@@ -96,8 +95,6 @@ a {
   height: 100px;
   width: 100px; }
 
-=======
->>>>>>> master
 body {
   font-family: "Roboto", sans-serif;
   background-color: #ded0b6; }

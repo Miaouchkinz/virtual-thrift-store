@@ -1,7 +1,8 @@
 .clothingItem_cart_carousel {
   display: flex;
   flex-direction: row;
-  overflow-x: scroll; }
+  overflow-x: scroll;
+  background-color: #e0bfbf; }
 
 .clothingItem_image_of_cart_container {
   display: flex;
