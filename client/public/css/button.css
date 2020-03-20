@@ -2,10 +2,32 @@
   font-size: 1.25rem;
   font-weight: 700;
   padding: 0.5rem;
-  margin-bottom: 0.5rem;
-  border-radius: 0.75rem; }
+  border-radius: 0.75rem;
+  border: none; }
   .btn.full-width {
     width: 100%; }
+
+.icon-btn {
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  line-height: 0;
+  font-weight: 700;
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: none; }
+  .icon-btn.full-width {
+    width: 100%; }
+  .icon-btn.large {
+    width: 6rem;
+    height: 6rem; }
+    .icon-btn.large img {
+      max-width: 100%; }
+  .icon-btn.selected {
+    box-shadow: 0 8px 8px 2px rgba(0, 0, 0, 0.25); }
 
 .primary {
   background-color: white; }
