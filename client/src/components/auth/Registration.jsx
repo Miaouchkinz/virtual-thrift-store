@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Button from '../common/button'
+import Button from '../common/textButton';
+import Icon from '../common/iconButton';
 import axios from 'axios';
 
 export default function Registration({ handleSuccessfulAuth, history }) {
@@ -39,51 +40,56 @@ export default function Registration({ handleSuccessfulAuth, history }) {
   }
 
   return (
-    <main id="auth">
-      <form onSubmit={handleSubmit}>
-        <h1>SIGN UP</h1>
-        <input 
-          className="text-input"
-          type="text" 
-          name="name"
-          placeholder="Name"
-          value={state.name}
-          onChange={handleChange}
-          required>
-        </input>
+    <div>
+      <nav className="login-signup-nav">
+        <Icon secondary onClick={() => history.push('/')} label="<"></Icon>
+      </nav>
+      <main id="auth">
+        <form onSubmit={handleSubmit}>
+          <h1>SIGN UP</h1>
+          <input 
+            className="text-input"
+            type="text" 
+            name="name"
+            placeholder="Name"
+            value={state.name}
+            onChange={handleChange}
+            required>
+          </input>
 
-        <input 
-          className="text-input"
-          type="email" 
-          name="email"
-          placeholder="Email Address"
-          value={state.email}
-          onChange={handleChange}
-          required>
-        </input>
+          <input 
+            className="text-input"
+            type="email" 
+            name="email"
+            placeholder="Email Address"
+            value={state.email}
+            onChange={handleChange}
+            required>
+          </input>
 
-        <input 
-          className="text-input"
-          type="password" 
-          name="password"
-          placeholder="Password"
-          value={state.password}
-          onChange={handleChange}
-          required>
-        </input>
+          <input 
+            className="text-input"
+            type="password" 
+            name="password"
+            placeholder="Password"
+            value={state.password}
+            onChange={handleChange}
+            required>
+          </input>
 
-        <input 
-          className="text-input"
-          type="password" 
-          name="password_confirmation"
-          placeholder="Password confirmation"
-          value={state.password_confirmation}
-          onChange={handleChange}
-          required>
-        </input>
-        <Button type="submit" onClick={handleSubmit} primary fullWidth label="SIGN UP"/>
-        <Button onClick={() => history.push('/login')} secondary fullWidth label="LOGIN"/>
-      </form>
-    </main>
+          <input 
+            className="text-input"
+            type="password" 
+            name="password_confirmation"
+            placeholder="Password confirmation"
+            value={state.password_confirmation}
+            onChange={handleChange}
+            required>
+          </input>
+          <Button type="submit" onClick={handleSubmit} primary fullWidth label="SIGN UP"/>
+          <Button onClick={() => history.push('/login')} secondary fullWidth label="LOGIN"/>
+        </form>
+      </main>
+    </div>
   );
 };
