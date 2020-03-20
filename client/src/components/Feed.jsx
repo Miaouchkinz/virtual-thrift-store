@@ -9,6 +9,11 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
   });
 
   const [activeCategories, setActiveCategories] = useState([]);
+  const [addToCartCount, setaddToCartCount] = useState([
+    {
+      totalCount: 0
+    }
+  ]);
 
   const ifCheckBoxActive = (category, allCategories) => {
     const activeCategoryName = allCategories[category].name;
@@ -67,13 +72,21 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
       )
     );
 
-  const addToCartButtonChecked = function() {
-    let buttonIsCalledOnce = false;
-
-    if (buttonIsCalledOnce === false) {
-      buttonIsCalledOnce = true;
-    } else {
-      return null;
+  const addToCartButtonClicked = function(
+    clothingId,
+    clothingSize,
+    clothingCategory,
+    callback
+  ) {
+    if (
+      addToCartCount[0].totalCount === 0 &&
+      !addToCartCount.some(key => key[clothingId] === clothingId)
+    ) {
+      setaddToCartCount([
+        ...addToCartCount,
+        { totalCount: 1, [clothingId]: clothingId }
+      ]);
+      callback(clothingId, clothingSize, clothingCategory);
     }
   };
 
@@ -105,16 +118,18 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
           <button
             className="add_to_cart_button"
             onClick={() =>
-              addToCartButtonChecked(
-                setCart(
-                  clothingItem.id,
-                  clothingItem.size,
-                  clothingItem.clothing_category_id
-                )
+              addToCartButtonClicked(
+                clothingItem.id,
+                clothingItem.size,
+                clothingItem.clothing_category_id,
+                setCart
               )
             }
           >
-            Add to cart
+            <img
+              id="feed_hanger_icon"
+              src="./images/feed_hanger_logo.png"
+            ></img>
           </button>
         </footer>
       </div>
