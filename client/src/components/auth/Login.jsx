@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Button from '../common/button'
+import Button from '../common/textButton';
+import Icon from '../common/iconButton';
 import axios from 'axios';
 
 export default function Login({ history, handleSuccessfulAuth }) {
@@ -36,32 +37,37 @@ export default function Login({ history, handleSuccessfulAuth }) {
   }
 
   return (
-    <main id="auth">
-      <form onSubmit={handleSubmit}>
-        <h1>LOGIN</h1>
-        <input
-          className="text-input"
-          type="email" 
-          name="email"
-          placeholder="Email Address"
-          value={state.email}
-          onChange={handleChange}
-          required>
-        </input>
+    <div>
+      <nav className="login-signup-nav">
+        <Icon secondary onClick={() => history.push('/')} label="<"></Icon>
+      </nav>
+      <main id="auth">
+        <form onSubmit={handleSubmit}>
+          <h1>LOGIN</h1>
+          <input
+            className="text-input"
+            type="email" 
+            name="email"
+            placeholder="Email Address"
+            value={state.email}
+            onChange={handleChange}
+            required>
+          </input>
 
-        <input 
-          className="text-input"
-          type="password" 
-          name="password"
-          placeholder="Password"
-          value={state.password}
-          onChange={handleChange}
-          required>
-        </input>
+          <input 
+            className="text-input"
+            type="password" 
+            name="password"
+            placeholder="Password"
+            value={state.password}
+            onChange={handleChange}
+            required>
+          </input>
 
-        <Button type="submit" onClick={handleSubmit} primary fullWidth label="LOGIN"/>
-        <Button onClick={() => history.push('/register')} secondary fullWidth label="SIGN UP"/>
-      </form>
-    </main>
+          <Button type="submit" onClick={handleSubmit} primary fullWidth label="LOGIN"/>
+          <Button onClick={() => history.push('/register')} secondary fullWidth label="SIGN UP"/>
+        </form>
+      </main>
+    </div>
   );
 };
