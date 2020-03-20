@@ -3,7 +3,8 @@ import dataReducer, {
   SET_USERS,
   SET_AVAILABLE_CLOTHING,
   SET_CLOTHING_CATEGORIES,
-  SET_CURRENT_USER
+  SET_CURRENT_USER,
+  SET_CART
 } from "../reducers/dataReducer";
 import axios from "axios";
 
@@ -14,7 +15,14 @@ const useApplicationData = () => {
     clothingCategories: [],
     loading: true,
     currentUser: {},
-    loggedInStatus: "NOT_LOGGED_IN"
+    loggedInStatus: "NOT_LOGGED_IN",
+    cart: [
+      // {
+      //   id: 0,
+      //   size: "",
+      //   categoryId: 0
+      // }
+    ]
   });
 
   const handleLogout = () => {
@@ -40,6 +48,14 @@ const useApplicationData = () => {
   const handleSuccessfulAuth = (data, history) => {
     handleLogin(data);
     history.push("/feed");
+  };
+
+  const setCart = (id, size, categoryId) => {
+    dispatch({
+      ...state,
+      type: SET_CART,
+      value: { id, size, categoryId }
+    });
   };
 
   useEffect(() => {
@@ -89,7 +105,8 @@ const useApplicationData = () => {
   return {
     state,
     handleLogout,
-    handleSuccessfulAuth
+    handleSuccessfulAuth,
+    setCart
   };
 };
 

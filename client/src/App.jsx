@@ -5,10 +5,16 @@ import Dashboard from "./components/Dashboard";
 import Feed from "./components/Feed";
 import Login from "./components/auth/Login";
 import Registration from "./components/auth/Registration";
+import Cart from "./components/Cart";
 import useApplicationData from "./hooks/useApplicationData";
 
 export default function App(props) {
-  const { state, handleSuccessfulAuth, handleLogout } = useApplicationData();
+  const {
+    state,
+    handleSuccessfulAuth,
+    handleLogout,
+    setCart
+  } = useApplicationData();
 
   return (
     <div className="App">
@@ -46,6 +52,8 @@ export default function App(props) {
             <Feed
               clothing={state.clothing}
               clothingCategories={state.clothingCategories}
+              cart={state.cart}
+              setCart={setCart}
             />
           </Route>
           <Route exact path={"/dashboard"}>
@@ -53,6 +61,9 @@ export default function App(props) {
               loggedInStatus={state.loggedInStatus}
               handleLogout={handleLogout}
             />
+          </Route>
+          <Route path={"/cart"}>
+            <Cart />
           </Route>
         </Switch>
       </Router>

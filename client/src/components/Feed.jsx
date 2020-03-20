@@ -1,9 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-export default function Feed({ clothing, clothingCategories }) {
-  const [cart, setCart] = useState({
-    totalItem: 0
-  });
+export default function Feed({ clothing, clothingCategories, cart, setCart }) {
   const [size, setSize] = useState({
     S: false,
     M: false,
@@ -25,6 +23,7 @@ export default function Feed({ clothing, clothingCategories }) {
       });
     }
   };
+
   const categoryList = allCategories => {
     let categoriesResult = [];
 
@@ -87,6 +86,7 @@ export default function Feed({ clothing, clothingCategories }) {
     return finalFilteredClothingList.map(clothingItem => (
       <div className="clothingItem_of_grid_container" key={clothingItem.id}>
         <img
+          width="100%"
           src={clothingItem.image_url}
           alt={clothingItem.clothing_category_id}
           id={clothingItem.size}
@@ -94,11 +94,11 @@ export default function Feed({ clothing, clothingCategories }) {
         <footer>
           <button
             onClick={() =>
-              setCart({
-                ...cart,
-                totalItem: cart.totalItem + 1,
-                [clothingItem.id]: clothingItem.size
-              })
+              setCart(
+                clothingItem.id,
+                clothingItem.size,
+                clothingItem.clothing_category_id
+              )
             }
           >
             Add to cart
@@ -115,16 +115,23 @@ export default function Feed({ clothing, clothingCategories }) {
           <span className="feed_header_profile_icon">
             <img
               id="feed_profile_icon"
-              src="../images/feed_profile_logo.png"
+              src="./images/feed_profile_logo.png"
             ></img>
           </span>
-          <span className="feed_header_hanger_icon">
-            <img
-              id="feed_hanger_icon"
-              src="../images/feed_hanger_logo.png"
-            ></img>
-            {cart.totalItem}
-          </span>
+          <Link
+            to={{
+              pathname: "/cart",
+              state: { cart }
+            }}
+          >
+            <span className="feed_header_hanger_icon">
+              <img
+                id="feed_hanger_icon"
+                src="./images/feed_hanger_logo.png"
+              ></img>
+              {cart.length}
+            </span>
+          </Link>
         </div>
       </header>
       <div className="filters_available">
@@ -166,7 +173,6 @@ export default function Feed({ clothing, clothingCategories }) {
         </form>
       </div>
       <div className="availables_grid_container">
-        <h1>Clothings</h1>
         {filteredClothingList(clothing, activeCategories, size)}
       </div>
     </div>

@@ -28,7 +28,19 @@
 .filters_available {
   display: flex;
   flex-direction: row;
-  margin: 10px; }
+  margin: 10px;
+  margin-left: 50px; }
+
+a {
+  color: inherit;
+  text-decoration: none; }
+
+.filters_available h3 {
+  padding-top: 5px; }
+
+.availables_grid_container {
+  display: flex;
+  flex-wrap: wrap; }
 
 .typeForm {
   display: flex;
@@ -44,13 +56,14 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 10px; }
+  background: #70774b;
+  padding: 10px; }
 
 #feed_hanger_icon {
   height: 50px; }
 
 #feed_profile_icon {
-  height: 40px; }
+  height: 50px; }
 
 body {
   font-family: 'Roboto', sans-serif;
