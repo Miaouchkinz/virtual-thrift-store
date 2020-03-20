@@ -109,7 +109,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     return finalFilteredClothingList.map(clothingItem => (
       <div className="clothingItem_of_grid_container" key={clothingItem.id}>
         <img
-          width="100%"
+          className="clothingItem_image_of_grid_container"
           src={clothingItem.image_url}
           alt={clothingItem.clothing_category_id}
           id={clothingItem.size}
@@ -128,7 +128,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
           >
             <img
               id="add_to_cart_button"
-              src="./images/feed_hanger_logo.png"
+              src="./images/feed_hanger_logo_full.png"
             ></img>
           </div>
         </footer>

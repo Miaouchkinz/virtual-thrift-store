@@ -46,13 +46,16 @@ a {
   position: relative;
   z-index: 1; }
 
+.clothingItem_image_of_grid_container {
+  width: 100%; }
+
 #add_to_cart_button {
   height: 50px;
   position: relative;
   float: right;
   z-index: 2;
   top: -60px;
-  right: 5px; }
+  right: 6px; }
   #add_to_cart_button:hover {
     cursor: pointer; }
 
