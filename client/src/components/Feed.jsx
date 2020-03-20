@@ -2,19 +2,31 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Feed({ clothing, clothingCategories, cart, setCart }) {
+  //////////////////////////////////////////////
+  //_____________
+  // LOCAL STATES|
+  // ____________|
+
+  //SIZE
   const [size, setSize] = useState({
     S: false,
     M: false,
     L: false
   });
 
+  //CATEGORIES
   const [activeCategories, setActiveCategories] = useState([]);
+
+  //ITEM ADDED TO CART COUNT
   const [addToCartCount, setaddToCartCount] = useState([
     {
       totalCount: 0
     }
   ]);
 
+  //////////////////////////////////////////////
+
+  // Check state of categories that has been checked or unchecked in the filter form
   const ifCheckBoxActive = (category, allCategories) => {
     const activeCategoryName = allCategories[category].name;
     if (activeCategories[activeCategoryName]) {
@@ -29,6 +41,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     }
   };
 
+  // Creates array of labels for each category from the allCategories object
   const categoryList = allCategories => {
     let categoriesResult = [];
 
@@ -48,30 +61,8 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     return categoriesResult;
   };
 
-  const clothingList = clothing && clothing;
-
-  const clothingFilteredByCategory = clothing.filter(clothingItem =>
-    Object.values(activeCategories).includes(clothingItem.clothing_category_id)
-  );
-
-  const clothingFilteredBySize = clothing.filter(
-    clothingItem =>
-      Object.keys(size).find(sizeKey => size[sizeKey] === true) ===
-      clothingItem.size
-  );
-
-  const clothingFilteredByAll = clothing
-    .filter(
-      clothingItem =>
-        Object.keys(size).find(sizeKey => size[sizeKey] === true) ===
-        clothingItem.size
-    )
-    .filter(clothingItem =>
-      Object.values(activeCategories).includes(
-        clothingItem.clothing_category_id
-      )
-    );
-
+  // Function that keep state of if add-to-cart button has been clicked, and set Cart's global state
+  // if button has never been clicked before.
   const addToCartButtonClicked = function(
     clothingId,
     clothingSize,
@@ -89,7 +80,38 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
       callback(clothingId, clothingSize, clothingCategory);
     }
   };
+  ///////////////////////////////////////////////// ///////////////////////////
+  // Variable that holds all clothing (where available = true) from backend
+  const clothingList = clothing && clothing;
 
+  // Variable that holds clothingList filtered by category
+  const clothingFilteredByCategory = clothing.filter(clothingItem =>
+    Object.values(activeCategories).includes(clothingItem.clothing_category_id)
+  );
+
+  // Variable that holds clothingList filtered by size
+  const clothingFilteredBySize = clothing.filter(
+    clothingItem =>
+      Object.keys(size).find(sizeKey => size[sizeKey] === true) ===
+      clothingItem.size
+  );
+
+  // Variable that holds clothingList filtered by category AND size
+  const clothingFilteredByAll = clothing
+    .filter(
+      clothingItem =>
+        Object.keys(size).find(sizeKey => size[sizeKey] === true) ===
+        clothingItem.size
+    )
+    .filter(clothingItem =>
+      Object.values(activeCategories).includes(
+        clothingItem.clothing_category_id
+      )
+    );
+  ///////////////////////////////////////////////// ///////////////////////////
+
+  // Function that filters clothingList depending on variables above, and returns
+  // filtered clothingList as output.
   const filteredClothingList = function(clothing, activeCategories, size) {
     let finalFilteredClothingList = null;
     let contentOfStateCategory = Object.entries(activeCategories).length;

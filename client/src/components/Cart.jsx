@@ -1,8 +1,6 @@
 import React from "react";
 
 export default function Cart({ cart, clothing }) {
-  console.log(cart);
-
   const itemInCartId = function() {
     let finalIdList = [];
     for (let item of cart) {
@@ -10,7 +8,6 @@ export default function Cart({ cart, clothing }) {
     }
     return finalIdList;
   };
-  console.log("HERE", itemInCartId());
 
   const cartItemList = clothing
     .filter(item => itemInCartId().includes(item.id))
@@ -25,8 +22,6 @@ export default function Cart({ cart, clothing }) {
         <footer></footer>
       </div>
     ));
-
-  console.log("CART ITEM:", cartItemList);
 
   return (
     <div>

@@ -16,13 +16,7 @@ const useApplicationData = () => {
     loading: true,
     currentUser: {},
     loggedInStatus: "NOT_LOGGED_IN",
-    cart: [
-      // {
-      //   id: 0,
-      //   size: "",
-      //   categoryId: 0
-      // }
-    ]
+    cart: []
   });
 
   const handleLogout = () => {
