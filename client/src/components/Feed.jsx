@@ -162,12 +162,18 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     <div className="Feed">
       <header className="feed_header">
         <div className="feed_header_block">
-          <span className="feed_header_profile_icon">
-            <img
-              id="feed_profile_icon"
-              src="./images/feed_profile_logo.png"
-            ></img>
-          </span>
+          <Link
+            to={{
+              pathname: "/user/profile"
+            }}
+          >
+            <span className="feed_header_profile_icon">
+              <img
+                id="feed_profile_icon"
+                src="./images/feed_profile_logo.png"
+              ></img>
+            </span>
+          </Link>
           <Link
             to={{
               pathname: "/cart"

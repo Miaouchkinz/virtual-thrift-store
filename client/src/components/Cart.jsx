@@ -62,7 +62,7 @@ export default function Cart({ cart, clothing }) {
         </div>
       </header>
       <h1>
-        Selected items <span class="total_item_in_cart">{cart.length}</span>
+        Selected items <span className="total_item_in_cart">{cart.length}</span>
       </h1>
       <div className="clothingItem_cart_carousel">
         {checkIfCartEmpty(cartItemList)}
@@ -70,6 +70,15 @@ export default function Cart({ cart, clothing }) {
       <div>
         <h1>Future machine learning cool stuff here</h1>
       </div>
+      <footer>
+        <Link
+          to={{
+            pathname: "/checkout"
+          }}
+        >
+          Go to Checkout >>
+        </Link>
+      </footer>
     </div>
   );
 }
