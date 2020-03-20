@@ -73,8 +73,8 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     if (buttonIsCalledOnce === false) {
       buttonIsCalledOnce = true;
     } else {
+      return null;
     }
-    return buttonIsCalledOnce;
   };
 
   const filteredClothingList = function(clothing, activeCategories, size) {
