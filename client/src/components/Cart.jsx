@@ -40,7 +40,7 @@ export default function Cart({ cart, clothing }) {
         <div className="feed_header_block">
           <Link
             to={{
-              pathname: "/profile"
+              pathname: "/user/profile"
             }}
           >
             <span className="feed_header_profile_icon">
