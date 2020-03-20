@@ -43,6 +43,9 @@ export default function Cart({ cart, clothing }) {
       <div className="clothingItem_cart_carousel">
         {checkIfCartEmpty(cartItemList)}
       </div>
+      <div>
+        <h1>Future machine learning cool stuff here</h1>
+      </div>
     </div>
   );
 }
