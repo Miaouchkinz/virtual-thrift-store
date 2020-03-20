@@ -67,7 +67,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     clothingId,
     clothingSize,
     clothingCategory,
-    setStateFunction
+    addItemToCart
   ) {
     if (
       addToCartCount[0].totalCount === 0 &&
@@ -77,7 +77,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
         ...addToCartCount,
         { totalCount: 1, [clothingId]: clothingId }
       ]);
-      setStateFunction(clothingId, clothingSize, clothingCategory);
+      addItemToCart(clothingId, clothingSize, clothingCategory);
     }
   };
   ///////////////////////////////////////////////// ///////////////////////////
