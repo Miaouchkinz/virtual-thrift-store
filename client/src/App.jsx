@@ -2,15 +2,16 @@ import React from 'react';
 import { 
   BrowserRouter as Router, 
   Switch,
-  Route,
-  StaticRouter
+  Route
 } from "react-router-dom";
+
 import Landing from './components/Landing';
 import Dashboard from './components/Dashboard';
 import Feed from "./components/Feed";
 import Login from './components/auth/Login';
 import Profile from './components/Profile';
 import Registration from './components/auth/Registration';
+
 import useApplicationData from './hooks/useApplicationData';
 
 export default function App(props) {
@@ -43,21 +44,30 @@ export default function App(props) {
             <Registration {...props} handleSuccessfulAuth={handleSuccessfulAuth}/>
           ))}>
           </Route>
-          <Route path="/feed">
+          <Route exact path="/feed">
             <Feed
               clothing={state.clothing}
               clothingCategories={state.clothingCategories}
             />
           </Route>
-          <Route path="/user/profile">
+          <Route 
+            exact 
+            path="/user/profile" 
+            render={props => (
             <Profile
+              {...props}
               userName={state.currentUser.name}
               avatar={state.currentUser.avatar_url}
               handleLogout={handleLogout}
             />
+          )}>
           </Route>
-          <Route exact path={"/dashboard"}>
-            <Dashboard loggedInStatus={state.loggedInStatus} handleLogout={handleLogout}/>
+          <Route 
+            exact
+            path={"/dashboard"}
+            render={props => (
+              <Dashboard {...props} loggedInStatus={state.loggedInStatus} handleLogout={handleLogout}/>
+            )}>
           </Route>
         </Switch>
       </Router>
