@@ -14,7 +14,17 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     L: false
   });
 
+  //CATEGORIES
   const [activeCategories, setActiveCategories] = useState([]);
+
+  //ITEM ADDED TO CART COUNT
+  const [addToCartCount, setaddToCartCount] = useState([
+    {
+      totalCount: 0
+    }
+  ]);
+
+  //////////////////////////////////////////////
 
   // Check state of categories that has been checked or unchecked in the filter form
   const ifCheckBoxActive = (category, allCategories) => {
