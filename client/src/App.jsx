@@ -1,53 +1,62 @@
 import React from 'react';
-import { 
-  BrowserRouter as Router, 
-  Switch,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Landing from './components/Landing';
 import Dashboard from './components/Dashboard';
 import Feed from "./components/Feed";
 import Login from './components/auth/Login';
 import Profile from './components/Profile';
+import Cart from "./components/Cart";
 import Registration from './components/auth/Registration';
 
 import useApplicationData from './hooks/useApplicationData';
 
 export default function App(props) {
- const { 
-   state,
-   handleSuccessfulAuth,
-   handleLogout
+  const {
+    state,
+    handleSuccessfulAuth,
+    handleLogout,
+    setCart
   } = useApplicationData();
-  
+
   return (
-    <div className='App'>
+    <div className="App">
       <Router>
         <Switch>
-          <Route 
-            exact 
+          <Route
+            exact
             path={"/"}
             render={props => (
-              <Landing 
+              <Landing
                 {...props}
                 handleSuccessfulAuth={handleSuccessfulAuth}
                 handleLogout={handleLogout}
               />
-            )}>
-          </Route>
-          <Route exact path={"/login"} render={(props) => (
-            <Login {...props} handleSuccessfulAuth={handleSuccessfulAuth}/>
-          )}>
-          </Route>
-          <Route exact path={"/register"} render={(props => (
-            <Registration {...props} handleSuccessfulAuth={handleSuccessfulAuth}/>
-          ))}>
-          </Route>
+            )}
+          ></Route>
+          <Route
+            exact
+            path={"/login"}
+            render={props => (
+              <Login {...props} handleSuccessfulAuth={handleSuccessfulAuth} />
+            )}
+          ></Route>
+          <Route
+            exact
+            path={"/register"}
+            render={props => (
+              <Registration
+                {...props}
+                handleSuccessfulAuth={handleSuccessfulAuth}
+              />
+            )}
+          ></Route>
           <Route exact path="/feed">
             <Feed
               clothing={state.clothing}
               clothingCategories={state.clothingCategories}
+              cart={state.cart}
+              setCart={setCart}
             />
           </Route>
           <Route 
@@ -68,6 +77,9 @@ export default function App(props) {
             render={props => (
               <Dashboard {...props} loggedInStatus={state.loggedInStatus} handleLogout={handleLogout}/>
             )}>
+          </Route>
+          <Route exact path={"/cart"}>
+            <Cart clothing={state.clothing} cart={state.cart} />
           </Route>
         </Switch>
       </Router>
