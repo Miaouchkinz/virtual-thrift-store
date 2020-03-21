@@ -1,9 +1,10 @@
 import React from "react";
 import Icon from "./common/iconButton";
+import Button from "./common/textButton";
 import { Link } from "react-router-dom";
 
 export default function Checkout({ cart, clothing }) {
-  // ARRAY OF ALL OWNERS (USER_IC) FROM CART STATE
+  // ARRAY OF ALL OWNERS FROM CART STATE
   const ownersOfItem = function(cartItems) {
     let owners = [];
     for (let item of cartItems) {
@@ -13,10 +14,11 @@ export default function Checkout({ cart, clothing }) {
   };
 
   const divideClothingItemByOwner = function(cartItems, owner) {
+    console.log(cartItems);
+    let finalResult = null;
     for (let item of cartItems) {
-      if (!item.userId === owner) {
-      } else if (item.userId === owner) {
-        return (
+      if (item.userId === owner) {
+        finalResult = (
           <div>
             {" "}
             ITEMS OF OWNER {item.id}{" "}
@@ -30,14 +32,21 @@ export default function Checkout({ cart, clothing }) {
         );
       }
     }
+    return finalResult;
   };
 
   const ownersSection = function() {
-    return ownersOfItem(cart).map(owner => (
-      <div key={owner}>
-        OWNER {owner} ---{divideClothingItemByOwner(cart, owner)}
-      </div>
-    ));
+    let ownersSectionDisplay = null;
+    if (ownersOfItem(cart).length === 0) {
+      ownersSectionDisplay = <h1>Your cart is empty.</h1>;
+    } else {
+      ownersSectionDisplay = ownersOfItem(cart).map(owner => (
+        <div key={owner} className="single_owner_section">
+          {divideClothingItemByOwner(cart, owner)} --- OWNER {owner}
+        </div>
+      ));
+    }
+    return ownersSectionDisplay;
   };
 
   return (
@@ -60,11 +69,11 @@ export default function Checkout({ cart, clothing }) {
           </Link>
         </div>
       </header>
-      <h1>This is Checkout</h1>
-      <div className="checkout_owner_section">{ownersSection()}</div>
-      <footer>
-        <button></button>
-      </footer>
+      <h1>Ready to checkout!</h1>
+      <div className="checkout_owners_section">{ownersSection()}</div>
+      <div className="checkout_footer">
+        <Button primary label="CONFIRM ALL" />
+      </div>
     </div>
   );
 }

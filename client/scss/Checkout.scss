@@ -1,3 +1,18 @@
-.checkout_owner_section {
-  background: rgb(218, 206, 206);
+.checkout_owners_section {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.single_owner_section {
+  display: flex;
+  flex-direction: row;
+  background: #e5e5e5;
+  margin: 10px;
+}
+
+.checkout_footer {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
 }
