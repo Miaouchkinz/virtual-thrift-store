@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Icon from "./common/iconButton";
 
 export default function Cart({ cart, clothing }) {
   const itemInCartId = function() {
@@ -55,9 +56,7 @@ export default function Cart({ cart, clothing }) {
               pathname: "/feed"
             }}
           >
-            <span className="feed_header_hanger_icon">
-              Acts like back button
-            </span>
+            <Icon secondary label="<"></Icon>
           </Link>
         </div>
       </header>
