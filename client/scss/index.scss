@@ -1,13 +1,14 @@
-@import './button';
-@import './text-input.scss';
-@import './Feed.scss';
-@import './profile.scss';
-@import './wave.scss';
+@import "./button";
+@import "./text-input.scss";
+@import "./Feed.scss";
+@import "./profile.scss";
+@import "./wave.scss";
 @import "./Cart.scss";
+@import "./Checkout.scss";
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #DED0B6;
+  font-family: "Roboto", sans-serif;
+  background-color: #ded0b6;
   margin: 0;
 }
 
