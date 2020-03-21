@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Feed({ clothing, clothingCategories, cart, setCart }) {
+  console.log("CLOTHING HERE:", clothing);
   //////////////////////////////////////////////
   //_____________
   // LOCAL STATES|
@@ -67,6 +68,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     clothingId,
     clothingSize,
     clothingCategory,
+    clothingUserId,
     addItemToCart
   ) {
     if (
@@ -77,7 +79,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
         ...addToCartCount,
         { totalCount: 1, [clothingId]: clothingId }
       ]);
-      addItemToCart(clothingId, clothingSize, clothingCategory);
+      addItemToCart(clothingId, clothingSize, clothingCategory, clothingUserId);
     }
   };
   ///////////////////////////////////////////////// ///////////////////////////
@@ -144,6 +146,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
                 clothingItem.id,
                 clothingItem.size,
                 clothingItem.clothing_category_id,
+                clothingItem.user_id,
                 setCart
               )
             }

@@ -44,11 +44,11 @@ const useApplicationData = () => {
     history.push("/feed");
   };
 
-  const setCart = (id, size, categoryId) => {
+  const setCart = (id, size, categoryId, userId) => {
     dispatch({
       ...state,
       type: SET_CART,
-      value: { id, size, categoryId }
+      value: { id, size, categoryId, userId }
     });
   };
 

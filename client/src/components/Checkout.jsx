@@ -24,6 +24,9 @@ export default function Checkout(props) {
         </div>
       </header>
       <h1>This is Checkout</h1>
+      <footer>
+        <button></button>
+      </footer>
     </div>
   );
 }

@@ -38,7 +38,8 @@ const dataReducer = (state, action) => {
           {
             id: action.value.id,
             size: action.value.size,
-            categoryId: action.value.categoryId
+            categoryId: action.value.categoryId,
+            userId: action.value.userId
           }
         ]
       };
