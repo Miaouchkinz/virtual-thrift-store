@@ -21,7 +21,7 @@ export default function Checkout({ cart, clothing }) {
         finalResult = (
           <div>
             {" "}
-            ITEMS OF OWNER {item.id}{" "}
+            ITEMS OF OWNER {item.userId}{" "}
             <img
               className="clothingItem_image_of_cart_container"
               src={item.imgUrl}
@@ -38,7 +38,7 @@ export default function Checkout({ cart, clothing }) {
   const ownersSection = function() {
     let ownersSectionDisplay = null;
     if (ownersOfItem(cart).length === 0) {
-      ownersSectionDisplay = <h1>Your cart is empty.</h1>;
+      ownersSectionDisplay = <h2>Your cart is empty.</h2>;
     } else {
       ownersSectionDisplay = ownersOfItem(cart).map(owner => (
         <div key={owner} className="single_owner_section">
@@ -50,7 +50,7 @@ export default function Checkout({ cart, clothing }) {
   };
 
   return (
-    <div>
+    <div className="checkout_main_section">
       <header>
         <div className="feed_header_block">
           <Link
