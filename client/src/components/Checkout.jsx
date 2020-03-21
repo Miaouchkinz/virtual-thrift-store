@@ -3,7 +3,7 @@ import Icon from "./common/iconButton";
 import Button from "./common/textButton";
 import { Link } from "react-router-dom";
 
-export default function Checkout({ cart, clothing }) {
+export default function Checkout({ cart }) {
   // ARRAY OF ALL OWNERS FROM CART STATE
   const ownersOfItem = function(cartItems) {
     let owners = [];
@@ -49,6 +49,23 @@ export default function Checkout({ cart, clothing }) {
     return ownersSectionDisplay;
   };
 
+  const showConfirmAllButton = function() {
+    if (ownersOfItem(cart).length === 0) {
+    } else {
+      return (
+        <div className="checkout_footer">
+          <Link
+            to={{
+              pathname: "/confirmation"
+            }}
+          >
+            <Button primary label="CONFIRM ALL" />
+          </Link>
+        </div>
+      );
+    }
+  };
+
   return (
     <div className="checkout_main_section">
       <header>
@@ -71,9 +88,7 @@ export default function Checkout({ cart, clothing }) {
       </header>
       <h1>Ready to checkout!</h1>
       <div className="checkout_owners_section">{ownersSection()}</div>
-      <div className="checkout_footer">
-        <Button primary label="CONFIRM ALL" />
-      </div>
+      {showConfirmAllButton()}
     </div>
   );
 }
