@@ -14,7 +14,6 @@ export default function Checkout({ cart }) {
   };
 
   const divideClothingItemByOwner = function(cartItems, owner) {
-    console.log(cartItems);
     let finalResult = null;
     for (let item of cartItems) {
       if (item.userId === owner) {

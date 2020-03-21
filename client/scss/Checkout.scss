@@ -34,7 +34,21 @@
   h1 {
     margin: 10px;
   }
-  img {
+  .earth_icon {
     width: 150px;
   }
+}
+.owner_avatar_carousel {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  background-color: #e0bfbf;
+}
+
+.owner_avatar {
+  display: flex;
+  margin: 10px;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
 }

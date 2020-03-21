@@ -2,7 +2,25 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Icon from "./common/iconButton";
 
-export default function OrderConfirmation(props) {
+export default function OrderConfirmation({ cart, users }) {
+  const createOwnersList = function() {
+    let ownersList = [];
+    for (let user of users) {
+      for (let item of cart) {
+        if (user.id === item.userId) {
+          ownersList.push(user);
+        }
+      }
+    }
+    return ownersList.map(owner => (
+      <img className="owner_avatar" src={owner.avatar_url} />
+    ));
+  };
+
+  // const displayOwnersAvatar = function() {};
+
+  // console.log("HERE", createOwnersList());
+
   return (
     <div>
       <header>
@@ -24,11 +42,12 @@ export default function OrderConfirmation(props) {
         </div>
       </header>
       <div className="thank_you_message">
-        <img src="./images/earth.png" />
+        <img className="earth_icon" src="./images/earth.png" />
         <h1>
           Together, we're <br /> saving the <br /> planet.
         </h1>
       </div>
+      <div className="owner_avatar_carousel">{createOwnersList()}</div>
     </div>
   );
 }
