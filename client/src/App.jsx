@@ -5,11 +5,11 @@ import Landing from './components/Landing';
 import Dashboard from './components/Dashboard';
 import Feed from "./components/Feed";
 import Login from './components/auth/Login';
-import Profile from './components/Profile';
-import Cart from "./components/Cart";
+import Profile from './components/profile/Index';
+import Cart from "./components/cart-checkout/Cart";
 import Registration from './components/auth/Registration';
 
-import Convos from './components/Convos';
+import Convos from './components/chat/Convos';
 
 import useApplicationData from './hooks/useApplicationData';
 
