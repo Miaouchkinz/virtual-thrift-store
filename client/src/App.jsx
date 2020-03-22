@@ -9,6 +9,8 @@ import Profile from './components/Profile';
 import Cart from "./components/Cart";
 import Registration from './components/auth/Registration';
 
+import Convos from './components/Convos';
+
 import useApplicationData from './hooks/useApplicationData';
 
 export default function App(props) {
@@ -71,6 +73,9 @@ export default function App(props) {
             />
           )}>
           </Route>
+          <Route exact path={"/cart"}>
+            <Cart clothing={state.clothing} cart={state.cart} />
+          </Route>
           <Route 
             exact
             path={"/dashboard"}
@@ -78,8 +83,8 @@ export default function App(props) {
               <Dashboard {...props} loggedInStatus={state.loggedInStatus} handleLogout={handleLogout}/>
             )}>
           </Route>
-          <Route exact path={"/cart"}>
-            <Cart clothing={state.clothing} cart={state.cart} />
+          <Route exact path={"/conversations"}>
+            <Convos/>
           </Route>
         </Switch>
       </Router>
