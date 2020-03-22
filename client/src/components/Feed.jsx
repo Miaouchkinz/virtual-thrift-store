@@ -151,6 +151,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
             <img
               id="add_to_cart_button"
               src="./images/feed_hanger_logo_full.png"
+              alt="cart button"
             ></img>
           </div>
         </footer>
@@ -166,6 +167,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
             <img
               id="feed_profile_icon"
               src="./images/feed_profile_logo.png"
+              alt="profile button"
             ></img>
           </span>
           <Link
@@ -177,6 +179,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
               <img
                 id="feed_hanger_icon"
                 src="./images/feed_hanger_logo.png"
+                alt="hanger button"
               ></img>
               {cart.length}
             </span>
