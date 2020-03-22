@@ -47,6 +47,7 @@ export default function Cart({ cart, clothing }) {
               <img
                 id="feed_profile_icon"
                 src="./images/feed_profile_logo.png"
+                alt="profile button"
               ></img>
             </span>
           </Link>
