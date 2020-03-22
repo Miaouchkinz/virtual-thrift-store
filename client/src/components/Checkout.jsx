@@ -75,7 +75,6 @@ export default function Checkout({ cart, users }) {
     }
     return finalResult;
   };
-
   return (
     <div className="checkout_main_section">
       <header>
