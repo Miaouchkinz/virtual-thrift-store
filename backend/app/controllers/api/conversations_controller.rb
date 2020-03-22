@@ -1,4 +1,4 @@
-class ConversationsController < ApplicationController
+class Api::ConversationsController < ApplicationController
   # Going to be used for the front-end’s initial fetch request to receive the current existing
   # conversations and their messages.
   def index
@@ -17,6 +17,8 @@ class ConversationsController < ApplicationController
       
       ActionCable.server.broadcast 'conversations_channel', serialized_data
       head :ok
+    elsif conversation.error
+      puts "error"
     end
   end
   
