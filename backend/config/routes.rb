@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   #Actioncable chat routing
   resources :conversations, only: [:index, :create]
   resources :messages, only: [:create]
-  mount Actioncable.server => '/cable'
+  mount ActionCable.server => '/cable'
 
   root to: "static#home"
 end
