@@ -17,10 +17,6 @@ export default function OrderConfirmation({ cart, users }) {
     ));
   };
 
-  // const displayOwnersAvatar = function() {};
-
-  // console.log("HERE", createOwnersList());
-
   return (
     <div>
       <header>
@@ -43,6 +39,10 @@ export default function OrderConfirmation({ cart, users }) {
       </header>
       <div className="thank_you_message">
         <img className="earth_icon" src="./images/earth.png" />
+        <h4>
+          A message have successfully <br />
+          been sent to each owners.
+        </h4>
         <h1>
           Together, we're <br /> saving the <br /> planet.
         </h1>

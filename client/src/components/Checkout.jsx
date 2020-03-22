@@ -4,8 +4,7 @@ import Button from "./common/textButton";
 import { Link } from "react-router-dom";
 
 export default function Checkout({ cart }) {
-  // ARRAY OF ALL OWNERS FROM CART STATE
-  const ownersOfItem = function(cartItems) {
+  const listOwnersOfItem = function(cartItems) {
     let owners = [];
     for (let item of cartItems) {
       owners.push(item.userId);
@@ -13,33 +12,36 @@ export default function Checkout({ cart }) {
     return [...new Set(owners)];
   };
 
-  const listOfItemsForOwner = function(cartItems, owner) {
+  const listItemsForEachOwner = function(cartItems, owner) {
     let resultItemsOfOwner = null;
     for (let item of cartItems) {
-      if (owner === item.userId) {
-        resultItemsOfOwner = (
-          <img
-            className="clothingItem_image_of_cart_container"
-            src={item.imgUrl}
-          />
-        );
-      } else {
-        console.log("NNNNOP");
+      if (item.userId === owner) {
+        resultItemsOfOwner = cartItems
+          .filter(item => item.userId === owner)
+          .map(item => (
+            <img
+              key={item.id}
+              className="clothingItem_image_of_cart_container"
+              src={item.imgUrl}
+            />
+          ));
       }
     }
     return resultItemsOfOwner;
   };
 
-  const displaySectionOfOwners = ownersOfItem(cart).map(owner => (
-    <div key={owner.id} className="single_owner_section">
-      {listOfItemsForOwner(cart, owner)}
+  const displaySectionOfOwners = listOwnersOfItem(cart).map(owner => (
+    <div key={owner} className="single_owner_section">
+      {listItemsForEachOwner(cart, owner)}
     </div>
   ));
 
-  const showConfirmAllButton = function() {
-    if (ownersOfItem(cart).length === 0) {
+  const checkIfCartEmpty = function() {
+    let finalResult = null;
+    if (listOwnersOfItem(cart).length === 0) {
+      finalResult = <h2>Your cart is empty.</h2>;
     } else {
-      return (
+      finalResult = (
         <div className="checkout_footer">
           <Link
             to={{
@@ -51,6 +53,7 @@ export default function Checkout({ cart }) {
         </div>
       );
     }
+    return finalResult;
   };
 
   return (
@@ -75,8 +78,7 @@ export default function Checkout({ cart }) {
       </header>
       <h1>Ready to checkout!</h1>
       {displaySectionOfOwners}
-      {/* <div className="checkout_owners_section">{ownersSection()}</div> */}
-      {showConfirmAllButton()}
+      {checkIfCartEmpty()}
     </div>
   );
 }
