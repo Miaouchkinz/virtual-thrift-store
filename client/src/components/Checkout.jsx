@@ -13,40 +13,28 @@ export default function Checkout({ cart }) {
     return [...new Set(owners)];
   };
 
-  const divideClothingItemByOwner = function(cartItems, owner) {
-    let finalResult = null;
+  const listOfItemsForOwner = function(cartItems, owner) {
+    let resultItemsOfOwner = null;
     for (let item of cartItems) {
-      if (item.userId === owner) {
-        finalResult = (
-          <div>
-            {" "}
-            ITEMS OF OWNER {item.userId}{" "}
-            <img
-              className="clothingItem_image_of_cart_container"
-              src={item.imgUrl}
-              alt={item.clothing_category_id}
-              id={item.size}
-            ></img>
-          </div>
+      if (owner === item.userId) {
+        resultItemsOfOwner = (
+          <img
+            className="clothingItem_image_of_cart_container"
+            src={item.imgUrl}
+          />
         );
+      } else {
+        console.log("NNNNOP");
       }
     }
-    return finalResult;
+    return resultItemsOfOwner;
   };
 
-  const ownersSection = function() {
-    let ownersSectionDisplay = null;
-    if (ownersOfItem(cart).length === 0) {
-      ownersSectionDisplay = <h2>Your cart is empty.</h2>;
-    } else {
-      ownersSectionDisplay = ownersOfItem(cart).map(owner => (
-        <div key={owner} className="single_owner_section">
-          {divideClothingItemByOwner(cart, owner)} --- OWNER {owner}
-        </div>
-      ));
-    }
-    return ownersSectionDisplay;
-  };
+  const displaySectionOfOwners = ownersOfItem(cart).map(owner => (
+    <div key={owner.id} className="single_owner_section">
+      {listOfItemsForOwner(cart, owner)}
+    </div>
+  ));
 
   const showConfirmAllButton = function() {
     if (ownersOfItem(cart).length === 0) {
@@ -86,7 +74,8 @@ export default function Checkout({ cart }) {
         </div>
       </header>
       <h1>Ready to checkout!</h1>
-      <div className="checkout_owners_section">{ownersSection()}</div>
+      {displaySectionOfOwners}
+      {/* <div className="checkout_owners_section">{ownersSection()}</div> */}
       {showConfirmAllButton()}
     </div>
   );
