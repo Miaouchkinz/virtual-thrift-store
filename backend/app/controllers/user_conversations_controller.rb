@@ -1,2 +1,0 @@
-class UserConversationsController < ApplicationController
-end
