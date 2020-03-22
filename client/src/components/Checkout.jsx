@@ -81,13 +81,6 @@ export default function Checkout({ cart, users }) {
         <div className="feed_header_block">
           <Link
             to={{
-              pathname: "/user/profile"
-            }}
-          >
-            <Icon secondary icon=""></Icon>
-          </Link>
-          <Link
-            to={{
               pathname: "/cart"
             }}
           >

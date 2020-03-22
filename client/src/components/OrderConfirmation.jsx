@@ -26,14 +26,17 @@ export default function OrderConfirmation({ cart, users }) {
               pathname: "/user/profile"
             }}
           >
-            <Icon secondary icon=""></Icon>
+            <img
+              id="feed_profile_icon"
+              src="./images/profile_icon_full.png"
+            ></img>
           </Link>
           <Link
             to={{
               pathname: "/feed"
             }}
           >
-            <Icon secondary label="Home"></Icon>
+            <img id="feed_profile_icon" src="./images/home_icon_full.png"></img>
           </Link>
         </div>
       </header>

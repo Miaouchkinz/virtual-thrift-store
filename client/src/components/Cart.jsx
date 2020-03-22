@@ -41,22 +41,22 @@ export default function Cart({ cart, clothing }) {
         <div className="feed_header_block">
           <Link
             to={{
-              pathname: "/user/profile"
+              pathname: "/feed"
+            }}
+          >
+            <Icon secondary label="<"></Icon>
+          </Link>
+          <Link
+            to={{
+              pathname: "/checkout"
             }}
           >
             <span className="feed_header_profile_icon">
               <img
                 id="feed_profile_icon"
-                src="./images/feed_profile_logo.png"
+                src="./images/checkout_icon_full.png"
               ></img>
             </span>
-          </Link>
-          <Link
-            to={{
-              pathname: "/feed"
-            }}
-          >
-            <Icon secondary label="<"></Icon>
           </Link>
         </div>
       </header>
@@ -69,15 +69,6 @@ export default function Cart({ cart, clothing }) {
       <div>
         <h1>Future machine learning cool stuff here</h1>
       </div>
-      <footer>
-        <Link
-          to={{
-            pathname: "/checkout"
-          }}
-        >
-          Go to Checkout >>
-        </Link>
-      </footer>
     </div>
   );
 }

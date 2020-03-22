@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Icon from "./common/iconButton";
 import { Link } from "react-router-dom";
 
 export default function Feed({ clothing, clothingCategories, cart, setCart }) {
@@ -61,7 +62,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     return categoriesResult;
   };
 
-  // Function that keep state of if add-to-cart button has been clicked, and set Cart's global state
+  // Function that keeps state of if add-to-cart button has been clicked, and set Cart's global state
   // if button has never been clicked before.
   const addToCartButtonClicked = function(
     clothingId,
@@ -180,7 +181,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
             <span className="feed_header_profile_icon">
               <img
                 id="feed_profile_icon"
-                src="./images/feed_profile_logo.png"
+                src="./images/profile_icon_full.png"
               ></img>
             </span>
           </Link>
@@ -192,7 +193,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
             <span className="feed_header_hanger_icon">
               <img
                 id="feed_hanger_icon"
-                src="./images/feed_hanger_logo.png"
+                src="./images/hanger_icon_full.png"
               ></img>
               {cart.length}
             </span>
