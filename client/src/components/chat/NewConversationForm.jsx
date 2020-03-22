@@ -1,26 +1,24 @@
 import React, { useState } from 'react';
-import axios from 'axios'
-import { API_ROOT, HEADERS } from '../constants';
+// import axios from 'axios'
+import { API_ROOT, HEADERS } from '../../constants';
 
 export default function NewConversationForm(){
   const [ state, setState] = useState({
     title: ''
   });
 
-  handleChange = e => {
+  const handleChange = e => {
     setState({ title: e.target.value });
   };
 
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
 
-    axios(`${API_ROOT}/conversations`, {
+    fetch(`${API_ROOT}/conversations`, {
       method: 'POST',
       headers: HEADERS,
       body: JSON.stringify(state)
-    });
-
-    setState({ title: '' });
+    }).then(() => setState({ title: '' }));
   };
 
   return (
