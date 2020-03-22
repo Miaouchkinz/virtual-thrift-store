@@ -57,7 +57,8 @@ const useApplicationData = () => {
       axios.get("/api/users"),
       axios.get("/logged_in", { withCredentials: true }),
       axios.get("/api/clothings"),
-      axios.get("/api/clothing_categories")
+      axios.get("/api/clothing_categories"),
+      axios.get("/api/clothings/available_for_exchange")
     ])
       .then(all => {
         // Handle list of all users
@@ -85,9 +86,7 @@ const useApplicationData = () => {
           });
         }
 
-        // Handles all clothings that are available for exchange
-        dispatch({ type: SET_AVAILABLE_CLOTHING, clothing: all[2].data });
-        // Handles clothing category types
+        dispatch({ type: SET_AVAILABLE_CLOTHING, clothing: all[4].data });
         dispatch({
           type: SET_CLOTHING_CATEGORIES,
           clothingCategories: all[3].data
