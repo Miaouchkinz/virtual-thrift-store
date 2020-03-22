@@ -11,8 +11,14 @@
 .single_owner_section {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   background: #e5e5e5;
   margin: 10px;
+}
+
+.items_of_owner_section {
+  display: flex;
+  flex-direction: row;
 }
 
 .checkout_footer {
@@ -21,7 +27,15 @@
   margin-left: auto;
 }
 
-// CONFIRMATION PAGE BELOW
+.ownerAvatar_image_of_cart_container {
+  display: flex;
+  margin: 10px;
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+}
+
+// STYLINGS FOR CONFIRMATION PAGE BELOW
 
 .thank_you_message {
   display: flex;
