@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Button from './common/textButton';
-import Icon from './common/iconButton';
+import Button from '../common/textButton';
+import Icon from '../common/iconButton';
 import axios from 'axios';
 
 export default function Profile(props) {
