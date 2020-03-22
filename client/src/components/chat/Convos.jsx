@@ -34,6 +34,7 @@ export default function Convos(props) {
 
   //=========
 
+  // Fetches data for any pre-existing convos from the API
   useEffect( () => {
     axios.get(`${API_ROOT}/conversations`)
     .then(res => res.json())
@@ -69,7 +70,9 @@ export default function Convos(props) {
   return (
     <div className="conversationsList">
       <ActionCable
+        // specifies which channel to connect to 
         channel={{ channel: 'ConversationsChannel' }}
+        // Handles what to do with any broadcast data
         onReceived={handleReceivedConversation}
       />
 
