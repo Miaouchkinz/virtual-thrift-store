@@ -18,6 +18,7 @@ export default function Checkout({ cart, users }) {
         return (
           <div className="owner_avatar_container">
             <img
+              alt="Owner of owner avatar."
               key={user.id}
               id={user.id}
               className="ownerAvatar_image_of_cart_container"
@@ -38,6 +39,7 @@ export default function Checkout({ cart, users }) {
           .filter(item => item.userId === owner)
           .map(item => (
             <img
+              alt={"This is an item id " + item.id + ", size " + item.size}
               id={item.userId}
               key={item.id}
               className="clothingItem_image_of_cart_container"

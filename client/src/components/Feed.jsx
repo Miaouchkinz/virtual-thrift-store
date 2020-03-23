@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Icon from "./common/iconButton";
 import { Link } from "react-router-dom";
 
 export default function Feed({ clothing, clothingCategories, cart, setCart }) {
@@ -49,8 +48,9 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     for (let category in allCategories) {
       categoriesResult.push(
         <div className="label_container">
-          <label key={allCategories[category].id}>
+          <label key={allCategories[category].type}>
             <input
+              key={allCategories[category].id}
               name={allCategories[category].id}
               type="checkbox"
               checked={activeCategories[name]}
@@ -145,7 +145,12 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
         <img
           className="clothingItem_image_of_grid_container"
           src={clothingItem.image_url}
-          alt={clothingItem.clothing_category_id}
+          alt={
+            "This is an item of type " +
+            clothingItem.clothing_category_id +
+            ", size " +
+            clothingItem.size
+          }
           id={clothingItem.size}
         ></img>
         <footer>
@@ -163,6 +168,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
             }
           >
             <img
+              alt="Add item to cart button."
               id="add_to_cart_button"
               src="./images/add_hanger_icon_full.png"
             ></img>
@@ -183,6 +189,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
           >
             <span className="feed_header_profile_icon">
               <img
+                alt="Go to profile page button"
                 id="feed_profile_icon"
                 src="./images/profile_icon_full.png"
               ></img>
@@ -195,6 +202,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
           >
             <span className="feed_header_hanger_icon">
               <img
+                alt="Go to cart to see all items selected button."
                 id="feed_hanger_icon"
                 src="./images/hanger_icon_full.png"
               ></img>

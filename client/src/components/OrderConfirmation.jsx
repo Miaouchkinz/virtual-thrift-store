@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Icon from "./common/iconButton";
 
 export default function OrderConfirmation({ cart, users }) {
   const createOwnersList = function() {
@@ -13,7 +12,11 @@ export default function OrderConfirmation({ cart, users }) {
       }
     }
     return ownersList.map(owner => (
-      <img className="owner_avatar" src={owner.avatar_url} />
+      <img
+        alt={"Owner of item avatar. Owner's name: " + owner.name}
+        className="owner_avatar"
+        src={owner.avatar_url}
+      />
     ));
   };
 
@@ -27,6 +30,7 @@ export default function OrderConfirmation({ cart, users }) {
             }}
           >
             <img
+              alt="Go to profile page button."
               id="feed_profile_icon"
               src="./images/profile_icon_full.png"
             ></img>
@@ -37,12 +41,16 @@ export default function OrderConfirmation({ cart, users }) {
               pathname: "/feed"
             }}
           >
-            <img id="feed_profile_icon" src="./images/home_icon_full.png"></img>
+            <img
+              alt="Go to Home page button."
+              id="feed_profile_icon"
+              src="./images/home_icon_full.png"
+            ></img>
           </Link>
         </div>
       </header>
       <div className="thank_you_message">
-        <img className="earth_icon" src="./images/earth.png" />
+        <img alt="Earth Icon" className="earth_icon" src="./images/earth.png" />
         <h4>
           A message have successfully <br />
           been sent to each owners.

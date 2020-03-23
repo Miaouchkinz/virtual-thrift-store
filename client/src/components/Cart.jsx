@@ -18,7 +18,12 @@ export default function Cart({ cart, clothing }) {
         <img
           className="clothingItem_image_of_cart_container"
           src={clothingItem.image_url}
-          alt={clothingItem.clothing_category_id}
+          alt={
+            "This is an item of type " +
+            clothingItem.clothing_category_id +
+            ", size " +
+            clothingItem.size
+          }
           id={clothingItem.size}
         ></img>
         <footer></footer>
@@ -53,6 +58,7 @@ export default function Cart({ cart, clothing }) {
           >
             <span className="feed_header_profile_icon">
               <img
+                alt="Go to profile page button."
                 id="feed_profile_icon"
                 src="./images/checkout_icon_full.png"
               ></img>
