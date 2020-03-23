@@ -64,11 +64,14 @@ a {
   justify-items: space-between;
 }
 
+.feed_header {
+  background-image: url(/images/final_project_header_wave_1.png);
+}
+
 .feed_header_block {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background: rgb(112, 119, 75);
   padding: 10px;
 }
 

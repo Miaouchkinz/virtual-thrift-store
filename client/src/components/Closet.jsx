@@ -1,14 +1,30 @@
 import React from "react";
 
-export default function Closet({ allClothing, userId }) {
-  const itemsOfCurrentUser = allClothing
-    .filter(item => item.user_id === userId)
-    .map(item => <div>TEST 1-2!!!{item.user_id}</div>);
-  console.log("ETAT DU STATE:", allClothing);
+export default function Closet({ allClothing, userId, userName }) {
+  const itemsOfCurrentUser = (clothingList, userIdentity) => {
+    let result = null;
+    if (clothingList) {
+      result = clothingList
+        .filter(item => item.user_id === userIdentity)
+        .map(item => (
+          <div clasName="item_image_container">
+            <img
+              className="item_image"
+              key={item.id}
+              src={item.image_url}
+              alt={"Clothing item of: " + userName}
+            ></img>
+          </div>
+        ));
+    }
+    return result;
+  };
+
   return (
     <div>
-      <h1>This is Closet</h1>
-      {itemsOfCurrentUser}
+      <div className="items_of_closet_container">
+        {itemsOfCurrentUser(allClothing, userId)}
+      </div>
     </div>
   );
 }
