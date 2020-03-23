@@ -141,6 +141,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     }
     return finalFilteredClothingList.map(clothingItem => (
       <div className="clothingItem_of_grid_container" key={clothingItem.id}>
+        <header className="clothingItem_size">{clothingItem.size}</header>
         <img
           className="clothingItem_image_of_grid_container"
           src={clothingItem.image_url}
