@@ -86,11 +86,11 @@ const useApplicationData = () => {
           });
         }
 
-        dispatch({ type: SET_AVAILABLE_CLOTHING, clothing: all[4].data });
         dispatch({
           type: SET_CLOTHING_CATEGORIES,
           clothingCategories: all[3].data
         });
+        dispatch({ type: SET_AVAILABLE_CLOTHING, clothing: all[4].data });
       })
       .catch(err => console.log(err));
   }, []);
