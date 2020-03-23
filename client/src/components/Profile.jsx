@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import Button from "./common/textButton";
 import Icon from "./common/iconButton";
+import Closet from "./Closet";
 import axios from "axios";
 
 export default function Profile(props) {
-  const { history, userName, avatar, handleLogout, allClothing } = props;
+  const {
+    history,
+    userName,
+    avatar,
+    handleLogout,
+    userId,
+    allClothing
+  } = props;
 
   // tabs: closet, convos, camera
   const [tab, setTab] = useState("closet");
@@ -58,7 +66,9 @@ export default function Profile(props) {
         </div>
       </header>
       <main>
-        <div className="profile-feed-placeholder"></div>
+        <div className="profile-feed-placeholder">
+          <Closet userId={userId} allClothing={allClothing}></Closet>
+        </div>
       </main>
     </div>
   );

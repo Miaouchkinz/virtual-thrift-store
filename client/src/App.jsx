@@ -9,7 +9,7 @@ import Profile from "./components/Profile";
 import Cart from "./components/Cart";
 import Registration from "./components/auth/Registration";
 import Checkout from "./components/Checkout";
-
+import Closet from "./components/Closet";
 import useApplicationData from "./hooks/useApplicationData";
 import OrderConfirmation from "./components/OrderConfirmation";
 
@@ -70,10 +70,18 @@ export default function App(props) {
                 userName={state.currentUser.name}
                 avatar={state.currentUser.avatar_url}
                 handleLogout={handleLogout}
+                userId={state.currentUser.id}
                 allClothing={state.allClothing}
               />
             )}
           ></Route>
+          {/* <Route>
+            <Closet
+              userId={state.currentUser.id}
+              allClothing={state.allClothing}
+            />
+            >
+          </Route> */}
           <Route
             exact
             path={"/dashboard"}
