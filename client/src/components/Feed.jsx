@@ -47,26 +47,31 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
 
     for (let category in allCategories) {
       categoriesResult.push(
-        <label key={allCategories[category].id}>
-          {allCategories[category].name}
-          <input
-            name={allCategories[category].id}
-            type="checkbox"
-            checked={activeCategories[name]}
-            onChange={() => ifCheckBoxActive(category, allCategories)}
-          />
-        </label>
+        <div className="label_container">
+          <label key={allCategories[category].type}>
+            <input
+              key={allCategories[category].id}
+              name={allCategories[category].id}
+              type="checkbox"
+              checked={activeCategories[name]}
+              onChange={() => ifCheckBoxActive(category, allCategories)}
+            />
+            {allCategories[category].name}
+          </label>
+        </div>
       );
     }
     return categoriesResult;
   };
 
-  // Function that keep state of if add-to-cart button has been clicked, and set Cart's global state
+  // Function that keeps state of if add-to-cart button has been clicked, and set Cart's global state
   // if button has never been clicked before.
   const addToCartButtonClicked = function(
     clothingId,
     clothingSize,
     clothingCategory,
+    clothingUserId,
+    clothingImgUrl,
     addItemToCart
   ) {
     if (
@@ -77,7 +82,13 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
         ...addToCartCount,
         { totalCount: 1, [clothingId]: clothingId }
       ]);
-      addItemToCart(clothingId, clothingSize, clothingCategory);
+      addItemToCart(
+        clothingId,
+        clothingSize,
+        clothingCategory,
+        clothingUserId,
+        clothingImgUrl
+      );
     }
   };
   ///////////////////////////////////////////////// ///////////////////////////
@@ -130,10 +141,16 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     }
     return finalFilteredClothingList.map(clothingItem => (
       <div className="clothingItem_of_grid_container" key={clothingItem.id}>
+        <header className="clothingItem_size">{clothingItem.size}</header>
         <img
           className="clothingItem_image_of_grid_container"
           src={clothingItem.image_url}
-          alt={clothingItem.clothing_category_id}
+          alt={
+            "This is an item of type " +
+            clothingItem.clothing_category_id +
+            ", size " +
+            clothingItem.size
+          }
           id={clothingItem.size}
         ></img>
         <footer>
@@ -144,13 +161,16 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
                 clothingItem.id,
                 clothingItem.size,
                 clothingItem.clothing_category_id,
+                clothingItem.user_id,
+                clothingItem.image_url,
                 setCart
               )
             }
           >
             <img
+              alt="Add item to cart button."
               id="add_to_cart_button"
-              src="./images/feed_hanger_logo_full.png"
+              src="./images/add_hanger_icon_full.png"
             ></img>
           </div>
         </footer>
@@ -162,12 +182,19 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     <div className="Feed">
       <header className="feed_header">
         <div className="feed_header_block">
-          <span className="feed_header_profile_icon">
-            <img
-              id="feed_profile_icon"
-              src="./images/feed_profile_logo.png"
-            ></img>
-          </span>
+          <Link
+            to={{
+              pathname: "/user/profile"
+            }}
+          >
+            <span className="feed_header_profile_icon">
+              <img
+                alt="Go to profile page button"
+                id="feed_profile_icon"
+                src="./images/profile_icon_full.png"
+              ></img>
+            </span>
+          </Link>
           <Link
             to={{
               pathname: "/cart"
@@ -175,8 +202,9 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
           >
             <span className="feed_header_hanger_icon">
               <img
+                alt="Go to cart to see all items selected button."
                 id="feed_hanger_icon"
-                src="./images/feed_hanger_logo.png"
+                src="./images/hanger_icon_full.png"
               ></img>
               {cart.length}
             </span>
@@ -192,33 +220,39 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
 
         <form className="sizeForm">
           <p>Size</p>
-          <label>
-            S
-            <input
-              name="isSmall"
-              type="checkbox"
-              checked={size["S"]}
-              onChange={() => setSize({ ...size, S: !size["S"] })}
-            />
-          </label>
-          <label>
-            M
-            <input
-              name="isMedium"
-              type="checkbox"
-              checked={size["M"]}
-              onChange={() => setSize({ ...size, M: !size["M"] })}
-            />
-          </label>
-          <label>
-            L
-            <input
-              name="isLarge"
-              type="checkbox"
-              checked={size["L"]}
-              onChange={() => setSize({ ...size, L: !size["L"] })}
-            />
-          </label>
+          <div className="label_container">
+            <label>
+              <input
+                name="isSmall"
+                type="checkbox"
+                checked={size["S"]}
+                onChange={() => setSize({ ...size, S: !size["S"] })}
+              />
+              S
+            </label>
+          </div>
+          <div className="label_container">
+            <label>
+              <input
+                name="isMedium"
+                type="checkbox"
+                checked={size["M"]}
+                onChange={() => setSize({ ...size, M: !size["M"] })}
+              />
+              M
+            </label>
+          </div>
+          <div className="label_container">
+            <label>
+              <input
+                name="isLarge"
+                type="checkbox"
+                checked={size["L"]}
+                onChange={() => setSize({ ...size, L: !size["L"] })}
+              />
+              L
+            </label>
+          </div>
         </form>
       </div>
       <div className="availables_grid_container">
