@@ -4,7 +4,7 @@ import Icon from "./common/iconButton";
 import axios from "axios";
 
 export default function Profile(props) {
-  const { history, userName, avatar, handleLogout, clothing } = props;
+  const { history, userName, avatar, handleLogout, allClothing } = props;
 
   // tabs: closet, convos, camera
   const [tab, setTab] = useState("closet");
