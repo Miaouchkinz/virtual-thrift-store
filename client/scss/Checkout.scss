@@ -27,12 +27,10 @@
   margin-left: auto;
 }
 
-.ownerAvatar_image_of_cart_container {
+.owner_avatar_container {
   display: flex;
-  margin: 10px;
-  border-radius: 50%;
-  height: 75px;
-  width: 75px;
+  flex-direction: row;
+  align-items: center;
 }
 
 // STYLINGS FOR CONFIRMATION PAGE BELOW
@@ -43,7 +41,7 @@
   align-items: center;
   justify-content: center;
   margin-left: 57px;
-  margin-top: 120px;
+  margin-top: 90px;
   background: rgba(229, 229, 229, 0.5);
   width: 300px;
   height: 400px;
@@ -58,6 +56,8 @@
 .owner_avatar_carousel {
   display: flex;
   flex-direction: row;
+  margin: auto;
+  width: 300px;
   overflow-x: scroll;
   background-color: #e0bfbf;
 }
@@ -68,4 +68,13 @@
   border-radius: 50%;
   height: 70px;
   width: 70px;
+}
+
+.ownerAvatar_image_of_cart_container {
+  display: flex;
+  margin: 10px;
+  margin-top: 28px;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
 }

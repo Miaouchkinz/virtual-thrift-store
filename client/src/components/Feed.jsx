@@ -48,15 +48,17 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
 
     for (let category in allCategories) {
       categoriesResult.push(
-        <label key={allCategories[category].id}>
-          {allCategories[category].name}
-          <input
-            name={allCategories[category].id}
-            type="checkbox"
-            checked={activeCategories[name]}
-            onChange={() => ifCheckBoxActive(category, allCategories)}
-          />
-        </label>
+        <div className="label_container">
+          <label key={allCategories[category].id}>
+            <input
+              name={allCategories[category].id}
+              type="checkbox"
+              checked={activeCategories[name]}
+              onChange={() => ifCheckBoxActive(category, allCategories)}
+            />
+            {allCategories[category].name}
+          </label>
+        </div>
       );
     }
     return categoriesResult;
@@ -161,7 +163,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
           >
             <img
               id="add_to_cart_button"
-              src="./images/feed_hanger_logo_full.png"
+              src="./images/add_hanger_icon_full.png"
             ></img>
           </div>
         </footer>
@@ -209,33 +211,39 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
 
         <form className="sizeForm">
           <p>Size</p>
-          <label>
-            S
-            <input
-              name="isSmall"
-              type="checkbox"
-              checked={size["S"]}
-              onChange={() => setSize({ ...size, S: !size["S"] })}
-            />
-          </label>
-          <label>
-            M
-            <input
-              name="isMedium"
-              type="checkbox"
-              checked={size["M"]}
-              onChange={() => setSize({ ...size, M: !size["M"] })}
-            />
-          </label>
-          <label>
-            L
-            <input
-              name="isLarge"
-              type="checkbox"
-              checked={size["L"]}
-              onChange={() => setSize({ ...size, L: !size["L"] })}
-            />
-          </label>
+          <div className="label_container">
+            <label>
+              <input
+                name="isSmall"
+                type="checkbox"
+                checked={size["S"]}
+                onChange={() => setSize({ ...size, S: !size["S"] })}
+              />
+              S
+            </label>
+          </div>
+          <div className="label_container">
+            <label>
+              <input
+                name="isMedium"
+                type="checkbox"
+                checked={size["M"]}
+                onChange={() => setSize({ ...size, M: !size["M"] })}
+              />
+              M
+            </label>
+          </div>
+          <div className="label_container">
+            <label>
+              <input
+                name="isLarge"
+                type="checkbox"
+                checked={size["L"]}
+                onChange={() => setSize({ ...size, L: !size["L"] })}
+              />
+              L
+            </label>
+          </div>
         </form>
       </div>
       <div className="availables_grid_container">

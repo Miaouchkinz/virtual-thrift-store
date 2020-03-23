@@ -12,18 +12,20 @@ export default function Checkout({ cart, users }) {
     return [...new Set(owners)];
   };
 
-  const ownerAvatar = function(cartItems, usersList) {
-    for (let item of cartItems) {
-      for (let user of usersList) {
-        if (item.userId === user.id) {
-          return (
+  const ownerAvatar = function(users, owner) {
+    for (let user of users) {
+      if (user.id === owner) {
+        return (
+          <div className="owner_avatar_container">
             <img
+              key={user.id}
               id={user.id}
               className="ownerAvatar_image_of_cart_container"
               src={user.avatar_url}
             />
-          );
-        }
+            <p>{user.name}</p>
+          </div>
+        );
       }
     }
   };
@@ -52,7 +54,7 @@ export default function Checkout({ cart, users }) {
       <div className="items_of_owner_section">
         {listItemsForEachOwner(cart, owner)}
       </div>
-      {ownerAvatar(cart, users)}
+      {ownerAvatar(users, owner)}
     </div>
   ));
 

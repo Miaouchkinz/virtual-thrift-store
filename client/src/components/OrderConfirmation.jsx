@@ -32,6 +32,7 @@ export default function OrderConfirmation({ cart, users }) {
             ></img>
           </Link>
           <Link
+            onClick={() => {}}
             to={{
               pathname: "/feed"
             }}
