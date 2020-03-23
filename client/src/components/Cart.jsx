@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Icon from "./common/iconButton";
 
 export default function Cart({ cart, clothing }) {
   const itemInCartId = function() {
@@ -17,7 +18,12 @@ export default function Cart({ cart, clothing }) {
         <img
           className="clothingItem_image_of_cart_container"
           src={clothingItem.image_url}
-          alt={clothingItem.clothing_category_id}
+          alt={
+            "This is an item of type " +
+            clothingItem.clothing_category_id +
+            ", size " +
+            clothingItem.size
+          }
           id={clothingItem.size}
         ></img>
         <footer></footer>
@@ -40,29 +46,28 @@ export default function Cart({ cart, clothing }) {
         <div className="feed_header_block">
           <Link
             to={{
-              pathname: "/user/profile"
+              pathname: "/feed"
+            }}
+          >
+            <Icon secondary label="<"></Icon>
+          </Link>
+          <Link
+            to={{
+              pathname: "/checkout"
             }}
           >
             <span className="feed_header_profile_icon">
               <img
+                alt="Go to profile page button."
                 id="feed_profile_icon"
-                src="./images/feed_profile_logo.png"
+                src="./images/checkout_icon_full.png"
               ></img>
-            </span>
-          </Link>
-          <Link
-            to={{
-              pathname: "/feed"
-            }}
-          >
-            <span className="feed_header_hanger_icon">
-              Acts like back button
             </span>
           </Link>
         </div>
       </header>
       <h1>
-        Selected items <span class="total_item_in_cart">{cart.length}</span>
+        Selected items <span className="total_item_in_cart">{cart.length}</span>
       </h1>
       <div className="clothingItem_cart_carousel">
         {checkIfCartEmpty(cartItemList)}

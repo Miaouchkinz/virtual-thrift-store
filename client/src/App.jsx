@@ -8,8 +8,15 @@ import Login from "./components/auth/Login";
 import Profile from "./components/Profile";
 import Cart from "./components/Cart";
 import Registration from "./components/auth/Registration";
+<<<<<<< HEAD
 
 import useApplicationData from "./hooks/useApplicationData";
+=======
+import Checkout from "./components/Checkout";
+
+import useApplicationData from "./hooks/useApplicationData";
+import OrderConfirmation from "./components/OrderConfirmation";
+>>>>>>> master
 
 export default function App(props) {
   const {
@@ -85,6 +92,12 @@ export default function App(props) {
           ></Route>
           <Route exact path={"/cart"}>
             <Cart clothing={state.clothing} cart={state.cart} />
+          </Route>
+          <Route exact path={"/checkout"}>
+            <Checkout cart={state.cart} users={state.users} />
+          </Route>
+          <Route exact path={"/confirmation"}>
+            <OrderConfirmation cart={state.cart} users={state.users} />
           </Route>
         </Switch>
       </Router>
