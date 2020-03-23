@@ -4,7 +4,8 @@ import dataReducer, {
   SET_AVAILABLE_CLOTHING,
   SET_CLOTHING_CATEGORIES,
   SET_CURRENT_USER,
-  SET_CART
+  SET_CART,
+  SET_CLOTHING
 } from "../reducers/dataReducer";
 import axios from "axios";
 
@@ -56,8 +57,9 @@ const useApplicationData = () => {
     Promise.all([
       axios.get("/api/users"),
       axios.get("/logged_in", { withCredentials: true }),
-      axios.get("/api/clothings"),
-      axios.get("/api/clothing_categories")
+      axios.get("/api/clothings/available_for_exchange"),
+      axios.get("/api/clothing_categories"),
+      axios.get("/api/clothings")
     ])
       .then(all => {
         // Handle list of all users
@@ -91,6 +93,10 @@ const useApplicationData = () => {
         dispatch({
           type: SET_CLOTHING_CATEGORIES,
           clothingCategories: all[3].data
+        });
+        dispatch({
+          type: SET_CLOTHING,
+          allClothing: all[4].data
         });
       })
       .catch(err => console.log(err));

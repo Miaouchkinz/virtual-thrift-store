@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Landing from './components/Landing';
-import Dashboard from './components/Dashboard';
+import Landing from "./components/Landing";
+import Dashboard from "./components/Dashboard";
 import Feed from "./components/Feed";
-import Login from './components/auth/Login';
-import Profile from './components/Profile';
+import Login from "./components/auth/Login";
+import Profile from "./components/Profile";
 import Cart from "./components/Cart";
-import Registration from './components/auth/Registration';
+import Registration from "./components/auth/Registration";
 
-import useApplicationData from './hooks/useApplicationData';
+import useApplicationData from "./hooks/useApplicationData";
 
 export default function App(props) {
   const {
@@ -59,25 +59,30 @@ export default function App(props) {
               setCart={setCart}
             />
           </Route>
-          <Route 
-            exact 
-            path="/user/profile" 
+          <Route
+            exact
+            path="/user/profile"
             render={props => (
-            <Profile
-              {...props}
-              userName={state.currentUser.name}
-              avatar={state.currentUser.avatar_url}
-              handleLogout={handleLogout}
-            />
-          )}>
-          </Route>
-          <Route 
+              <Profile
+                {...props}
+                userName={state.currentUser.name}
+                avatar={state.currentUser.avatar_url}
+                handleLogout={handleLogout}
+                allClothing={state.allClothing}
+              />
+            )}
+          ></Route>
+          <Route
             exact
             path={"/dashboard"}
             render={props => (
-              <Dashboard {...props} loggedInStatus={state.loggedInStatus} handleLogout={handleLogout}/>
-            )}>
-          </Route>
+              <Dashboard
+                {...props}
+                loggedInStatus={state.loggedInStatus}
+                handleLogout={handleLogout}
+              />
+            )}
+          ></Route>
           <Route exact path={"/cart"}>
             <Cart clothing={state.clothing} cart={state.cart} />
           </Route>

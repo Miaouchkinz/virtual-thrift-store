@@ -3,6 +3,7 @@ export const SET_AVAILABLE_CLOTHING = "SET_AVAILABLE_CLOTHING";
 export const SET_CLOTHING_CATEGORIES = "SET_CLOTHING_CATEGORIES";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const SET_CART = "SET_CART";
+export const SET_CLOTHING = "SET_CLOTHING";
 
 const dataReducer = (state, action) => {
   switch (action.type) {
@@ -10,6 +11,12 @@ const dataReducer = (state, action) => {
       return {
         ...state,
         users: action.users,
+        loading: false
+      };
+    case SET_CLOTHING:
+      return {
+        ...state,
+        allClothing: action.allClothing,
         loading: false
       };
     case SET_AVAILABLE_CLOTHING:
