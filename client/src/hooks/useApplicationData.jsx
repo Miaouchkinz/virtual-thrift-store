@@ -53,6 +53,13 @@ const useApplicationData = () => {
     });
   };
 
+  const setCartEmpty = () => {
+    dispatch({
+      type: SET_CART,
+      value: []
+    });
+  };
+
   useEffect(() => {
     Promise.all([
       axios.get("/api/users"),
@@ -104,7 +111,8 @@ const useApplicationData = () => {
     state,
     handleLogout,
     handleSuccessfulAuth,
-    setCart
+    setCart,
+    setCartEmpty
   };
 };
 

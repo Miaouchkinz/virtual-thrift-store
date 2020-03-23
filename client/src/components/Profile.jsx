@@ -66,6 +66,7 @@ export default function Profile(props) {
         </div>
       </header>
       <main>
+        {" "}
         <div className="profile-feed-placeholder">
           <Closet
             userId={userId}

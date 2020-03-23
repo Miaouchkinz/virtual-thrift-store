@@ -17,7 +17,8 @@ export default function App(props) {
     state,
     handleSuccessfulAuth,
     handleLogout,
-    setCart
+    setCart,
+    setCartEmpty
   } = useApplicationData();
 
   return (
@@ -74,13 +75,6 @@ export default function App(props) {
               />
             )}
           ></Route>
-          {/* <Route>
-            <Closet
-              userId={state.currentUser.id}
-              allClothing={state.allClothing}
-            />
-            >
-          </Route> */}
           <Route
             exact
             path={"/dashboard"}
@@ -99,7 +93,11 @@ export default function App(props) {
             <Checkout cart={state.cart} users={state.users} />
           </Route>
           <Route exact path={"/confirmation"}>
-            <OrderConfirmation cart={state.cart} users={state.users} />
+            <OrderConfirmation
+              cart={state.cart}
+              users={state.users}
+              setCartEmpty={setCartEmpty}
+            />
           </Route>
         </Switch>
       </Router>

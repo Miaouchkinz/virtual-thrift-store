@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function OrderConfirmation({ cart, users }) {
+export default function OrderConfirmation({ cart, users, setCartEmpty }) {
   const createOwnersList = function() {
     let ownersList = [];
     for (let user of users) {
@@ -36,7 +36,9 @@ export default function OrderConfirmation({ cart, users }) {
             ></img>
           </Link>
           <Link
-            onClick={() => {}}
+            onClick={() => {
+              setCartEmpty();
+            }}
             to={{
               pathname: "/feed"
             }}
