@@ -49,6 +49,16 @@ a {
   }
 }
 
+.clothingItem_size {
+  position: relative;
+  float: right;
+  top: 25px;
+  font-weight: bold;
+  background-color: #e0bfbf;
+  border: 1px solid black;
+  padding: 2px;
+}
+
 .typeForm {
   display: flex;
   flex-direction: column;
@@ -86,4 +96,9 @@ a {
 
 #feed_profile_icon {
   height: 50px;
+}
+
+.feed_header_hanger_icon {
+  font-weight: bold;
+  color: white;
 }

@@ -146,7 +146,9 @@ export default function Feed({
     }
     return finalFilteredClothingList.map(clothingItem => (
       <div className="clothingItem_of_grid_container" key={clothingItem.id}>
-        <header className="clothingItem_size">{clothingItem.size}</header>
+        <header>
+          <div className="clothingItem_size">{clothingItem.size}</div>
+        </header>
         <img
           className="clothingItem_image_of_grid_container"
           src={clothingItem.image_url}
@@ -160,7 +162,6 @@ export default function Feed({
         ></img>
         <footer>
           <div
-            className="add_to_cart_button"
             onClick={() =>
               addToCartButtonClicked(
                 clothingItem.id,
@@ -175,7 +176,7 @@ export default function Feed({
             <img
               alt="Add item to cart button."
               id="add_to_cart_button"
-              src="./images/add_hanger_icon_full.png"
+              src="./images/hanger_border_black.png"
             ></img>
           </div>
         </footer>
@@ -196,7 +197,7 @@ export default function Feed({
               <img
                 alt="Go to profile page button"
                 id="feed_profile_icon"
-                src="./images/profile_icon_full.png"
+                src="./images/profile_icon.png"
               ></img>
             </span>
           </Link>
@@ -209,7 +210,7 @@ export default function Feed({
               <img
                 alt="Go to cart to see all items selected button."
                 id="feed_hanger_icon"
-                src="./images/hanger_icon_full.png"
+                src="./images/hanger.png"
               ></img>
               {cart.length}
             </span>
