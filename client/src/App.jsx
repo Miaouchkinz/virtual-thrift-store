@@ -84,7 +84,7 @@ export default function App(props) {
             )}>
           </Route>
           <Route exact path={"/conversations"}>
-            <ConversationsList currentUser={state.currentUser}/>
+            <ConversationsList currentUser={state.currentUser} usersList={state.users}/>
           </Route>
         </Switch>
       </Router>

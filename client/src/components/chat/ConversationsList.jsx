@@ -62,6 +62,7 @@ class ConversationsList extends React.Component {
         <NewConversationForm currentUser={this.props.currentUser}/>
         {activeConversation ? (
           <MessagesArea
+            usersList={this.props.usersList}
             currentUser={this.props.currentUser}
             conversation={findActiveConversation(
               conversations,
