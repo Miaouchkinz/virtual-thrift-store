@@ -33,7 +33,7 @@ export default function OrderConfirmation({ cart, users, emptyCart }) {
             <img
               alt="Go to profile page button."
               id="feed_profile_icon"
-              src="./images/profile_icon.png"
+              src="./images/avatar_full_shadow.png"
             ></img>
           </Link>
           <Link
@@ -47,7 +47,7 @@ export default function OrderConfirmation({ cart, users, emptyCart }) {
             <img
               alt="Go to Home page button."
               id="feed_profile_icon"
-              src="./images/home_icon.png"
+              src="./images/full_home_shadow.png"
             ></img>
           </Link>
         </div>

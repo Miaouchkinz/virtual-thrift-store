@@ -60,7 +60,7 @@ export default function Cart({ cart, clothing }) {
               <img
                 alt="Go to profile page button."
                 id="feed_profile_icon"
-                src="./images/cart_icon_yellow.png"
+                src="./images/cart_full_shadow.png"
               ></img>
             </span>
           </Link>
