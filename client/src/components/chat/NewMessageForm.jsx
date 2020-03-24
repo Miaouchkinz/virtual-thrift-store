@@ -6,7 +6,8 @@ import { API_ROOT, HEADERS } from '../../constants';
 class NewMessageForm extends React.Component {
   state = {
     text: '',
-    conversation_id: this.props.conversation_id
+    conversation_id: this.props.conversation_id,
+    user_id: this.props.currentUser.id
   };
 
   componentWillReceiveProps = nextProps => {
@@ -14,7 +15,7 @@ class NewMessageForm extends React.Component {
   };
 
   handleChange = e => {
-    this.setState({ text: e.target.value });
+    this.setState({ ...this.state, text: e.target.value });
   };
 
   handleSubmit = e => {
