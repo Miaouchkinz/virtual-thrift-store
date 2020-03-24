@@ -39,14 +39,15 @@ export default function Login({ history, handleSuccessfulAuth }) {
 
   return (
     <div>
-      {" "}
-      <img
-        className="login_header_wave_green"
-        src="./images/final_project_header_wave_2.png"
-      ></img>
-      <nav className="login-signup-nav">
-        <Icon secondary onClick={() => history.push("/")} label="<"></Icon>
-      </nav>
+      <header>
+        <nav className="login-signup-nav">
+          <Icon secondary onClick={() => history.push("/")} label="<"></Icon>
+        </nav>
+        <img
+          className="login_header_wave_green"
+          src="./images/final_project_header_wave_2.png"
+        ></img>
+      </header>
       <main id="auth">
         <form onSubmit={handleSubmit}>
           <h1>LOGIN</h1>

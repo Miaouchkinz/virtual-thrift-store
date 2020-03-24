@@ -5,7 +5,6 @@ export default function Landing({ history }) {
   return (
     <main id="landing">
       <header>
-        {" "}
         <img
           className="landing_header_wave_green"
           src="./images/final_project_header_wave_2.png"
