@@ -31,9 +31,7 @@ export default function Profile(props) {
 
   return (
     <div id="profile-page">
-      <div id="wave">
-        <div id="inner-wave"></div>
-      </div>
+      <div id="wave">{/* <div id="inner-wave"></div> */}</div>
       <nav>
         <Icon secondary onClick={() => history.push("/feed")} label="<"></Icon>
         <Button onClick={() => handleLogoutClick()} primary label="LOG OUT" />

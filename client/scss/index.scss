@@ -29,14 +29,6 @@ body {
     width: 75%;
     margin-bottom: 0.75rem;
   }
-
-  .landing_header_wave_green {
-    width: 37rem;
-  }
-  .landing_footer_wave_green {
-    width: 34rem;
-    margin-top: 9rem;
-  }
 }
 
 .login-signup-nav {
@@ -77,4 +69,21 @@ body {
   height: 8rem;
   background-color: pink;
   border-radius: 100%;
+}
+
+.landing_header_wave_green {
+  width: 37rem;
+}
+.landing_footer_wave_green {
+  width: 34rem;
+  margin-top: 9rem;
+}
+
+.login_header_wave_green {
+  width: 29rem;
+  z-index: -1;
+}
+
+.login_footer_wave_green {
+  width: 29rem;
 }
