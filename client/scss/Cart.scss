@@ -14,7 +14,7 @@
 }
 
 .total_item_in_cart {
-  border-radius: 70%;
+  border-radius: 50%;
   width: 10px;
   height: 10px;
   padding: 3px;
@@ -22,4 +22,16 @@
   color: rgb(0, 0, 0);
   text-align: center;
   font-size: 14px;
+}
+
+.content_container {
+  margin-top: -100px;
+  // margin-left: 20px;
+  // margin-right: 20px;
+  h1 {
+    margin-left: 20px;
+  }
+  h2 {
+    margin-left: 20px;
+  }
 }

@@ -48,18 +48,28 @@ export default function OrderConfirmation({ cart, users, setCartEmpty }) {
             ></img>
           </Link>
         </div>
+        <img
+          className="header_wave_green"
+          src="./images/final_project_header_wave_2.png"
+        ></img>
       </header>
-      <div className="thank_you_message">
-        <img alt="Earth Icon" className="earth_icon" src="./images/earth.png" />
-        <h4>
-          A message have successfully <br />
-          been sent to each owners.
-        </h4>
-        <h1>
-          Together, we're <br /> saving the <br /> planet.
-        </h1>
+      <div className="content_container">
+        <div className="thank_you_message">
+          <img
+            alt="Earth Icon"
+            className="earth_icon"
+            src="./images/earth.png"
+          />
+          <h4>
+            A message have successfully <br />
+            been sent to each owners.
+          </h4>
+          <h1>
+            Together, we're <br /> saving the <br /> planet.
+          </h1>
+        </div>
+        <div className="owner_avatar_carousel">{createOwnersList()}</div>
       </div>
-      <div className="owner_avatar_carousel">{createOwnersList()}</div>
     </div>
   );
 }

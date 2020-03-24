@@ -65,15 +65,22 @@ export default function Cart({ cart, clothing }) {
             </span>
           </Link>
         </div>
+        <img
+          className="header_wave_green"
+          src="./images/final_project_header_wave_2.png"
+        ></img>
       </header>
-      <h1>
-        Selected items <span className="total_item_in_cart">{cart.length}</span>
-      </h1>
-      <div className="clothingItem_cart_carousel">
-        {checkIfCartEmpty(cartItemList)}
-      </div>
-      <div>
-        <h1>Future machine learning cool stuff here</h1>
+      <div className="content_container">
+        <h1>
+          Selected items{" "}
+          <span className="total_item_in_cart">{cart.length}</span>
+        </h1>
+        <div className="clothingItem_cart_carousel">
+          {checkIfCartEmpty(cartItemList)}
+        </div>
+        <div>
+          <h1>Future machine learning cool stuff here</h1>
+        </div>
       </div>
     </div>
   );

@@ -91,10 +91,16 @@ export default function Checkout({ cart, users }) {
             <Icon secondary label="<"></Icon>
           </Link>
         </div>
+        <img
+          className="header_wave_green"
+          src="./images/final_project_header_wave_2.png"
+        ></img>
       </header>
-      <h1>Ready to checkout!</h1>
-      {displaySectionOfOwners}
-      {checkIfCartEmpty()}
+      <div className="content_container">
+        <h1>Ready to checkout!</h1>
+        {displaySectionOfOwners}
+        {checkIfCartEmpty()}
+      </div>
     </div>
   );
 }
