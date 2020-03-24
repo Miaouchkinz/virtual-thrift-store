@@ -98,10 +98,17 @@ export default function Checkout({ cart, users }) {
         ></img>
       </header>
       <div className="content_container">
-        <h1>Ready to checkout!</h1>
+        <h1>Ready to checkout?</h1>
         {displaySectionOfOwners}
         {checkIfCartEmpty()}
       </div>
+      <footer className="orange_footer_cart">
+        <img
+          className="orange_footer_wave_cart"
+          alt="Wave decoration"
+          src="./images/footer_orange_resized.png"
+        ></img>
+      </footer>
     </div>
   );
 }

@@ -3,6 +3,7 @@
   flex-direction: row;
   overflow-x: scroll;
   background-color: #e0bfbf;
+  z-index: 1;
 }
 
 .clothingItem_image_of_cart_container {
@@ -11,6 +12,7 @@
   border-radius: 50%;
   height: 100px;
   width: 100px;
+  z-index: 1;
 }
 
 .total_item_in_cart {
@@ -28,8 +30,21 @@
   margin-top: -100px;
   h1 {
     margin-left: 20px;
+    z-index: 1;
   }
   h2 {
     margin-left: 20px;
+    z-index: 1;
   }
+}
+
+.orange_footer_cart {
+  position: absolute;
+  top: 420px;
+  z-index: -1;
+}
+
+.orange_footer_wave_cart {
+  width: 414px;
+  z-index: -1;
 }

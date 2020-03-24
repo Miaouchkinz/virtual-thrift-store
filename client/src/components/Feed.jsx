@@ -268,6 +268,13 @@ export default function Feed({
       <div className="availables_grid_container">
         {filteredClothingList(clothing, activeCategories, size)}
       </div>
+      <footer className="orange_footer">
+        <img
+          className="orange_footer_wave"
+          alt="Wave decoration"
+          src="./images/footer_orange_resized.png"
+        ></img>
+      </footer>
     </div>
   );
 }

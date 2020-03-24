@@ -73,6 +73,13 @@ export default function OrderConfirmation({ cart, users, emptyCart }) {
         </div>
         <div className="owner_avatar_carousel">{createOwnersList()}</div>
       </div>
+      <footer className="orange_footer_cart">
+        <img
+          className="orange_footer_wave_cart"
+          alt="Wave decoration"
+          src="./images/footer_orange_resized.png"
+        ></img>
+      </footer>
     </div>
   );
 }

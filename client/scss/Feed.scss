@@ -11,7 +11,8 @@ a {
 }
 
 .filters_available {
-  margin-top: -120px;
+  margin-top: -140px;
+  margin-bottom: 40px;
   h3 {
     padding-top: 4px;
   }
@@ -20,6 +21,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  z-index: 1;
 }
 
 .clothingItem_image_of_grid_container {
@@ -101,4 +103,15 @@ a {
 .feed_header_hanger_icon {
   font-weight: bold;
   color: white;
+}
+
+.orange_footer {
+  bottom: -500px;
+  position: absolute;
+}
+
+.orange_footer_wave {
+  width: 414px;
+  height: 925px;
+  z-index: -1;
 }

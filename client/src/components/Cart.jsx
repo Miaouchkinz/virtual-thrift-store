@@ -82,6 +82,13 @@ export default function Cart({ cart, clothing }) {
           <h1>Future machine learning cool stuff here</h1>
         </div>
       </div>
+      <footer className="orange_footer_cart">
+        <img
+          className="orange_footer_wave_cart"
+          alt="Wave decoration"
+          src="./images/footer_orange_resized.png"
+        ></img>
+      </footer>
     </div>
   );
 }
