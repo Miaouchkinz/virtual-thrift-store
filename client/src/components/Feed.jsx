@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Feed({ clothing, clothingCategories, cart, setCart }) {
+export default function Feed({
+  clothing,
+  clothingCategories,
+  cart,
+  addToCart
+}) {
   //////////////////////////////////////////////
   //_____________
   // LOCAL STATES|
@@ -47,7 +52,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
 
     for (let category in allCategories) {
       categoriesResult.push(
-        <div className="label_container">
+        <div className="label_container" key={allCategories[category].id}>
           <label key={allCategories[category].type}>
             <input
               key={allCategories[category].id}
@@ -72,7 +77,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     clothingCategory,
     clothingUserId,
     clothingImgUrl,
-    addItemToCart
+    addToCart
   ) {
     if (
       addToCartCount[0].totalCount === 0 &&
@@ -82,7 +87,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
         ...addToCartCount,
         { totalCount: 1, [clothingId]: clothingId }
       ]);
-      addItemToCart(
+      addToCart(
         clothingId,
         clothingSize,
         clothingCategory,
@@ -163,7 +168,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
                 clothingItem.clothing_category_id,
                 clothingItem.user_id,
                 clothingItem.image_url,
-                setCart
+                addToCart
               )
             }
           >

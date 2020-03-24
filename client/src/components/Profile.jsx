@@ -36,6 +36,10 @@ export default function Profile(props) {
         <Icon secondary onClick={() => history.push("/feed")} label="<"></Icon>
         <Button onClick={() => handleLogoutClick()} primary label="LOG OUT" />
       </nav>
+      <img
+        src="./images/final_project_header_wave_1.png"
+        alt="Top wave decoration."
+      ></img>
       <header>
         <img className="avatar_url-image" src={avatar} alt="user_avatar" />
         <span className="user-name">{userName}</span>

@@ -49,6 +49,7 @@ export default function Registration({ handleSuccessfulAuth, history }) {
         <img
           className="login_header_wave_green"
           src="./images/final_project_header_wave_2.png"
+          alt="Top wave decoration."
         ></img>
       </header>
       <main id="auth">
@@ -112,6 +113,7 @@ export default function Registration({ handleSuccessfulAuth, history }) {
         <img
           className="signup_footer_wave_green"
           src="./images/final_project_footer_wave_1.png"
+          alt="Bottom wave decoration."
         ></img>
       </footer>
     </div>

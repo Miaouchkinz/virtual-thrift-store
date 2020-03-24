@@ -4,8 +4,10 @@ import dataReducer, {
   SET_AVAILABLE_CLOTHING,
   SET_CLOTHING_CATEGORIES,
   SET_CURRENT_USER,
-  SET_CART,
-  SET_CLOTHING
+  ADD_TO_CART,
+  SET_CLOTHING,
+  EMPTY_CART,
+  REMOVE_FROM_CART
 } from "../reducers/dataReducer";
 import axios from "axios";
 
@@ -45,19 +47,26 @@ const useApplicationData = () => {
     history.push("/feed");
   };
 
-  const setCart = (id, size, categoryId, userId, imgUrl) => {
+  const addToCart = (id, size, categoryId, userId, imgUrl) => {
     dispatch({
       ...state,
-      type: SET_CART,
+      type: ADD_TO_CART,
       value: { id, size, categoryId, userId, imgUrl }
     });
   };
 
-  const setCartEmpty = () => {
+  const emptyCart = () => {
     dispatch({
-      ...state.cart,
-      type: SET_CART,
-      cart: []
+      type: EMPTY_CART
+    });
+  };
+
+  const removeFromCart = (cart, itemId) => {
+    cart.filter(item => item.id != itemId);
+    dispatch({
+      ...state,
+      type: REMOVE_FROM_CART,
+      cart
     });
   };
 
@@ -112,8 +121,8 @@ const useApplicationData = () => {
     state,
     handleLogout,
     handleSuccessfulAuth,
-    setCart,
-    setCartEmpty
+    addToCart,
+    emptyCart
   };
 };
 

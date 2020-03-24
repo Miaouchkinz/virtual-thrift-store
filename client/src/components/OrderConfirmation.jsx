@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function OrderConfirmation({ cart, users, setCartEmpty }) {
+export default function OrderConfirmation({ cart, users, emptyCart }) {
   const createOwnersList = function() {
     let ownersList = [];
     for (let user of users) {
@@ -13,6 +13,7 @@ export default function OrderConfirmation({ cart, users, setCartEmpty }) {
     }
     return ownersList.map(owner => (
       <img
+        key={owner.avatar_url}
         alt={"Owner of item avatar. Owner's name: " + owner.name}
         className="owner_avatar"
         src={owner.avatar_url}
@@ -36,7 +37,9 @@ export default function OrderConfirmation({ cart, users, setCartEmpty }) {
             ></img>
           </Link>
           <Link
-            onClick={() => {}}
+            onClick={() => {
+              emptyCart();
+            }}
             to={{
               pathname: "/feed"
             }}

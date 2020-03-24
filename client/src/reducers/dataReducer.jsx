@@ -2,8 +2,10 @@ export const SET_USERS = "SET_USERS";
 export const SET_AVAILABLE_CLOTHING = "SET_AVAILABLE_CLOTHING";
 export const SET_CLOTHING_CATEGORIES = "SET_CLOTHING_CATEGORIES";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
-export const SET_CART = "SET_CART";
+export const ADD_TO_CART = "ADD_TO_CART";
 export const SET_CLOTHING = "SET_CLOTHING";
+export const EMPTY_CART = "EMPTY_CART";
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 
 const dataReducer = (state, action) => {
   switch (action.type) {
@@ -37,7 +39,7 @@ const dataReducer = (state, action) => {
         currentUser: action.value.currentUser,
         loggedInStatus: action.value.loggedInStatus
       };
-    case SET_CART:
+    case ADD_TO_CART:
       return {
         ...state,
         cart: [
@@ -50,6 +52,16 @@ const dataReducer = (state, action) => {
             imgUrl: action.value.imgUrl
           }
         ]
+      };
+    case EMPTY_CART:
+      return {
+        ...state,
+        cart: []
+      };
+    case REMOVE_FROM_CART:
+      return {
+        ...state,
+        cart: [...state.cart]
       };
     default:
       throw new Error(

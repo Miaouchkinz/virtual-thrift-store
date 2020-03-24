@@ -8,6 +8,7 @@ export default function Landing({ history }) {
         <img
           className="landing_header_wave_green"
           src="./images/final_project_header_wave_2.png"
+          alt="Top wave decoration."
         ></img>
       </header>
 
@@ -29,6 +30,7 @@ export default function Landing({ history }) {
         <img
           className="landing_footer_wave_green"
           src="./images/final_project_footer_wave_1.png"
+          alt="Bottom wave decoration."
         ></img>
       </footer>
     </main>

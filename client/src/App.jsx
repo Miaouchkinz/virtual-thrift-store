@@ -17,8 +17,8 @@ export default function App(props) {
     state,
     handleSuccessfulAuth,
     handleLogout,
-    setCart,
-    setCartEmpty
+    addToCart,
+    emptyCart
   } = useApplicationData();
 
   return (
@@ -58,7 +58,7 @@ export default function App(props) {
               clothing={state.clothing}
               clothingCategories={state.clothingCategories}
               cart={state.cart}
-              setCart={setCart}
+              addToCart={addToCart}
             />
           </Route>
           <Route
@@ -96,7 +96,7 @@ export default function App(props) {
             <OrderConfirmation
               cart={state.cart}
               users={state.users}
-              setCartEmpty={setCartEmpty}
+              emptyCart={emptyCart}
             />
           </Route>
         </Switch>
