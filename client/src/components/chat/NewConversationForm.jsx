@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 // import axios from 'axios'
 import { API_ROOT, HEADERS } from '../../constants';
 
-export default function NewConversationForm(){
+export default function NewConversationForm({currentUser}){
   const [ state, setState] = useState({
-    title: ''
+    title: '',
+    user_1_id: null,
+    user_2_id: 2
   });
 
   const handleChange = e => {
-    setState({ title: e.target.value });
+    setState({ ...state, user_1_id: currentUser.id, title: e.target.value });
   };
 
   const handleSubmit = e => {
@@ -18,13 +20,13 @@ export default function NewConversationForm(){
       method: 'POST',
       headers: HEADERS,
       body: JSON.stringify(state)
-    }).then(() => setState({ title: '' }));
+    }).then(() => setState({ ...state, title: '' }));
   };
 
   return (
     <div className="newConversationForm">
       <form onSubmit={handleSubmit}>
-        <label>New Conversation:</label>
+    <label>New Conversation: {`currentUser is ${currentUser.id}`}</label>
         <br />
         <input
           type="text"
