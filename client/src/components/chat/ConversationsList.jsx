@@ -44,6 +44,7 @@ class ConversationsList extends React.Component {
 
   render = () => {
     const { conversations, activeConversation } = this.state;
+
     return (
       <div className="conversationsList">
         <ActionCable
@@ -58,9 +59,10 @@ class ConversationsList extends React.Component {
         ) : null}
         <h2>Conversations</h2>
         <ul>{mapConversations(conversations, this.handleClick)}</ul>
-        <NewConversationForm />
+        <NewConversationForm currentUser={this.props.currentUser}/>
         {activeConversation ? (
           <MessagesArea
+            currentUser={this.props.currentUser}
             conversation={findActiveConversation(
               conversations,
               activeConversation
