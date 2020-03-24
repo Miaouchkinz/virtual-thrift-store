@@ -11,20 +11,24 @@ class Api::ConversationsController < ApplicationController
     conversation = Conversation.new(conversation_params)
 
     if conversation.save
+      puts "////////////"
+      puts conversation
+      puts "////////////"
       serialized_data = ActiveModelSerializers::Adapter::Json.new(
         ConversationSerializer.new(conversation)
       ).serializable_hash
       
       ActionCable.server.broadcast 'conversations_channel', serialized_data
       head :ok
-    elsif conversation.error
+    elsif conversation.errors
       puts "error"
+      puts conversation.errors.each { |error| puts error }
     end
   end
   
   private
   
   def conversation_params
-    params.require(:conversation).permit(:title)
+    params.require(:conversation).permit(:title, :user_1_id, :user_2_id)
   end
 end
