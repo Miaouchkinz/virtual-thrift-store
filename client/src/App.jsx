@@ -9,7 +9,7 @@ import Profile from './components/profile/Index';
 import Cart from "./components/cart-checkout/Cart";
 import Registration from './components/auth/Registration';
 
-import Convos from './components/chat/Convos';
+import ConversationsList from './components/chat/ConversationsList';
 
 import useApplicationData from './hooks/useApplicationData';
 
@@ -84,7 +84,7 @@ export default function App(props) {
             )}>
           </Route>
           <Route exact path={"/conversations"}>
-            <Convos/>
+            <ConversationsList currentUser={state.currentUser}/>
           </Route>
         </Switch>
       </Router>
