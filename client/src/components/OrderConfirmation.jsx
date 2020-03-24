@@ -36,9 +36,7 @@ export default function OrderConfirmation({ cart, users, setCartEmpty }) {
             ></img>
           </Link>
           <Link
-            onClick={() => {
-              setCartEmpty();
-            }}
+            onClick={() => {}}
             to={{
               pathname: "/feed"
             }}

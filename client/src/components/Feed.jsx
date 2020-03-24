@@ -210,6 +210,10 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
             </span>
           </Link>
         </div>
+        <img
+          className="header_wave_green"
+          src="./images/final_project_header_wave_2.png"
+        ></img>
       </header>
       <div className="filters_available">
         <h3>Filter by:</h3>

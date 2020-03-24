@@ -55,8 +55,9 @@ const useApplicationData = () => {
 
   const setCartEmpty = () => {
     dispatch({
+      ...state.cart,
       type: SET_CART,
-      value: []
+      cart: []
     });
   };
 

@@ -10,10 +10,12 @@ a {
   text-decoration: none;
 }
 
-.filters_available h3 {
-  padding-top: 4px;
+.filters_available {
+  margin-top: -120px;
+  h3 {
+    padding-top: 4px;
+  }
 }
-
 .availables_grid_container {
   display: flex;
   flex-wrap: wrap;
@@ -64,15 +66,18 @@ a {
   justify-items: space-between;
 }
 
-.feed_header {
-  background-image: url(/images/final_project_header_wave_1.png);
-}
-
 .feed_header_block {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
+}
+
+.header_wave_green {
+  position: relative;
+  z-index: -1;
+  top: -75px;
+  width: 446px;
 }
 
 #feed_hanger_icon {
