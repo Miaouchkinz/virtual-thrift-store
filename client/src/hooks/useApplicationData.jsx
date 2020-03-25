@@ -62,11 +62,12 @@ const useApplicationData = () => {
   };
 
   const removeFromCart = (cart, itemId) => {
-    cart.filter(item => item.id != itemId);
+    cart = cart.filter(item => item.id !== itemId);
+    console.log(cart);
     dispatch({
       ...state,
       type: REMOVE_FROM_CART,
-      cart
+      value: { cart }
     });
   };
 
@@ -122,7 +123,8 @@ const useApplicationData = () => {
     handleLogout,
     handleSuccessfulAuth,
     addToCart,
-    emptyCart
+    emptyCart,
+    removeFromCart
   };
 };
 

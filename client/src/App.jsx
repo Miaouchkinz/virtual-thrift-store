@@ -18,7 +18,8 @@ export default function App(props) {
     handleSuccessfulAuth,
     handleLogout,
     addToCart,
-    emptyCart
+    emptyCart,
+    removeFromCart
   } = useApplicationData();
 
   return (
@@ -87,7 +88,11 @@ export default function App(props) {
             )}
           ></Route>
           <Route exact path={"/cart"}>
-            <Cart clothing={state.clothing} cart={state.cart} />
+            <Cart
+              clothing={state.clothing}
+              cart={state.cart}
+              removeFromCart={removeFromCart}
+            />
           </Route>
           <Route exact path={"/checkout"}>
             <Checkout cart={state.cart} users={state.users} />

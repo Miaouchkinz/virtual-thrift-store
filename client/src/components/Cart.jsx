@@ -2,12 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Icon from "./common/iconButton";
 
-export default function Cart({ cart, clothing }) {
+export default function Cart({ cart, clothing, removeFromCart }) {
   const itemInCartId = function() {
     let finalIdList = [];
-    for (let item of cart) {
-      finalIdList.push(item.id);
+    if (cart) {
+      for (let item of cart) {
+        finalIdList.push(item.id);
+      }
     }
+
     return finalIdList;
   };
 
@@ -26,7 +29,13 @@ export default function Cart({ cart, clothing }) {
           }
           id={clothingItem.size}
         ></img>
-        <footer></footer>
+        <div>
+          <img
+            onClick={() => removeFromCart(cart, clothingItem.id)}
+            src="./images/remove_item_from_cart.png"
+            width="40px"
+          ></img>
+        </div>
       </div>
     ));
 

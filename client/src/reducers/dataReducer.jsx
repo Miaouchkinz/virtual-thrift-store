@@ -61,7 +61,7 @@ const dataReducer = (state, action) => {
     case REMOVE_FROM_CART:
       return {
         ...state,
-        cart: [...state.cart]
+        cart: [action.value.cart]
       };
     default:
       throw new Error(
