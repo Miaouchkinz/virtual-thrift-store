@@ -233,34 +233,44 @@ export default function Feed({
           <div className="label_container">
             <label>
               <input
+                className="hidden_checkbox"
                 name="isSmall"
                 type="checkbox"
                 checked={size["S"]}
                 onChange={() => setSize({ ...size, S: !size["S"] })}
               />
-              S
+              <div className="size_icon">
+                <img src="./images/small_size_icon.png" width="25px"></img>
+              </div>
             </label>
           </div>
           <div className="label_container">
             <label>
               <input
+                className="hidden_checkbox"
                 name="isMedium"
                 type="checkbox"
                 checked={size["M"]}
                 onChange={() => setSize({ ...size, M: !size["M"] })}
               />
-              M
+              <div className="size_icon">
+                <img src="./images/medium_size_icon.png" width="25px"></img>
+              </div>
             </label>
           </div>
           <div className="label_container">
             <label>
               <input
+                id="toggle"
+                className="hidden_checkbox"
                 name="isLarge"
                 type="checkbox"
                 checked={size["L"]}
                 onChange={() => setSize({ ...size, L: !size["L"] })}
               />
-              L
+              <div className="size_icon">
+                <img src="./images/large_size_icon.png" width="25px"></img>
+              </div>
             </label>
           </div>
         </form>

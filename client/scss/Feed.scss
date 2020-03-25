@@ -115,3 +115,15 @@ a {
   height: 925px;
   z-index: -1;
 }
+
+.hidden_checkbox {
+  display: none;
+}
+
+.size_icon {
+  opacity: 100%;
+}
+
+.hidden_checkbox:checked ~ .size_icon {
+  opacity: 40%;
+}
