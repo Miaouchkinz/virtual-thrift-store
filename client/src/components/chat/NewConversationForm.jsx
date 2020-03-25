@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import axios from 'axios'
 import { API_ROOT, HEADERS } from '../../constants';
 
 export default function NewConversationForm({currentUser}){
