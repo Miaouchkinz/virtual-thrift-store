@@ -68,6 +68,7 @@ export default function Feed({
             />
             <div className="size_icon">
               <img
+                alt="Icon for filtering clothing."
                 src={
                   "./images/" + iconForCategory(allCategories[category].name)
                 }
@@ -220,6 +221,7 @@ export default function Feed({
           </Link>
         </div>
         <img
+          alt="Top wave decoration."
           className="header_wave_green"
           src="./images/final_project_header_wave_2.png"
         ></img>
@@ -243,7 +245,11 @@ export default function Feed({
                 onChange={() => setSize({ ...size, S: !size["S"] })}
               />
               <div className="size_icon">
-                <img src="./images/small_size_icon.png" width="25px"></img>
+                <img
+                  alt="Checkbox for size Small"
+                  src="./images/small_size_icon.png"
+                  width="25px"
+                ></img>
               </div>
             </label>
           </div>
@@ -257,7 +263,11 @@ export default function Feed({
                 onChange={() => setSize({ ...size, M: !size["M"] })}
               />
               <div className="size_icon">
-                <img src="./images/medium_size_icon.png" width="25px"></img>
+                <img
+                  alt="Checkbox for size Medium"
+                  src="./images/medium_size_icon.png"
+                  width="25px"
+                ></img>
               </div>
             </label>
           </div>
@@ -272,7 +282,11 @@ export default function Feed({
                 onChange={() => setSize({ ...size, L: !size["L"] })}
               />
               <div className="size_icon">
-                <img src="./images/large_size_icon.png" width="25px"></img>
+                <img
+                  alt="Checkbox for size Large"
+                  src="./images/large_size_icon.png"
+                  width="25px"
+                ></img>
               </div>
             </label>
           </div>

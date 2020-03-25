@@ -52,6 +52,7 @@ export default function OrderConfirmation({ cart, users, emptyCart }) {
           </Link>
         </div>
         <img
+          alt="Top wave decoration."
           className="header_wave_green"
           src="./images/final_project_header_wave_2.png"
         ></img>

@@ -31,6 +31,7 @@ export default function Cart({ cart, clothing, removeFromCart }) {
         ></img>
         <div>
           <img
+            alt="Remove item from cart button."
             onClick={() => removeFromCart(cart, clothingItem.id)}
             src="./images/remove_item_from_cart.png"
             width="40px"
@@ -75,6 +76,7 @@ export default function Cart({ cart, clothing, removeFromCart }) {
           </Link>
         </div>
         <img
+          alt="Top wave decoration."
           className="header_wave_green"
           src="./images/final_project_header_wave_2.png"
         ></img>
