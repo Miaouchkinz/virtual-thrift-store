@@ -197,7 +197,7 @@ export default function Feed({
               <img
                 alt="Go to profile page button"
                 id="feed_profile_icon"
-                src="./images/avatar_full_shadow.png"
+                src="./images/profile_avatar_full.png"
               ></img>
             </span>
           </Link>
@@ -210,7 +210,7 @@ export default function Feed({
               <img
                 alt="Go to cart to see all items selected button."
                 id="feed_hanger_icon"
-                src="./images/hanger_full_shadow.png"
+                src="./images/hanger_full.png"
               ></img>
               {cart.length}
             </span>
