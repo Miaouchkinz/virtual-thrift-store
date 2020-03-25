@@ -63,7 +63,6 @@ const useApplicationData = () => {
 
   const removeFromCart = (cart, itemId) => {
     cart = cart.filter(item => item.id !== itemId);
-    console.log(cart);
     dispatch({
       ...state,
       type: REMOVE_FROM_CART,
