@@ -51,20 +51,97 @@ export default function Feed({
     let categoriesResult = [];
 
     for (let category in allCategories) {
-      categoriesResult.push(
-        <div className="label_container" key={allCategories[category].id}>
-          <label key={allCategories[category].type}>
-            <input
-              key={allCategories[category].id}
-              name={allCategories[category].id}
-              type="checkbox"
-              checked={activeCategories[name]}
-              onChange={() => ifCheckBoxActive(category, allCategories)}
-            />
-            {allCategories[category].name}
-          </label>
-        </div>
-      );
+      if (allCategories[category].name === "tshirt") {
+        categoriesResult.push(
+          <div className="label_container" key={allCategories[category].id}>
+            <label key={allCategories[category].type}>
+              <input
+                className="hidden_checkbox"
+                key={allCategories[category].id}
+                name={allCategories[category].id}
+                type="checkbox"
+                checked={activeCategories[name]}
+                onChange={() => ifCheckBoxActive(category, allCategories)}
+              />
+              <div className="size_icon">
+                <img src="./images/tshirt_icon.png" width="25px"></img>
+              </div>
+            </label>
+          </div>
+        );
+      } else if (allCategories[category].name === "sweater") {
+        categoriesResult.push(
+          <div className="label_container" key={allCategories[category].id}>
+            <label key={allCategories[category].type}>
+              <input
+                className="hidden_checkbox"
+                key={allCategories[category].id}
+                name={allCategories[category].id}
+                type="checkbox"
+                checked={activeCategories[name]}
+                onChange={() => ifCheckBoxActive(category, allCategories)}
+              />
+              <div className="size_icon">
+                <img src="./images/sweater_icon.png" width="25px"></img>
+              </div>
+            </label>
+          </div>
+        );
+      } else if (allCategories[category].name === "dress") {
+        categoriesResult.push(
+          <div className="label_container" key={allCategories[category].id}>
+            <label key={allCategories[category].type}>
+              <input
+                className="hidden_checkbox"
+                key={allCategories[category].id}
+                name={allCategories[category].id}
+                type="checkbox"
+                checked={activeCategories[name]}
+                onChange={() => ifCheckBoxActive(category, allCategories)}
+              />
+              <div className="size_icon">
+                <img src="./images/dress_icon.png" width="25px"></img>
+              </div>
+            </label>
+          </div>
+        );
+      } else if (allCategories[category].name === "shorts") {
+        categoriesResult.push(
+          <div className="label_container" key={allCategories[category].id}>
+            <label key={allCategories[category].type}>
+              <input
+                className="hidden_checkbox"
+                key={allCategories[category].id}
+                name={allCategories[category].id}
+                type="checkbox"
+                checked={activeCategories[name]}
+                onChange={() => ifCheckBoxActive(category, allCategories)}
+              />
+              <div className="size_icon">
+                <img src="./images/shorts_icon.png" width="25px"></img>
+              </div>
+            </label>
+          </div>
+        );
+      } else if (allCategories[category].name === "pants") {
+        categoriesResult.push(
+          <div className="label_container" key={allCategories[category].id}>
+            <label key={allCategories[category].type}>
+              <input
+                className="hidden_checkbox"
+                key={allCategories[category].id}
+                name={allCategories[category].id}
+                type="checkbox"
+                checked={activeCategories[name]}
+                onChange={() => ifCheckBoxActive(category, allCategories)}
+              />
+              <div className="size_icon">
+                <img src="./images/pants_icon.png" width="25px"></img>
+              </div>
+            </label>
+          </div>
+        );
+      }
     }
     return categoriesResult;
   };

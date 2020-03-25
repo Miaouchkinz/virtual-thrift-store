@@ -1,8 +1,9 @@
 .filters_available {
   display: flex;
-  flex-direction: row;
-  margin: 10px;
+  flex-direction: column;
   margin-left: 50px;
+  margin-top: -140px;
+  margin-bottom: 40px;
 }
 
 a {
@@ -10,13 +11,6 @@ a {
   text-decoration: none;
 }
 
-.filters_available {
-  margin-top: -140px;
-  margin-bottom: 40px;
-  h3 {
-    padding-top: 4px;
-  }
-}
 .availables_grid_container {
   display: flex;
   flex-wrap: wrap;
@@ -63,13 +57,17 @@ a {
 
 .typeForm {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   margin: 10px;
 }
 
 .sizeForm {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   margin: 10px;
 }
 
