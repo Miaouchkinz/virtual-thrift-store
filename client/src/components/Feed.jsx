@@ -7,31 +7,20 @@ export default function Feed({
   cart,
   addToCart
 }) {
-  //////////////////////////////////////////////
-  //_____________
-  // LOCAL STATES|
-  // ____________|
-
-  //SIZE
   const [size, setSize] = useState({
     S: false,
     M: false,
     L: false
   });
 
-  //CATEGORIES
   const [activeCategories, setActiveCategories] = useState([]);
 
-  //ITEM ADDED TO CART COUNT
   const [addToCartCount, setaddToCartCount] = useState([
     {
       totalCount: 0
     }
   ]);
 
-  //////////////////////////////////////////////
-
-  // Check state of categories that has been checked or unchecked in the filter form
   const ifCheckBoxActive = (category, allCategories) => {
     const activeCategoryName = allCategories[category].name;
     if (activeCategories[activeCategoryName]) {
@@ -46,108 +35,52 @@ export default function Feed({
     }
   };
 
-  // Creates array of labels for each category from the allCategories object
+  const iconForCategory = categoryName => {
+    let iconFile = null;
+    if (categoryName === "tshirt") {
+      iconFile = "tshirt_icon.png";
+    } else if (categoryName === "sweater") {
+      iconFile = "sweater_icon.png";
+    } else if (categoryName === "dress") {
+      iconFile = "dress_icon.png";
+    } else if (categoryName === "shorts") {
+      iconFile = "shorts_icon.png";
+    } else if (categoryName === "pants") {
+      iconFile = "pants_icon.png";
+    }
+    return iconFile;
+  };
+
   const categoryList = allCategories => {
     let categoriesResult = [];
 
     for (let category in allCategories) {
-      if (allCategories[category].name === "tshirt") {
-        categoriesResult.push(
-          <div className="label_container" key={allCategories[category].id}>
-            <label key={allCategories[category].type}>
-              <input
-                className="hidden_checkbox"
-                key={allCategories[category].id}
-                name={allCategories[category].id}
-                type="checkbox"
-                checked={activeCategories[name]}
-                onChange={() => ifCheckBoxActive(category, allCategories)}
+      categoriesResult.push(
+        <div className="label_container" key={allCategories[category].id}>
+          <label key={allCategories[category].type}>
+            <input
+              className="hidden_checkbox"
+              key={allCategories[category].id}
+              name={allCategories[category].id}
+              type="checkbox"
+              checked={activeCategories[name]}
+              onChange={() => ifCheckBoxActive(category, allCategories)}
+            />
+            <div className="size_icon">
+              <img
+                src={
+                  "./images/" + iconForCategory(allCategories[category].name)
+                }
+                width="25px"
               />
-              <div className="size_icon">
-                <img src="./images/tshirt_icon.png" width="25px"></img>
-              </div>
-            </label>
-          </div>
-        );
-      } else if (allCategories[category].name === "sweater") {
-        categoriesResult.push(
-          <div className="label_container" key={allCategories[category].id}>
-            <label key={allCategories[category].type}>
-              <input
-                className="hidden_checkbox"
-                key={allCategories[category].id}
-                name={allCategories[category].id}
-                type="checkbox"
-                checked={activeCategories[name]}
-                onChange={() => ifCheckBoxActive(category, allCategories)}
-              />
-              <div className="size_icon">
-                <img src="./images/sweater_icon.png" width="25px"></img>
-              </div>
-            </label>
-          </div>
-        );
-      } else if (allCategories[category].name === "dress") {
-        categoriesResult.push(
-          <div className="label_container" key={allCategories[category].id}>
-            <label key={allCategories[category].type}>
-              <input
-                className="hidden_checkbox"
-                key={allCategories[category].id}
-                name={allCategories[category].id}
-                type="checkbox"
-                checked={activeCategories[name]}
-                onChange={() => ifCheckBoxActive(category, allCategories)}
-              />
-              <div className="size_icon">
-                <img src="./images/dress_icon.png" width="25px"></img>
-              </div>
-            </label>
-          </div>
-        );
-      } else if (allCategories[category].name === "shorts") {
-        categoriesResult.push(
-          <div className="label_container" key={allCategories[category].id}>
-            <label key={allCategories[category].type}>
-              <input
-                className="hidden_checkbox"
-                key={allCategories[category].id}
-                name={allCategories[category].id}
-                type="checkbox"
-                checked={activeCategories[name]}
-                onChange={() => ifCheckBoxActive(category, allCategories)}
-              />
-              <div className="size_icon">
-                <img src="./images/shorts_icon.png" width="25px"></img>
-              </div>
-            </label>
-          </div>
-        );
-      } else if (allCategories[category].name === "pants") {
-        categoriesResult.push(
-          <div className="label_container" key={allCategories[category].id}>
-            <label key={allCategories[category].type}>
-              <input
-                className="hidden_checkbox"
-                key={allCategories[category].id}
-                name={allCategories[category].id}
-                type="checkbox"
-                checked={activeCategories[name]}
-                onChange={() => ifCheckBoxActive(category, allCategories)}
-              />
-              <div className="size_icon">
-                <img src="./images/pants_icon.png" width="25px"></img>
-              </div>
-            </label>
-          </div>
-        );
-      }
+            </div>
+          </label>
+        </div>
+      );
     }
     return categoriesResult;
   };
 
-  // Function that keeps state of if add-to-cart button has been clicked, and set Cart's global state
-  // if button has never been clicked before.
   const addToCartButtonClicked = function(
     clothingId,
     clothingSize,
@@ -173,23 +106,19 @@ export default function Feed({
       );
     }
   };
-  ///////////////////////////////////////////////// ///////////////////////////
-  // Variable that holds all clothing (where available = true) from backend
+
   const clothingList = clothing && clothing;
 
-  // Variable that holds clothingList filtered by category
   const clothingFilteredByCategory = clothing.filter(clothingItem =>
     Object.values(activeCategories).includes(clothingItem.clothing_category_id)
   );
 
-  // Variable that holds clothingList filtered by size
   const clothingFilteredBySize = clothing.filter(
     clothingItem =>
       Object.keys(size).find(sizeKey => size[sizeKey] === true) ===
       clothingItem.size
   );
 
-  // Variable that holds clothingList filtered by category AND size
   const clothingFilteredByAll = clothing
     .filter(
       clothingItem =>
@@ -201,10 +130,7 @@ export default function Feed({
         clothingItem.clothing_category_id
       )
     );
-  ///////////////////////////////////////////////// ///////////////////////////
 
-  // Function that filters clothingList depending on variables above, and returns
-  // filtered clothingList as output.
   const filteredClothingList = function(clothing, activeCategories, size) {
     let finalFilteredClothingList = null;
     let contentOfStateCategory = Object.entries(activeCategories).length;
@@ -299,14 +225,14 @@ export default function Feed({
         ></img>
       </header>
       <div className="filters_available">
-        <h3>Filter by:</h3>
+        <h2>Filter by:</h2>
         <form className="typeForm">
           <p>Category</p>
           {categoryList(clothingCategories)}
         </form>
 
         <form className="sizeForm">
-          <p>Size</p>
+          <p className="title_size">Size</p>
           <div className="label_container">
             <label>
               <input

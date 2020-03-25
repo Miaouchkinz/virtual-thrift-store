@@ -4,6 +4,18 @@
   margin-left: 50px;
   margin-top: -140px;
   margin-bottom: 40px;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-weight: bold;
+  }
+
+  .title_size {
+    margin-right: 34px;
+  }
 }
 
 a {
@@ -58,17 +70,17 @@ a {
 .typeForm {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  flex-wrap: wrap;
   align-items: center;
-  margin: 10px;
+  margin-left: 10px;
 }
 
 .sizeForm {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  flex-wrap: wrap;
   align-items: center;
-  margin: 10px;
+  margin-left: 10px;
 }
 
 .label_container {
@@ -120,6 +132,7 @@ a {
 
 .size_icon {
   opacity: 100%;
+  padding: 5px;
 }
 
 .hidden_checkbox:checked ~ .size_icon {
