@@ -3,8 +3,6 @@ import Moment from 'react-moment';
 import NewMessageForm from './NewMessageForm';
 
 export default function MessagesArea({conversation: { id, title, messages, user_1, user_2 }, currentUser}) {
-// UseEffect // TO REFACTOR IF TIME
-// get userId from conversations and find user info from /api/users, don't render all userslist in useApplicationData
 
 const orderedMessages = messages => {
   const sortedMessages = messages.sort(
