@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <!-- Load TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <!-- Load Posenet -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
+  </head>
+
+  <body>
+    <style type="text/css">
+      #left_shoulder,
+      #right_shoulder {
+        position: absolute;
+        width: 15vw;
+        background: rgba(1, 200, 200, 0.5);
+      }
+
+      #left_shoulder {
+        left: 0;
+      }
+
+      #right_shoulder {
+        right: 0;
+      }
+    </style>
+    <div id="left_shoulder"></div>
+    <div id="right_shoulder"></div>
+    <div>
+      <canvas onClick="{testFace}" id="test_canvas"></canvas>
+      <img id="cat" src="./images/gollum.png " />
+    </div>
+  </body>
+  <!-- Place your code in the script tag below. You can also use an external .js file -->
+  <script>
+    var flipHorizontal = false;
+
+    var imageElement = document.getElementById("cat");
+
+    posenet
+      .load()
+      .then(function(net) {
+        const pose = net.estimateSinglePose(imageElement, {
+          flipHorizontal: true
+        });
+        return pose;
+      })
+      .then(function(pose) {
+        console.log(pose);
+        document.getElementById(
+          "left_shoulder"
+        ).style.height = `${pose.keypoints[6].position.y}px`;
+        document.getElementById(
+          "right_shoulder"
+        ).style.height = `${pose.keypoints[5].position.y}px`;
+        if (
+          Math.abs(
+            pose.keypoints[6].position.y - pose.keypoints[5].position.y
+          ) /
+            540 >
+          0.1
+        ) {
+          console.log("you are slanted");
+        } else {
+          console.log("GOOD SHOULDERRSSSS");
+        }
+      });
+  </script>
+</html>
