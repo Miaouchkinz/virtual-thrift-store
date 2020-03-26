@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :users, :clothings, :bookmarks, :clothing_categories
 
     #Actioncable chat routing
-    resources :conversations, only: [:index, :create]
+    resources :conversations, only: [:index, :show, :create]
     resources :messages, only: [:create]
     mount ActionCable.server => '/cable'
   end
