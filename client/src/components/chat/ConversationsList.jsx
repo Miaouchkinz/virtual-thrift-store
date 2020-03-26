@@ -4,6 +4,7 @@ import { API_ROOT } from '../../constants';
 
 import NewConversationForm from './NewConversationForm';
 import MessagesArea from './MessageArea';
+import ConvoPreview from './ConvoPreview';
 import Cable from './Cable';
 
 
@@ -58,11 +59,26 @@ export default function ConversationsList(props) {
   };
   
   const mapConversations = (conversations, handleClick) => {
-    return conversations.map(conversation => {
+    // TOFIX: order by newest message sent instead or by convPreview timestamp?
+    const orderedConversations = conversations.sort(
+        (a, b) => new Date(a.created_at) - new Date(b.created_at)
+    );
+
+    const latestMessageTime = orderedConversations.map( (conversation) => {
+      if (conversation.messages.length) {
+        const lastMessage = conversation.messages[conversation.messages.length-1]
+        console.log(lastMessage.created_at)
+        return lastMessage.created_at
+      }
+    });
+
+    return orderedConversations.map((conversation, i) => {
       return (
-        <li key={conversation.id} onClick={() => handleClick(conversation.id)}>
-          {conversation.title}
-        </li>
+        <div className="ind-conv-preview-container">
+          <li key={conversation.id} onClick={() => handleClick(conversation.id)}>
+            <ConvoPreview avatar={conversation.user_2[0].avatar_url} userName={conversation.user_2[0].name} conversation={conversation} latestMessageTime={latestMessageTime[i]}/>
+          </li>
+        </div>
       );
     });
   };
@@ -80,7 +96,6 @@ export default function ConversationsList(props) {
           handleReceivedMessage={handleReceivedMessage}
         />
       )}
-      <h2>Conversations</h2>
       <ul>{conversations && mapConversations(conversations, handleClick)}</ul>
       <NewConversationForm currentUser={props.currentUser}/>
       {conversations && activeConversation && (
