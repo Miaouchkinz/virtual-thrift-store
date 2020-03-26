@@ -68,7 +68,7 @@ export default function Feed({
             />
             <div className="size_icon">
               <img
-                alt="Icon for filtering clothing."
+                alt="Icon for filtering clothing by types."
                 src={
                   "./images/" + iconForCategory(allCategories[category].name)
                 }
@@ -108,7 +108,7 @@ export default function Feed({
     }
   };
 
-  const clothingList = clothing && clothing;
+  const clothingList = clothing;
 
   const clothingFilteredByCategory = clothing.filter(clothingItem =>
     Object.values(activeCategories).includes(clothingItem.clothing_category_id)

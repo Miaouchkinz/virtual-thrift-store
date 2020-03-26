@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Icon from "./common/iconButton";
 
 export default function Cart({ cart, clothing, removeFromCart }) {
-  const itemInCartId = function() {
+  const itemsInCartId = function() {
     let finalIdList = [];
     if (cart) {
       for (let item of cart) {
@@ -15,7 +15,7 @@ export default function Cart({ cart, clothing, removeFromCart }) {
   };
 
   const cartItemList = clothing
-    .filter(item => itemInCartId().includes(item.id))
+    .filter(item => itemsInCartId().includes(item.id))
     .map(clothingItem => (
       <div className="clothingItem_of_cart_container" key={clothingItem.id}>
         <img
@@ -83,7 +83,7 @@ export default function Cart({ cart, clothing, removeFromCart }) {
       </header>
       <div className="content_container">
         <h1>
-          Selected items{" "}
+          Selected items
           <span className="total_item_in_cart">{cart.length}</span>
         </h1>
         <div className="clothingItem_cart_carousel">
