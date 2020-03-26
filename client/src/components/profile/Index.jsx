@@ -69,8 +69,8 @@ export default function Profile(props) {
       </header>
       <main>
         <div className="profile-feed-placeholder">
-          {tab.convos && props.currentUser && <ConversationsList currentUser={props.currentUser}/>}
-          {tab.closet && 
+          {tab === "convos" && props.currentUser && <ConversationsList currentUser={props.currentUser}/>}
+          {tab === "closet" && 
             <Closet
             userId={userId}
             allClothing={allClothing}
