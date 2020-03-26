@@ -1,0 +1,88 @@
+h2 {
+  margin-left: 10px;
+}
+
+.content_container {
+  z-index: 2;
+}
+
+.checkout_main_section h1 {
+  margin-left: 10px;
+}
+
+.checkout_owners_section {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.single_owner_section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #e5e5e5;
+  margin: 10px;
+}
+
+.items_of_owner_section {
+  display: flex;
+  flex-direction: row;
+}
+
+.checkout_footer {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.owner_avatar_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// STYLINGS FOR CONFIRMATION PAGE BELOW
+
+.thank_you_message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 57px;
+  margin-top: 40px;
+  background: rgba(229, 229, 229, 0.5);
+  width: 300px;
+  height: 400px;
+  h1 {
+    margin: 10px;
+  }
+  .earth_icon {
+    width: 150px;
+  }
+}
+
+.owner_avatar_carousel {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  width: 300px;
+  overflow-x: scroll;
+  background-color: #e0bfbf;
+}
+
+.owner_avatar {
+  display: flex;
+  margin: 10px;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+}
+
+.ownerAvatar_image_of_cart_container {
+  display: flex;
+  margin: 10px;
+  margin-top: 28px;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+}

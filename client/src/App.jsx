@@ -1,24 +1,30 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Landing from './components/Landing';
-import Dashboard from './components/Dashboard';
+import Landing from "./components/Landing";
+import Dashboard from "./components/Dashboard";
 import Feed from "./components/Feed";
 import Login from './components/auth/Login';
-import Profile from './components/profile/Index';
-import Cart from "./components/cart-checkout/Cart";
 import Registration from './components/auth/Registration';
 
+import Profile from './components/profile/Index';
+
+import Cart from "./components/cart-checkout/Cart";
+import Checkout from "./components/Checkout";
+import OrderConfirmation from "./components/OrderConfirmation";
 import ConversationsList from './components/chat/ConversationsList';
 
 import useApplicationData from './hooks/useApplicationData';
+
 
 export default function App(props) {
   const {
     state,
     handleSuccessfulAuth,
     handleLogout,
-    setCart
+    addToCart,
+    emptyCart,
+    removeFromCart
   } = useApplicationData();
 
   return (
@@ -58,34 +64,61 @@ export default function App(props) {
               clothing={state.clothing}
               clothingCategories={state.clothingCategories}
               cart={state.cart}
-              setCart={setCart}
+              addToCart={addToCart}
             />
           </Route>
-          <Route 
-            exact 
-            path="/user/profile" 
+          <Route
+            exact
+            path="/user/profile"
             render={props => (
             <Profile
               {...props}
               currentUser={state.currentUser}
               userName={state.currentUser.name}
               avatar={state.currentUser.avatar_url}
+              userId={state.currentUser.id}
               handleLogout={handleLogout}
+              allClothing={state.allClothing}
             />
           )}>
           </Route>
-          <Route exact path={"/cart"}>
-            <Cart clothing={state.clothing} cart={state.cart} />
-          </Route>
-          <Route 
+          <Route exact path={"/conversations"}>
+            {<ConversationsList currentUser={state.currentUser}/>}
+              <Profile
+                {...props}
+                userName={state.currentUser.name}
+                avatar={state.currentUser.avatar_url}
+                handleLogout={handleLogout}
+              />
+            )}
+          ></Route>
+          <Route
             exact
             path={"/dashboard"}
             render={props => (
-              <Dashboard {...props} loggedInStatus={state.loggedInStatus} handleLogout={handleLogout}/>
-            )}>
+              <Dashboard
+                {...props}
+                loggedInStatus={state.loggedInStatus}
+                handleLogout={handleLogout}
+              />
+            )}
+          ></Route>
+          <Route exact path={"/cart"}>
+            <Cart
+              clothing={state.clothing}
+              cart={state.cart}
+              removeFromCart={removeFromCart}
+            />
           </Route>
-          <Route exact path={"/conversations"}>
-            {<ConversationsList currentUser={state.currentUser}/>}
+          <Route exact path={"/checkout"}>
+            <Checkout cart={state.cart} users={state.users} />
+          </Route>
+          <Route exact path={"/confirmation"}>
+            <OrderConfirmation
+              cart={state.cart}
+              users={state.users}
+              emptyCart={emptyCart}
+            />
           </Route>
         </Switch>
       </Router>

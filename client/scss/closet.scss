@@ -1,0 +1,10 @@
+.items_of_closet_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.item_image {
+  width: 300px;
+  padding: 1.5rem;
+}
