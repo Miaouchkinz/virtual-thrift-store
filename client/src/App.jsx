@@ -67,6 +67,7 @@ export default function App(props) {
             render={props => (
             <Profile
               {...props}
+              currentUser={state.currentUser}
               userName={state.currentUser.name}
               avatar={state.currentUser.avatar_url}
               handleLogout={handleLogout}
@@ -84,7 +85,7 @@ export default function App(props) {
             )}>
           </Route>
           <Route exact path={"/conversations"}>
-            <ConversationsList currentUser={state.currentUser} usersList={state.users}/>
+            {<ConversationsList currentUser={state.currentUser}/>}
           </Route>
         </Switch>
       </Router>
