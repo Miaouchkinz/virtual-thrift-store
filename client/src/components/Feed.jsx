@@ -180,12 +180,8 @@ export default function Feed({
             <img
               alt="Add item to cart button."
               id="add_to_cart_button"
-<<<<<<< HEAD
-              src="./images/feed_hanger_logo_full.png"
-              alt="cart button"
-=======
               src="./images/hanger_border_black.png"
->>>>>>> master
+              alt="cart button"
             ></img>
           </div>
         </footer>
@@ -197,15 +193,6 @@ export default function Feed({
     <div className="Feed">
       <header className="feed_header">
         <div className="feed_header_block">
-<<<<<<< HEAD
-          <span className="feed_header_profile_icon">
-            <img
-              id="feed_profile_icon"
-              src="./images/feed_profile_logo.png"
-              alt="profile button"
-            ></img>
-          </span>
-=======
           <Link
             to={{
               pathname: "/user/profile"
@@ -219,7 +206,6 @@ export default function Feed({
               ></img>
             </span>
           </Link>
->>>>>>> master
           <Link
             to={{
               pathname: "/cart"
@@ -229,12 +215,7 @@ export default function Feed({
               <img
                 alt="Go to cart to see all items selected button."
                 id="feed_hanger_icon"
-<<<<<<< HEAD
-                src="./images/feed_hanger_logo.png"
-                alt="hanger button"
-=======
                 src="./images/hanger_full.png"
->>>>>>> master
               ></img>
               {cart.length}
             </span>
