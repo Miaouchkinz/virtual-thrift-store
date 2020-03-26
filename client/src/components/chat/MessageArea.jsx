@@ -1,6 +1,6 @@
-import React from 'react';
-import Moment from 'react-moment';
-import NewMessageForm from './NewMessageForm';
+import React from "react";
+import Moment from "react-moment";
+import NewMessageForm from "./NewMessageForm";
 
 export default function MessagesArea({conversation: { id, title, messages, user_1, user_2 }, currentUser}) {
 
@@ -21,7 +21,12 @@ const orderedMessages = messages => {
           />
           {user.name} said: {message.text}
         </li>
-        <Moment className="message-timestamp" fromNow>{message.created_at}</Moment>
+        <Moment 
+          className="message-timestamp" 
+          fromNow
+        >
+          {message.created_at}
+        </Moment>
       </div>
     );
   });
