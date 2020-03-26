@@ -1,21 +1,16 @@
 import React, { useState } from 'react';
-// import axios from "axios";
 import { API_ROOT, HEADERS } from '../../constants';
 
 
-export default function NewMessageForm({currentUser, conversation_id}) {
+export default function NewMessageForm({currentUser_id, conversation_id}) {
   const [ state, setState] = useState({
     text: '',
     conversation_id: conversation_id,
     user_id: null
   });
 
-  // const componentWillReceiveProps = nextProps => {
-  //   setState({ ...state, conversation_id: nextProps.conversation_id });
-  // };
-
   const handleChange = e => {
-    setState({ ...state, text: e.target.value, user_id: currentUser.id });
+    setState({ ...state, text: e.target.value, user_id: currentUser_id });
   };
 
   const handleSubmit = e => {
