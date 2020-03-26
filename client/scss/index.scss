@@ -1,10 +1,11 @@
-@import "./button";
+@import "./button.scss";
 @import "./text-input.scss";
 @import "./Feed.scss";
 @import "./profile.scss";
 @import "./wave.scss";
 @import "./Cart.scss";
 @import "./Checkout.scss";
+@import "./closet.scss";
 
 body {
   font-family: "Roboto", sans-serif;
@@ -16,7 +17,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 8rem 2rem;
 
   .welcome-message {
     font-size: 1.5rem;
@@ -42,7 +42,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 8rem 2rem;
+    margin: 5rem 2rem;
+    margin-top: 0;
 
     h1 {
       letter-spacing: 8px;
@@ -68,4 +69,36 @@ body {
   height: 8rem;
   background-color: pink;
   border-radius: 100%;
+}
+
+.landing_header_wave_green {
+  position: relative;
+  z-index: -1;
+  width: 31rem;
+}
+
+.landing_footer_wave_green {
+  width: 28rem;
+  position: relative;
+  z-index: -1;
+  bottom: 0;
+  margin-top: 8rem;
+}
+
+.login_header_wave_green {
+  position: relative;
+  z-index: -1;
+  width: 31rem;
+  top: -4rem;
+}
+
+.login_footer_wave_green {
+  width: 28rem;
+  position: relative;
+}
+
+.signup_footer_wave_green {
+  width: 28rem;
+  position: relative;
+  bottom: 4rem;
 }

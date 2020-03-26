@@ -1,32 +1,26 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Feed({ clothing, clothingCategories, cart, setCart }) {
-  //////////////////////////////////////////////
-  //_____________
-  // LOCAL STATES|
-  // ____________|
-
-  //SIZE
+export default function Feed({
+  clothing,
+  clothingCategories,
+  cart,
+  addToCart
+}) {
   const [size, setSize] = useState({
     S: false,
     M: false,
     L: false
   });
 
-  //CATEGORIES
   const [activeCategories, setActiveCategories] = useState([]);
 
-  //ITEM ADDED TO CART COUNT
   const [addToCartCount, setaddToCartCount] = useState([
     {
       totalCount: 0
     }
   ]);
 
-  //////////////////////////////////////////////
-
-  // Check state of categories that has been checked or unchecked in the filter form
   const ifCheckBoxActive = (category, allCategories) => {
     const activeCategoryName = allCategories[category].name;
     if (activeCategories[activeCategoryName]) {
@@ -41,22 +35,46 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     }
   };
 
-  // Creates array of labels for each category from the allCategories object
+  const iconForCategory = categoryName => {
+    let iconFile = null;
+    if (categoryName === "tshirt") {
+      iconFile = "tshirt_icon.png";
+    } else if (categoryName === "sweater") {
+      iconFile = "sweater_icon.png";
+    } else if (categoryName === "dress") {
+      iconFile = "dress_icon.png";
+    } else if (categoryName === "shorts") {
+      iconFile = "shorts_icon.png";
+    } else if (categoryName === "pants") {
+      iconFile = "pants_icon.png";
+    }
+    return iconFile;
+  };
+
   const categoryList = allCategories => {
     let categoriesResult = [];
 
     for (let category in allCategories) {
       categoriesResult.push(
-        <div className="label_container">
+        <div className="label_container" key={allCategories[category].id}>
           <label key={allCategories[category].type}>
             <input
+              className="hidden_checkbox"
               key={allCategories[category].id}
               name={allCategories[category].id}
               type="checkbox"
               checked={activeCategories[name]}
               onChange={() => ifCheckBoxActive(category, allCategories)}
             />
-            {allCategories[category].name}
+            <div className="size_icon">
+              <img
+                alt="Icon for filtering clothing by types."
+                src={
+                  "./images/" + iconForCategory(allCategories[category].name)
+                }
+                width="25px"
+              />
+            </div>
           </label>
         </div>
       );
@@ -64,15 +82,13 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     return categoriesResult;
   };
 
-  // Function that keeps state of if add-to-cart button has been clicked, and set Cart's global state
-  // if button has never been clicked before.
   const addToCartButtonClicked = function(
     clothingId,
     clothingSize,
     clothingCategory,
     clothingUserId,
     clothingImgUrl,
-    addItemToCart
+    addToCart
   ) {
     if (
       addToCartCount[0].totalCount === 0 &&
@@ -82,7 +98,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
         ...addToCartCount,
         { totalCount: 1, [clothingId]: clothingId }
       ]);
-      addItemToCart(
+      addToCart(
         clothingId,
         clothingSize,
         clothingCategory,
@@ -91,23 +107,19 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
       );
     }
   };
-  ///////////////////////////////////////////////// ///////////////////////////
-  // Variable that holds all clothing (where available = true) from backend
-  const clothingList = clothing && clothing;
 
-  // Variable that holds clothingList filtered by category
+  const clothingList = clothing;
+
   const clothingFilteredByCategory = clothing.filter(clothingItem =>
     Object.values(activeCategories).includes(clothingItem.clothing_category_id)
   );
 
-  // Variable that holds clothingList filtered by size
   const clothingFilteredBySize = clothing.filter(
     clothingItem =>
       Object.keys(size).find(sizeKey => size[sizeKey] === true) ===
       clothingItem.size
   );
 
-  // Variable that holds clothingList filtered by category AND size
   const clothingFilteredByAll = clothing
     .filter(
       clothingItem =>
@@ -119,10 +131,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
         clothingItem.clothing_category_id
       )
     );
-  ///////////////////////////////////////////////// ///////////////////////////
 
-  // Function that filters clothingList depending on variables above, and returns
-  // filtered clothingList as output.
   const filteredClothingList = function(clothing, activeCategories, size) {
     let finalFilteredClothingList = null;
     let contentOfStateCategory = Object.entries(activeCategories).length;
@@ -141,7 +150,9 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
     }
     return finalFilteredClothingList.map(clothingItem => (
       <div className="clothingItem_of_grid_container" key={clothingItem.id}>
-        <header className="clothingItem_size">{clothingItem.size}</header>
+        <header>
+          <div className="clothingItem_size">{clothingItem.size}</div>
+        </header>
         <img
           className="clothingItem_image_of_grid_container"
           src={clothingItem.image_url}
@@ -155,7 +166,6 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
         ></img>
         <footer>
           <div
-            className="add_to_cart_button"
             onClick={() =>
               addToCartButtonClicked(
                 clothingItem.id,
@@ -163,14 +173,14 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
                 clothingItem.clothing_category_id,
                 clothingItem.user_id,
                 clothingItem.image_url,
-                setCart
+                addToCart
               )
             }
           >
             <img
               alt="Add item to cart button."
               id="add_to_cart_button"
-              src="./images/add_hanger_icon_full.png"
+              src="./images/hanger_border_black.png"
             ></img>
           </div>
         </footer>
@@ -191,7 +201,7 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
               <img
                 alt="Go to profile page button"
                 id="feed_profile_icon"
-                src="./images/profile_icon_full.png"
+                src="./images/profile_avatar_full.png"
               ></img>
             </span>
           </Link>
@@ -204,53 +214,80 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
               <img
                 alt="Go to cart to see all items selected button."
                 id="feed_hanger_icon"
-                src="./images/hanger_icon_full.png"
+                src="./images/hanger_full.png"
               ></img>
               {cart.length}
             </span>
           </Link>
         </div>
+        <img
+          alt="Top wave decoration."
+          className="header_wave_green"
+          src="./images/final_project_header_wave_2.png"
+        ></img>
       </header>
       <div className="filters_available">
-        <h3>Filter by:</h3>
+        <h2>Filter by:</h2>
         <form className="typeForm">
           <p>Category</p>
           {categoryList(clothingCategories)}
         </form>
 
         <form className="sizeForm">
-          <p>Size</p>
+          <p className="title_size">Size</p>
           <div className="label_container">
             <label>
               <input
+                className="hidden_checkbox"
                 name="isSmall"
                 type="checkbox"
                 checked={size["S"]}
                 onChange={() => setSize({ ...size, S: !size["S"] })}
               />
-              S
+              <div className="size_icon">
+                <img
+                  alt="Checkbox for size Small"
+                  src="./images/small_size_icon.png"
+                  width="25px"
+                ></img>
+              </div>
             </label>
           </div>
           <div className="label_container">
             <label>
               <input
+                className="hidden_checkbox"
                 name="isMedium"
                 type="checkbox"
                 checked={size["M"]}
                 onChange={() => setSize({ ...size, M: !size["M"] })}
               />
-              M
+              <div className="size_icon">
+                <img
+                  alt="Checkbox for size Medium"
+                  src="./images/medium_size_icon.png"
+                  width="25px"
+                ></img>
+              </div>
             </label>
           </div>
           <div className="label_container">
             <label>
               <input
+                id="toggle"
+                className="hidden_checkbox"
                 name="isLarge"
                 type="checkbox"
                 checked={size["L"]}
                 onChange={() => setSize({ ...size, L: !size["L"] })}
               />
-              L
+              <div className="size_icon">
+                <img
+                  alt="Checkbox for size Large"
+                  src="./images/large_size_icon.png"
+                  width="25px"
+                ></img>
+              </div>
             </label>
           </div>
         </form>
@@ -258,6 +295,13 @@ export default function Feed({ clothing, clothingCategories, cart, setCart }) {
       <div className="availables_grid_container">
         {filteredClothingList(clothing, activeCategories, size)}
       </div>
+      <footer className="orange_footer">
+        <img
+          className="orange_footer_wave"
+          alt="Wave decoration"
+          src="./images/footer_orange_resized.png"
+        ></img>
+      </footer>
     </div>
   );
 }

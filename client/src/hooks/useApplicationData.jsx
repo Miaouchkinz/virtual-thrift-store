@@ -4,7 +4,10 @@ import dataReducer, {
   SET_AVAILABLE_CLOTHING,
   SET_CLOTHING_CATEGORIES,
   SET_CURRENT_USER,
-  SET_CART
+  ADD_TO_CART,
+  SET_CLOTHING,
+  EMPTY_CART,
+  REMOVE_FROM_CART
 } from "../reducers/dataReducer";
 import axios from "axios";
 
@@ -44,11 +47,26 @@ const useApplicationData = () => {
     history.push("/feed");
   };
 
-  const setCart = (id, size, categoryId, userId, imgUrl) => {
+  const addToCart = (id, size, categoryId, userId, imgUrl) => {
     dispatch({
       ...state,
-      type: SET_CART,
+      type: ADD_TO_CART,
       value: { id, size, categoryId, userId, imgUrl }
+    });
+  };
+
+  const emptyCart = () => {
+    dispatch({
+      type: EMPTY_CART
+    });
+  };
+
+  const removeFromCart = (cart, itemId) => {
+    cart = cart.filter(item => item.id !== itemId);
+    dispatch({
+      ...state,
+      type: REMOVE_FROM_CART,
+      value: { cart }
     });
   };
 
@@ -56,8 +74,8 @@ const useApplicationData = () => {
     Promise.all([
       axios.get("/api/users"),
       axios.get("/logged_in", { withCredentials: true }),
-      axios.get("/api/clothings"),
       axios.get("/api/clothing_categories"),
+      axios.get("/api/clothings"),
       axios.get("/api/clothings/available_for_exchange")
     ])
       .then(all => {
@@ -88,7 +106,11 @@ const useApplicationData = () => {
 
         dispatch({
           type: SET_CLOTHING_CATEGORIES,
-          clothingCategories: all[3].data
+          clothingCategories: all[2].data
+        });
+        dispatch({
+          type: SET_CLOTHING,
+          allClothing: all[3].data
         });
         dispatch({ type: SET_AVAILABLE_CLOTHING, clothing: all[4].data });
       })
@@ -99,7 +121,9 @@ const useApplicationData = () => {
     state,
     handleLogout,
     handleSuccessfulAuth,
-    setCart
+    addToCart,
+    emptyCart,
+    removeFromCart
   };
 };
 

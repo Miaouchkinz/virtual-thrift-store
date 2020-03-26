@@ -1,3 +1,11 @@
+h2 {
+  margin-left: 10px;
+}
+
+.content_container {
+  z-index: 2;
+}
+
 .checkout_main_section h1 {
   margin-left: 10px;
 }
@@ -29,7 +37,7 @@
 
 .owner_avatar_container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -41,7 +49,7 @@
   align-items: center;
   justify-content: center;
   margin-left: 57px;
-  margin-top: 90px;
+  margin-top: 40px;
   background: rgba(229, 229, 229, 0.5);
   width: 300px;
   height: 400px;

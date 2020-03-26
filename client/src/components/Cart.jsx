@@ -2,17 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Icon from "./common/iconButton";
 
-export default function Cart({ cart, clothing }) {
-  const itemInCartId = function() {
+export default function Cart({ cart, clothing, removeFromCart }) {
+  const itemsInCartId = function() {
     let finalIdList = [];
-    for (let item of cart) {
-      finalIdList.push(item.id);
+    if (cart) {
+      for (let item of cart) {
+        finalIdList.push(item.id);
+      }
     }
+
     return finalIdList;
   };
 
   const cartItemList = clothing
-    .filter(item => itemInCartId().includes(item.id))
+    .filter(item => itemsInCartId().includes(item.id))
     .map(clothingItem => (
       <div className="clothingItem_of_cart_container" key={clothingItem.id}>
         <img
@@ -26,7 +29,14 @@ export default function Cart({ cart, clothing }) {
           }
           id={clothingItem.size}
         ></img>
-        <footer></footer>
+        <div>
+          <img
+            alt="Remove item from cart button."
+            onClick={() => removeFromCart(cart, clothingItem.id)}
+            src="./images/remove_item_from_cart.png"
+            width="40px"
+          ></img>
+        </div>
       </div>
     ));
 
@@ -60,21 +70,36 @@ export default function Cart({ cart, clothing }) {
               <img
                 alt="Go to profile page button."
                 id="feed_profile_icon"
-                src="./images/checkout_icon_full.png"
+                src="./images/checkout_full.png"
               ></img>
             </span>
           </Link>
         </div>
+        <img
+          alt="Top wave decoration."
+          className="header_wave_green"
+          src="./images/final_project_header_wave_2.png"
+        ></img>
       </header>
-      <h1>
-        Selected items <span className="total_item_in_cart">{cart.length}</span>
-      </h1>
-      <div className="clothingItem_cart_carousel">
-        {checkIfCartEmpty(cartItemList)}
+      <div className="content_container">
+        <h1>
+          Selected items
+          <span className="total_item_in_cart">{cart.length}</span>
+        </h1>
+        <div className="clothingItem_cart_carousel">
+          {checkIfCartEmpty(cartItemList)}
+        </div>
+        <div>
+          <h1>Future machine learning cool stuff here</h1>
+        </div>
       </div>
-      <div>
-        <h1>Future machine learning cool stuff here</h1>
-      </div>
+      <footer className="orange_footer_cart">
+        <img
+          className="orange_footer_wave_cart"
+          alt="Wave decoration"
+          src="./images/footer_orange_resized.png"
+        ></img>
+      </footer>
     </div>
   );
 }

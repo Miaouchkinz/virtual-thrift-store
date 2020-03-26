@@ -9,7 +9,6 @@ import Profile from "./components/Profile";
 import Cart from "./components/Cart";
 import Registration from "./components/auth/Registration";
 import Checkout from "./components/Checkout";
-
 import useApplicationData from "./hooks/useApplicationData";
 import OrderConfirmation from "./components/OrderConfirmation";
 
@@ -18,7 +17,9 @@ export default function App(props) {
     state,
     handleSuccessfulAuth,
     handleLogout,
-    setCart
+    addToCart,
+    emptyCart,
+    removeFromCart
   } = useApplicationData();
 
   return (
@@ -58,7 +59,7 @@ export default function App(props) {
               clothing={state.clothing}
               clothingCategories={state.clothingCategories}
               cart={state.cart}
-              setCart={setCart}
+              addToCart={addToCart}
             />
           </Route>
           <Route
@@ -70,6 +71,8 @@ export default function App(props) {
                 userName={state.currentUser.name}
                 avatar={state.currentUser.avatar_url}
                 handleLogout={handleLogout}
+                userId={state.currentUser.id}
+                allClothing={state.allClothing}
               />
             )}
           ></Route>
@@ -85,13 +88,21 @@ export default function App(props) {
             )}
           ></Route>
           <Route exact path={"/cart"}>
-            <Cart clothing={state.clothing} cart={state.cart} />
+            <Cart
+              clothing={state.clothing}
+              cart={state.cart}
+              removeFromCart={removeFromCart}
+            />
           </Route>
           <Route exact path={"/checkout"}>
             <Checkout cart={state.cart} users={state.users} />
           </Route>
           <Route exact path={"/confirmation"}>
-            <OrderConfirmation cart={state.cart} users={state.users} />
+            <OrderConfirmation
+              cart={state.cart}
+              users={state.users}
+              emptyCart={emptyCart}
+            />
           </Route>
         </Switch>
       </Router>
