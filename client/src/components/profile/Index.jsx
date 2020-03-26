@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from '../common/textButton';
 import Icon from '../common/iconButton';
 import axios from 'axios';
+import ConversationsList from "../chat/ConversationsList";
 
 export default function Profile(props) {
   const {
@@ -49,6 +50,7 @@ export default function Profile(props) {
       </header>
       <main>
         <div className="profile-feed-placeholder"></div>
+        {tab.convos && props.currentUser && <ConversationsList currentUser={props.currentUser}/>}
       </main>
     </div>
   );
