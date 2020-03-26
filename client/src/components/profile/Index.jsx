@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Button from "./common/textButton";
-import Icon from "./common/iconButton";
+import Button from "../common/textButton";
+import Icon from "../common/iconButton";
 import Closet from "./Closet";
 import ConversationsList from "../chat/ConversationsList";
 

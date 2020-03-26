@@ -10,8 +10,8 @@ import Registration from './components/auth/Registration';
 import Profile from './components/profile/Index';
 
 import Cart from "./components/cart-checkout/Cart";
-import Checkout from "./components/Checkout";
-import OrderConfirmation from "./components/OrderConfirmation";
+import Checkout from "./components/cart-checkout/Checkout";
+import OrderConfirmation from "./components/cart-checkout/OrderConfirmation";
 import ConversationsList from './components/chat/ConversationsList';
 
 import useApplicationData from './hooks/useApplicationData';

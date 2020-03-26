@@ -181,7 +181,6 @@ export default function Feed({
               alt="Add item to cart button."
               id="add_to_cart_button"
               src="./images/hanger_border_black.png"
-              alt="cart button"
             ></img>
           </div>
         </footer>

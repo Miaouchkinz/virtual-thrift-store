@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Icon from "./common/iconButton";
+import Icon from "../common/iconButton";
 
 export default function Cart({ cart, clothing, removeFromCart }) {
   const itemsInCartId = function() {

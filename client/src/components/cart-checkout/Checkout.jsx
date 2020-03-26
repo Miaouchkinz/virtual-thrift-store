@@ -1,6 +1,6 @@
 import React from "react";
-import Icon from "./common/iconButton";
-import Button from "./common/textButton";
+import Icon from "../common/iconButton";
+import Button from "../common/textButton";
 import { Link } from "react-router-dom";
 
 export default function Checkout({ cart, users }) {
