@@ -3,7 +3,28 @@ class Api::ConversationsController < ApplicationController
   # conversations and their messages.
   def index
     conversations = Conversation.all
+
     render json: conversations
+  end
+
+  # Get the current user's conversations
+  def show
+    conversations = Conversation.where(user_1: params[:id])
+
+    structured_conversations = []
+    conversations.each do | conversation |
+      full_convo = {
+          id: conversation.id,
+          title: conversation.title,
+          created_at: conversation.created_at,
+          user_1: User.select(:id, :name, :avatar_url).where({id: conversation.user_1_id}),
+          user_2: User.select(:id, :name, :avatar_url).where({id: conversation.user_2_id}),
+          messages: conversation.messages
+      }
+      structured_conversations.push(full_convo);
+    end
+    
+    render json: structured_conversations
   end
 
   # Used for saving received data and broadcasting that data to the appropriate channels.
@@ -11,9 +32,6 @@ class Api::ConversationsController < ApplicationController
     conversation = Conversation.new(conversation_params)
 
     if conversation.save
-      puts "////////////"
-      puts conversation
-      puts "////////////"
       serialized_data = ActiveModelSerializers::Adapter::Json.new(
         ConversationSerializer.new(conversation)
       ).serializable_hash
@@ -29,6 +47,6 @@ class Api::ConversationsController < ApplicationController
   private
   
   def conversation_params
-    params.require(:conversation).permit(:title, :user_1_id, :user_2_id)
+    params.require(:conversation).permit(:id, :title, :user_1_id, :user_2_id)
   end
 end
