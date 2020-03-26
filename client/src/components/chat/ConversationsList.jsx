@@ -1,6 +1,4 @@
-import React from "react";
-// import axios from "axios";
-
+import React, {useEffect, useState} from "react";
 import { ActionCable } from 'react-actioncable-provider';
 import { API_ROOT } from '../../constants';
 
@@ -9,89 +7,91 @@ import MessagesArea from './MessageArea';
 import Cable from './Cable';
 
 
-class ConversationsList extends React.Component {
-  state = {
+export default function ConversationsList(props) {
+
+  const [localState, setLocalState] = useState({
     conversations: [],
-    activeConversation: null
+    activeConversation: null    
+  })
+  const { conversations, activeConversation } = localState;
+  
+  useEffect(() => {
+    if (props.currentUser.id) {
+      fetch(`${API_ROOT}/conversations/${props.currentUser.id}`)
+        .then(res => res.json())
+        .then(conversations => setLocalState({ ...localState, conversations }));
+    }
+
+  }, [props.currentUser])
+
+  const handleClick = id => {
+    setLocalState({ ...localState, activeConversation: id });
   };
 
-  componentDidMount = () => {
-    fetch(`${API_ROOT}/conversations`)
-      .then(res => res.json())
-      .then(conversations => this.setState({ conversations }));
-  };
-
-  handleClick = id => {
-    this.setState({ activeConversation: id });
-  };
-
-  handleReceivedConversation = response => {
+  const handleReceivedConversation = response => {
     const { conversation } = response;
-    this.setState({
-      conversations: [...this.state.conversations, conversation]
+    setLocalState(prev => {
+      return {
+      ...localState,
+      conversations: [...prev.conversations, conversation]
+    }
+    }
+    );
+  };
+
+  const handleReceivedMessage = response => {
+    const { message } = response;
+    const tempConversation = [...conversations]
+
+    for(const conversation of tempConversation){
+      if(conversation.id === message.conversation_id){
+        conversation.messages.push(message)
+      }
+    }
+    setLocalState(prev => ({ ...prev, conversations: tempConversation }));
+  };
+
+  const findActiveConversation = (conversations, activeConversation) => {
+    return conversations.find(
+      conversation => conversation.id === activeConversation
+    );
+  };
+  
+  const mapConversations = (conversations, handleClick) => {
+    return conversations.map(conversation => {
+      return (
+        <li key={conversation.id} onClick={() => handleClick(conversation.id)}>
+          {conversation.title}
+        </li>
+      );
     });
   };
+ 
 
-  handleReceivedMessage = response => {
-    const { message } = response;
-    const conversations = [...this.state.conversations];
-    const conversation = conversations.find(
-      conversation => conversation.id === message.conversation_id
-    );
-    conversation.messages = [...conversation.messages, message];
-    this.setState({ conversations });
-  };
-
-  render = () => {
-    const { conversations, activeConversation } = this.state;
-
-    return (
-      <div className="conversationsList">
-        <ActionCable
-          channel={{ channel: 'ConversationsChannel' }}
-          onReceived={this.handleReceivedConversation}
+  return (
+    <div className="conversationsList">
+      <ActionCable
+        channel={{ channel: 'ConversationsChannel' }}
+        onReceived={handleReceivedConversation}
+      />
+      {conversations && conversations.length && (
+        <Cable
+          conversations={conversations}
+          handleReceivedMessage={handleReceivedMessage}
         />
-        {this.state.conversations.length ? (
-          <Cable
-            conversations={conversations}
-            handleReceivedMessage={this.handleReceivedMessage}
-          />
-        ) : null}
-        <h2>Conversations</h2>
-        <ul>{mapConversations(conversations, this.handleClick)}</ul>
-        <NewConversationForm currentUser={this.props.currentUser}/>
-        {activeConversation ? (
-          <MessagesArea
-            usersList={this.props.usersList}
-            currentUser={this.props.currentUser}
-            conversation={findActiveConversation(
-              conversations,
-              activeConversation
-            )}
-          />
-        ) : null}
-      </div>
-    );
-  };
-}
-
-export default ConversationsList;
-
-// helpers
-
-const findActiveConversation = (conversations, activeConversation) => {
-  return conversations.find(
-    conversation => conversation.id === activeConversation
+      )}
+      <h2>Conversations</h2>
+      <ul>{conversations && mapConversations(conversations, handleClick)}</ul>
+      <NewConversationForm currentUser={props.currentUser}/>
+      {conversations && activeConversation && (
+        <MessagesArea
+          currentUser={props.currentUser}
+          conversation={findActiveConversation(
+            conversations,
+            activeConversation
+          )}
+        />
+      )}
+    </div>
   );
-};
-
-const mapConversations = (conversations, handleClick) => {
-  return conversations.map(conversation => {
-    return (
-      <li key={conversation.id} onClick={() => handleClick(conversation.id)}>
-        {conversation.title}
-      </li>
-    );
-  });
-};
-
+}
