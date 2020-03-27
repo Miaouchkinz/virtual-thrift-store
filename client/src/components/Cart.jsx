@@ -6,7 +6,8 @@ import DressingRoom from "./DressingRoom";
 export default function Cart({ cart, clothing, removeFromCart }) {
   const [selectedItemForTrying, setSelectedItemForTrying] = useState([
     {
-      selectedItemId: null
+      selectedItemId: null,
+      selectedItemUrl: null
     }
   ]);
 
@@ -28,7 +29,8 @@ export default function Cart({ cart, clothing, removeFromCart }) {
         <img
           onClick={() =>
             setSelectedItemForTrying({
-              selectedItemId: clothingItem.id
+              selectedItemId: clothingItem.id,
+              selectedItemUrl: clothingItem.image_url
             })
           }
           className="clothingItem_image_of_cart_container"
