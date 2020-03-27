@@ -60,21 +60,20 @@ export default function App(props) {
               />
             )}
           ></Route>
-          <Route exact path="/feed">
+          {state.clothing && <Route exact path="/feed">
             <Feed
               clothing={state.clothing}
               clothingCategories={state.clothingCategories}
               cart={state.cart}
               addToCart={addToCart}
             />
-          </Route>
-          <Route
+          </Route>}
+          {state.currentUser && <Route
             exact
             path="/user/profile"
             render={props => (
             <Profile
               {...props}
-              currentUser={state.currentUser}
               userName={state.currentUser.name}
               avatar={state.currentUser.avatar_url}
               userId={state.currentUser.id}
@@ -83,7 +82,7 @@ export default function App(props) {
               conversations={state.conversations}
             />
           )}>
-          </Route>
+          </Route>}
           {state.conversations && <Route
             exact
             path={"/chat"}>
