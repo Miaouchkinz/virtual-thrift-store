@@ -12,7 +12,8 @@ import Profile from './components/profile/Index';
 import Cart from "./components/cart-checkout/Cart";
 import Checkout from "./components/cart-checkout/Checkout";
 import OrderConfirmation from "./components/cart-checkout/OrderConfirmation";
-import ConversationsList from './components/chat/ConversationsList';
+
+import ChatWindow from "./components/chat/ChatWindow";
 
 import useApplicationData from './hooks/useApplicationData';
 
@@ -79,19 +80,15 @@ export default function App(props) {
               userId={state.currentUser.id}
               handleLogout={handleLogout}
               allClothing={state.allClothing}
+              conversations={state.conversations}
             />
           )}>
           </Route>
-          <Route exact path={"/conversations"}>
-            {<ConversationsList currentUser={state.currentUser}/>}
-              <Profile
-                {...props}
-                userName={state.currentUser.name}
-                avatar={state.currentUser.avatar_url}
-                handleLogout={handleLogout}
-              />
-            )}
-          ></Route>
+          {state.conversations && <Route
+            exact
+            path={"/chat"}>
+            <ChatWindow currentUser={state.currentUser} conversations={state.conversations}/>
+          </Route>}
           <Route
             exact
             path={"/dashboard"}
@@ -111,7 +108,7 @@ export default function App(props) {
             />
           </Route>
           <Route exact path={"/checkout"}>
-            <Checkout cart={state.cart} users={state.users} />
+            <Checkout cart={state.cart} users={state.users} currentUser={state.currentUser} />
           </Route>
           <Route exact path={"/confirmation"}>
             <OrderConfirmation
