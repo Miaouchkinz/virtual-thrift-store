@@ -12,7 +12,8 @@ export default function Profile(props) {
     avatar,
     handleLogout,
     userId,
-    allClothing
+    allClothing,
+    conversations
   } = props;
 
   // tabs: closet, convos, camera
@@ -69,7 +70,7 @@ export default function Profile(props) {
       </header>
       <main>
         <div className="profile-feed-placeholder">
-          {tab === "convos" && props.currentUser && <ConversationsList currentUser={props.currentUser}/>}
+          {tab === "convos" && conversations && <ConversationsList conversations={conversations}/>}
           {tab === "closet" && 
             <Closet
             userId={userId}
