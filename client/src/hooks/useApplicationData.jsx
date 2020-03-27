@@ -1,15 +1,17 @@
 import { useEffect, useReducer } from "react";
 import dataReducer, {
   SET_USERS,
+  SET_CURRENT_USER,
+  SET_CLOTHING,
   SET_AVAILABLE_CLOTHING,
   SET_CLOTHING_CATEGORIES,
-  SET_CURRENT_USER,
   ADD_TO_CART,
-  SET_CLOTHING,
   EMPTY_CART,
-  REMOVE_FROM_CART
+  REMOVE_FROM_CART,
+  SET_USER_CONVERSATIONS
 } from "../reducers/dataReducer";
 import axios from "axios";
+import { API_ROOT } from '../constants';
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(dataReducer, {
@@ -19,6 +21,7 @@ const useApplicationData = () => {
     loading: true,
     currentUser: {},
     loggedInStatus: "NOT_LOGGED_IN",
+    convesations: [],
     cart: []
   });
 
@@ -46,6 +49,21 @@ const useApplicationData = () => {
     handleLogin(data);
     history.push("/feed");
   };
+
+  useEffect(() => {
+    if (state.currentUser.id) {
+      fetch(`${API_ROOT}/conversations/${state.currentUser.id}`)
+        .then(res => res.json())
+        .then(conversations => {
+          console.log(conversations)
+          dispatch({
+            type: SET_USER_CONVERSATIONS,
+            conversations
+          })
+        })
+        .catch(error => console.log(error))
+      };
+  }, [state.currentUser]); // TOFIX: Once send auto convo is fixed, change it to track [state.conversations]
 
   const addToCart = (id, size, categoryId, userId, imgUrl) => {
     dispatch({
@@ -103,15 +121,17 @@ const useApplicationData = () => {
             }
           });
         }
-
+        // Gets all clothing categories
         dispatch({
           type: SET_CLOTHING_CATEGORIES,
           clothingCategories: all[2].data
         });
+        // Gets all clothes
         dispatch({
           type: SET_CLOTHING,
           allClothing: all[3].data
         });
+        // Gets all clothes that are set to available_for_exchange
         dispatch({ type: SET_AVAILABLE_CLOTHING, clothing: all[4].data });
       })
       .catch(err => console.log(err));
