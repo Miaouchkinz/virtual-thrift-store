@@ -1,63 +1,102 @@
 import React, { useState } from "react";
-import posenet from "@tensorflow-models/posenet";
+import * as posenet from "@tensorflow-models/posenet";
 
 export default function DressingRoom({ selectedItemForTrying }) {
-  // const net = await posenet.load();
+  const [width, setWidth] = useState("");
+  const [left, setLeft] = useState("");
+  const [top, setTop] = useState("");
 
-  var imageElement = document.getElementById("person_standing");
-  posenet
-    .load()
-    .then(function(net) {
-      const pose = net.estimateSinglePose(imageElement, {
-        flipHorizontal: false
-      });
-      return pose;
-    })
-    .then(function(pose) {
-      console.log(pose);
-      // person's shoulder position
-      const leftShoulder = pose.keypoints[6].position.x;
-      const rightShoulder = pose.keypoints[5].position.x;
+  let imageElement = React.createRef();
+  let selectedShirt = React.createRef();
+  const checkLimage = () => {
+    if (selectedItemForTrying.selectedItemUrl !== null) {
+      posenet
+        .load()
+        .then(function(net) {
+          const pose = net.estimateSinglePose(imageElement.current, {
+            flipHorizontal: false
+          });
+          return pose;
+        })
+        .then(function(pose) {
+          console.log(pose);
 
-      // clothing img
-      const selectedShirt = selectedItemForTrying.selectedItemUrl;
+          const leftShoulder = pose.keypoints[6].position.x;
+          const rightShoulder = pose.keypoints[5].position.x;
 
-      // these values will be saved into the database after we manually find the positions
-      // 1. Find shoulder position on x,y axis on CodePen using CSS top/right/left classes
-      // 2. Find width and height of image (https://www.w3schools.com/jsref/prop_img_width.asp)
-      // 3. Divide xPosition/width to find % point for left/right offset
-      // 4. Divide yPosition/width to find % point for topoffset (in this case just one because we only accounted for a straight image )
-      const leftOffsetPercent = 0.21; // `left` CSS value / img.width
-      const rightOffsetPercent = 0.275; // (img.width - `right` CSS value) / img.width
+          const leftOffsetPercent = 0.21;
+          const rightOffsetPercent = 0.275;
 
-      // offset = how much distance between shirt's img edge and shirt shoulder
-      const leftOffset = selectedShirt.width * leftOffsetPercent;
-      const rightOffset = selectedShirt.width * rightOffsetPercent;
-      const topOffset = selectedShirt.height * 0.37;
+          const leftOffset = selectedShirt.current.width * leftOffsetPercent;
+          const rightOffset = selectedShirt.current.width * rightOffsetPercent;
+          const topOffset = selectedShirt.current.height * 0.37;
 
-      // apply offsets to set the shirt's img width
-      const leftPos = leftShoulder - leftOffset;
-      const rightPos = rightShoulder + rightOffset;
-      const width = rightPos - leftPos;
+          const leftPos = leftShoulder - leftOffset;
+          const rightPos = rightShoulder + rightOffset;
+          const width = rightPos - leftPos;
 
-      // person's shoulder position on y axis
-      const topLeftOfShoulder = pose.keypoints[6].position.y;
-      const topRightOfShoulder = pose.keypoints[5].position.y;
+          const topLeftOfShoulder = pose.keypoints[6].position.y;
+          const topRightOfShoulder = pose.keypoints[5].position.y;
 
-      // average distance from top of img to shoulders
-      const topDistance =
-        (topLeftOfShoulder + topRightOfShoulder) / 2 - topOffset;
+          const topDistance =
+            (topLeftOfShoulder + topRightOfShoulder) / 2 - topOffset;
 
-      // set styling for shirt image to position the x, y axis and width
-      selectedShirt.style.left = `${leftPos}px`;
-      selectedShirt.style.width = `${width}px`;
-      selectedShirt.style.top = `${topDistance}px`;
-    });
+          setWidth(`${width}px`);
+          setLeft(`${leftPos}px`);
+          setTop(`${topDistance}px`);
+        });
+    }
+  };
 
   return (
     <div className="images">
-      <img src={selectedItemForTrying.selectedItemUrl} />
-      <img id="person_standing" src="./images/person_1.jpg" />
+      <img
+        ref={selectedShirt}
+        className="trying_item"
+        position="absolute"
+        src={selectedItemForTrying.selectedItemUrl}
+        width={width}
+        style={{ left: left, top: top }}
+      />
+      <img
+        ref={imageElement}
+        id="person_standing"
+        src="./images/person_1.jpg"
+      />
+      <button onClick={checkLimage}> TRY ME </button>
     </div>
   );
 }
+
+// const getImage = elem => {
+//   let imageElement = elem;
+//   return imageElement;
+// };
+
+// const pose = estimatePoseOnImage(imageElement.current);
+
+// const checkLimage = () => {
+//   posenet.load().then(function(net) {
+//     const pose = estimatePoseOnImage(imageElement.current, {
+//       flipHorizontal: false
+//     });
+//     pose.then(res => res);
+//     console.log(pose);
+//     return pose;
+//   });
+
+//   // pose.then(res => console.log(res));
+// };
+
+// let imgElement = imageElement.current;
+// posenet
+//   .load()
+//   .then(function(net) {
+//     const pose = net.estimateSinglePose(imgElement, {
+//       flipHorizontal: false
+//     });
+//     return pose;
+//   })
+//   .then(function(pose) {
+//     console.log(pose);
+//   });

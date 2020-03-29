@@ -4,12 +4,10 @@ import Icon from "./common/iconButton";
 import DressingRoom from "./DressingRoom";
 
 export default function Cart({ cart, clothing, removeFromCart }) {
-  const [selectedItemForTrying, setSelectedItemForTrying] = useState([
-    {
-      selectedItemId: null,
-      selectedItemUrl: null
-    }
-  ]);
+  const [selectedItemForTrying, setSelectedItemForTrying] = useState({
+    selectedItemId: null,
+    selectedItemUrl: null
+  });
 
   const itemsInCartId = function() {
     let finalIdList = [];
