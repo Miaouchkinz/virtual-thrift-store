@@ -4,7 +4,7 @@ import Icon from "../common/iconButton";
 import DressingRoom from "./DressingRoom";
 
 export default function Cart({ cart, availableClothing, removeFromCart }) {
-  const [selectedItemForTrying, setSelectedItemForTrying] = useState([
+  const [itemData, setItemData] = useState([
     {
       itemId: null,
       itemUrl: null,
@@ -31,7 +31,7 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
       <div className="clothingItem_of_cart_container" key={clothingItem.id}>
         <img
           onClick={() =>
-            setSelectedItemForTrying({
+            setItemData({
               itemId: clothingItem.id,
               itemUrl: clothingItem.image_url,
               itemLeft: clothingItem.left_offset_percent,
@@ -114,7 +114,7 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
         </div>
       </div>
       <div className="dressing_room_container">
-        <DressingRoom selectedItemForTrying={selectedItemForTrying} />
+        <DressingRoom itemData={itemData} />
       </div>
       <footer className="orange_footer_cart">
         <img
