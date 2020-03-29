@@ -12,7 +12,9 @@ export default function Landing({ history }) {
         ></img>
       </header>
 
-      <div className="logo-placeholder"></div>
+      <div className="logo-placeholder">
+        <img src="./images/eclo_main_logo.png" width="250px" />
+      </div>
       <h1 className="welcome-message">Welcome to TraderJane's</h1>
       <Button
         onClick={() => history.push("/login")}

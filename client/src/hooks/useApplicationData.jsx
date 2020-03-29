@@ -13,7 +13,7 @@ import dataReducer, {
   ADD_MSG_TO_CONVERSATION
 } from "../reducers/dataReducer";
 import axios from "axios";
-import { API_ROOT, HEADERS } from '../constants';
+import { API_ROOT, HEADERS } from "../constants";
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(dataReducer, {
@@ -61,15 +61,15 @@ const useApplicationData = () => {
           dispatch({
             type: SET_USER_CONVERSATIONS,
             conversations
-          })
+          });
         })
-        .catch(error => console.log(error))
-      };
+        .catch(error => console.log(error));
+    }
   }, [state.currentUser]);
 
-  const addNewConversation = (user_2_id) => {
+  const addNewConversation = user_2_id => {
     fetch(`${API_ROOT}/conversations`, {
-      method: 'POST',
+      method: "POST",
       headers: HEADERS,
       body: JSON.stringify({
         title: `${state.currentUser.name} is interested in some items you have to offer. Please let them know if you are still open for an exchange! :)`,
@@ -77,11 +77,11 @@ const useApplicationData = () => {
         user_2_id
       })
     }).catch(error => console.log(error));
-  }
+  };
 
-  const addNewMessageToConversation = ({text, conversation_id, user_id}) => {
+  const addNewMessageToConversation = ({ text, conversation_id, user_id }) => {
     fetch(`${API_ROOT}/messages`, {
-      method: 'POST',
+      method: "POST",
       headers: HEADERS,
       body: JSON.stringify({
         text,
@@ -89,27 +89,45 @@ const useApplicationData = () => {
         user_id
       })
     }).catch(error => console.log(error));
-  }
+  };
 
   const handleReceivedMessage = res => {
     dispatch({
       type: ADD_MSG_TO_CONVERSATION,
       message: res
     });
-  }
+  };
 
   const handleReceivedConversation = res => {
     dispatch({
       type: ADD_NEW_CONVERSATION,
       conversation: res
-    })
-  }
+    });
+  };
 
-  const addToCart = (id, size, categoryId, userId, imgUrl) => {
+  const addToCart = (
+    id,
+    size,
+    categoryId,
+    userId,
+    imgUrl,
+    leftOffset,
+    rightOffset,
+    topOffset
+  ) => {
     dispatch({
       ...state,
       type: ADD_TO_CART,
-      value: { id, size, categoryId, userId, imgUrl }
+      value: {
+        id,
+        size,
+        categoryId,
+        userId,
+        imgUrl,
+        leftOffset,
+        rightOffset,
+        topOffset
+      }
     });
   };
 
@@ -172,7 +190,10 @@ const useApplicationData = () => {
           allClothing: all[3].data
         });
         // Gets all clothes that are set to available_for_exchange
-        dispatch({ type: SET_AVAILABLE_CLOTHING, availableClothing: all[4].data });
+        dispatch({
+          type: SET_AVAILABLE_CLOTHING,
+          availableClothing: all[4].data
+        });
       })
       .catch(err => console.log(err));
   }, []);

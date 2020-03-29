@@ -52,7 +52,10 @@ const dataReducer = (state, action) => {
             size: action.value.size,
             categoryId: action.value.categoryId,
             userId: action.value.userId,
-            imgUrl: action.value.imgUrl
+            imgUrl: action.value.imgUrl,
+            leftOffset: action.value.leftOffset,
+            rightOffset: action.value.rightOffset,
+            topOffset: action.value.topOffset
           }
         ]
       };
@@ -70,31 +73,31 @@ const dataReducer = (state, action) => {
       return {
         ...state,
         conversations: action.conversations
-      }
+      };
     case ADD_NEW_CONVERSATION:
-        const { conversation } = action.conversation;
-        const newConversations = {
-          ...state,
-          conversations: [...state.conversations, conversation]
-        }
-      
+      const { conversation } = action.conversation;
+      const newConversations = {
+        ...state,
+        conversations: [...state.conversations, conversation]
+      };
+
       return {
         ...state,
         conversations: newConversations
-      }
+      };
     case ADD_MSG_TO_CONVERSATION:
       const { message } = action.message;
       const tempConversations = [...state.conversations];
 
-      for(const conversation of tempConversations){
-        if(conversation.id === message.conversation_id){
-          conversation.messages.push(message)
+      for (const conversation of tempConversations) {
+        if (conversation.id === message.conversation_id) {
+          conversation.messages.push(message);
         }
       }
-    return {
-      ...state,
-      conversations: tempConversations
-    }
+      return {
+        ...state,
+        conversations: tempConversations
+      };
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`

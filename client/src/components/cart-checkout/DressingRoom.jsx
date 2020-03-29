@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import * as posenet from "@tensorflow-models/posenet";
 
 export default function DressingRoom({ selectedItemForTrying }) {
-  const [width, setWidth] = useState("");
+  const [width, setWidth] = useState();
   const [left, setLeft] = useState("");
   const [top, setTop] = useState("");
 
   let imageElement = React.createRef();
   let selectedItem = React.createRef();
   const checkLimage = () => {
-    if (selectedItemForTrying.selectedItemUrl !== null) {
+    if (selectedItemForTrying.itemUrl !== null) {
       posenet
         .load()
         .then(function(net) {
@@ -24,9 +24,9 @@ export default function DressingRoom({ selectedItemForTrying }) {
           const leftShoulder = pose.keypoints[6].position.x;
           const rightShoulder = pose.keypoints[5].position.x;
 
-          const leftOffsetPercent = 0.21;
-          const rightOffsetPercent = 0.275;
-          const topOffsetPercent = 0.37;
+          const leftOffsetPercent = Number(selectedItemForTrying.itemLeft);
+          const rightOffsetPercent = Number(selectedItemForTrying.itemRight);
+          const topOffsetPercent = Number(selectedItemForTrying.itemTop);
 
           const leftOffset = selectedItem.current.width * leftOffsetPercent;
           const rightOffset = selectedItem.current.width * rightOffsetPercent;
@@ -52,10 +52,11 @@ export default function DressingRoom({ selectedItemForTrying }) {
   return (
     <div className="images">
       <img
+        onClick={checkLimage}
         ref={selectedItem}
         className="trying_item"
         position="absolute"
-        src={selectedItemForTrying.selectedItemUrl}
+        src={selectedItemForTrying.itemUrl}
         width={width}
         style={{ left: left, top: top }}
       />

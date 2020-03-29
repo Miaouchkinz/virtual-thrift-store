@@ -88,6 +88,9 @@ export default function Feed({
     clothingCategory,
     clothingUserId,
     clothingImgUrl,
+    leftOffset,
+    rightOffset,
+    topOffset,
     addToCart
   ) {
     if (
@@ -103,7 +106,10 @@ export default function Feed({
         clothingSize,
         clothingCategory,
         clothingUserId,
-        clothingImgUrl
+        clothingImgUrl,
+        leftOffset,
+        rightOffset,
+        topOffset
       );
     }
   };
@@ -132,7 +138,11 @@ export default function Feed({
       )
     );
 
-  const filteredClothingList = function(availableClothing, activeCategories, size) {
+  const filteredClothingList = function(
+    availableClothing,
+    activeCategories,
+    size
+  ) {
     let finalFilteredClothingList = null;
     let contentOfStateCategory = Object.entries(activeCategories).length;
     let contentOfSizeTrue = Object.values(size).includes(true);
@@ -173,6 +183,9 @@ export default function Feed({
                 clothingItem.clothing_category_id,
                 clothingItem.user_id,
                 clothingItem.image_url,
+                clothingItem.left_offset_percent,
+                clothingItem.rigth_offset_percent,
+                clothingItem.top_offset_percent,
                 addToCart
               )
             }
