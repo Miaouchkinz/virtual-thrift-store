@@ -72,7 +72,7 @@ export default function Profile(props) {
       </header>
       <main>
         <div className="profile-feed-placeholder">
-          {tab === "convos" && conversations && <ConversationsList conversations={conversations} handleReceivedConversation={handleReceivedConversation}/>}
+          {tab === "convos" && conversations && <ConversationsList conversations={conversations} handleReceivedConversation={handleReceivedConversation} currentUserId={currentUserId}/>}
           {tab === "closet" && allClothing && 
             <Closet
             currentUserId={currentUserId}
