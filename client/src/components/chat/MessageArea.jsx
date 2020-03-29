@@ -1,8 +1,9 @@
 import React from "react";
 import Moment from "react-moment";
 import NewMessageForm from "./NewMessageForm";
+import { ActionCable } from 'react-actioncable-provider';
 
-export default function MessagesArea({conversation: { id, title, messages, user_1, user_2 }, currentUser}) {
+export default function MessagesArea({conversation: { id, title, messages, user_1, user_2 }, currentUser, addNewMessageToConversation, handleReceivedMessage}) {
 
 const orderedMessages = messages => {
   const sortedMessages = messages.sort(
@@ -34,9 +35,13 @@ const orderedMessages = messages => {
 
   return (
     <div className="messagesArea">
+      <ActionCable
+        channel={{ channel: 'MessagesChannel', conversation: id }}
+        onReceived={handleReceivedMessage}
+      />
       <h2>{title}</h2>
       <ul>{orderedMessages(messages)}</ul>
-      <NewMessageForm conversation_id={id} currentUser_id={currentUser.id} />
+      <NewMessageForm conversation_id={id} currentUser_id={currentUser.id} addNewMessageToConversation={addNewMessageToConversation} />
     </div>
   );
 };
