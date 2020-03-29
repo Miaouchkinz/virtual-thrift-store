@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { API_ROOT, HEADERS } from '../../constants';
 
 
-export default function NewMessageForm({currentUser_id, conversation_id}) {
+export default function NewMessageForm({currentUser_id, conversation_id, addNewMessageToConversation}) {
   const [ state, setState] = useState({
     text: '',
     conversation_id: conversation_id,
@@ -16,11 +15,7 @@ export default function NewMessageForm({currentUser_id, conversation_id}) {
   const handleSubmit = e => {
     e.preventDefault();
 
-    fetch(`${API_ROOT}/messages`, {
-      method: 'POST',
-      headers: HEADERS,
-      body: JSON.stringify(state)
-    });
+    addNewMessageToConversation(state)
     setState({ ...state, text: '' });
   };
 

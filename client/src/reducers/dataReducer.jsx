@@ -7,6 +7,8 @@ export const SET_CLOTHING = "SET_CLOTHING";
 export const EMPTY_CART = "EMPTY_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const SET_USER_CONVERSATIONS = "SET_USER_CONVERSATIONS";
+export const ADD_NEW_CONVERSATION = "ADD_NEW_CONVERSATION";
+export const ADD_MSG_TO_CONVERSATION = "ADD_MSG_TO_CONVERSATION";
 
 const dataReducer = (state, action) => {
   switch (action.type) {
@@ -65,19 +67,34 @@ const dataReducer = (state, action) => {
         cart: action.value.cart
       };
     case SET_USER_CONVERSATIONS:
-      // const handleReceivedConversation = res => {
-      //   const { conversation } = res;
-      //   return {
-      //     ...state,
-      //     conversations: [...state.conversations, conversation]
-      //   }
-      // };
-    
       return {
         ...state,
-        // conversations: handleReceivedConversation()
         conversations: action.conversations
       }
+    case ADD_NEW_CONVERSATION:
+        const { conversation } = action.conversation;
+        const newConversations = {
+          ...state,
+          conversations: [...state.conversations, conversation]
+        }
+      
+      return {
+        ...state,
+        conversations: newConversations
+      }
+    case ADD_MSG_TO_CONVERSATION:
+      const { message } = action.message;
+      const tempConversations = [...state.conversations];
+
+      for(const conversation of tempConversations){
+        if(conversation.id === message.conversation_id){
+          conversation.messages.push(message)
+        }
+      }
+    return {
+      ...state,
+      conversations: tempConversations
+    }
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`

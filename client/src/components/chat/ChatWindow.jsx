@@ -3,7 +3,7 @@ import { useLocation, Link } from "react-router-dom";
 import MessagesArea from "./MessageArea";
 import Icon from "../common/iconButton"
 
-export default function ChatWindow({ conversations, currentUser }) {
+export default function ChatWindow({ conversations, currentUser, addNewMessageToConversation, handleReceivedMessage }) {
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -41,6 +41,8 @@ export default function ChatWindow({ conversations, currentUser }) {
       </header>
         <MessagesArea
           currentUser={currentUser}
+          addNewMessageToConversation={addNewMessageToConversation}
+          handleReceivedMessage={handleReceivedMessage}
           conversation={findActiveConversation(
             conversations,
             activeConversationID

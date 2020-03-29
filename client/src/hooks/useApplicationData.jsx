@@ -8,10 +8,12 @@ import dataReducer, {
   ADD_TO_CART,
   EMPTY_CART,
   REMOVE_FROM_CART,
-  SET_USER_CONVERSATIONS
+  SET_USER_CONVERSATIONS,
+  ADD_NEW_CONVERSATION,
+  ADD_MSG_TO_CONVERSATION
 } from "../reducers/dataReducer";
 import axios from "axios";
-import { API_ROOT } from '../constants';
+import { API_ROOT, HEADERS } from '../constants';
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(dataReducer, {
@@ -55,7 +57,6 @@ const useApplicationData = () => {
       fetch(`${API_ROOT}/conversations/${state.currentUser.id}`)
         .then(res => res.json())
         .then(conversations => {
-          console.log(conversations)
           dispatch({
             type: SET_USER_CONVERSATIONS,
             conversations
@@ -63,7 +64,45 @@ const useApplicationData = () => {
         })
         .catch(error => console.log(error))
       };
-  }, [state.currentUser]); // TOFIX: Once send auto convo is fixed, change it to track [state.conversations]
+  }, [state.currentUser]);
+
+  const addNewConversation = (user_2_id) => {
+    fetch(`${API_ROOT}/conversations`, {
+      method: 'POST',
+      headers: HEADERS,
+      body: JSON.stringify({
+        title: `${state.currentUser.name} is interested in some items you have to offer. Please let them know if you are still open for an exchange! :)`,
+        user_1_id: state.currentUser.id,
+        user_2_id
+      })
+    }).catch(error => console.log(error));
+  }
+
+  const addNewMessageToConversation = ({text, conversation_id, user_id}) => {
+    fetch(`${API_ROOT}/messages`, {
+      method: 'POST',
+      headers: HEADERS,
+      body: JSON.stringify({
+        text,
+        conversation_id,
+        user_id
+      })
+    }).catch(error => console.log(error));
+  }
+
+  const handleReceivedMessage = res => {
+    dispatch({
+      type: ADD_MSG_TO_CONVERSATION,
+      message: res
+    });
+  }
+
+  const handleReceivedConversation = res => {
+    dispatch({
+      type: ADD_NEW_CONVERSATION,
+      conversation: res
+    })
+  }
 
   const addToCart = (id, size, categoryId, userId, imgUrl) => {
     dispatch({
@@ -143,7 +182,11 @@ const useApplicationData = () => {
     handleSuccessfulAuth,
     addToCart,
     emptyCart,
-    removeFromCart
+    removeFromCart,
+    addNewConversation,
+    addNewMessageToConversation,
+    handleReceivedMessage,
+    handleReceivedConversation
   };
 };
 

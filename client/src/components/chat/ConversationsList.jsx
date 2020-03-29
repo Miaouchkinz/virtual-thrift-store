@@ -1,23 +1,10 @@
 import React from "react";
-// import { ActionCable } from 'react-actioncable-provider';
+import { ActionCable } from 'react-actioncable-provider';
 import { Link } from "react-router-dom";
 import ConvoPreview from './ConvoPreview';
-// import Cable from './Cable';
 
 
-export default function ConversationsList({conversations, currentUser}) {
-
-  // const handleReceivedMessage = response => {
-  //   const { message } = response;
-  //   const tempConversation = [...conversations]
-
-  //   for(const conversation of tempConversation){
-  //     if(conversation.id === message.conversation_id){
-  //       conversation.messages.push(message)
-  //     }
-  //   }
-  //   setLocalState(prev => ({ ...prev, conversations: tempConversation }));
-  // };
+export default function ConversationsList({conversations, handleReceivedConversation}) {
 
   const mapConversations = (conversations) => {
     const orderedConversations = conversations.sort(
@@ -48,16 +35,10 @@ export default function ConversationsList({conversations, currentUser}) {
 
   return (
     <div className="conversationsList">
-      {/* <ActionCable
+      <ActionCable
         channel={{ channel: 'ConversationsChannel' }}
         onReceived={handleReceivedConversation}
-      /> */}
-      {/* {conversations && conversations.length && (
-        <Cable
-          conversations={conversations}
-          handleReceivedMessage={handleReceivedMessage}
-        />
-      )} */}
+      />
       <ul>{conversations && mapConversations(conversations)}</ul>
     </div>
   );
