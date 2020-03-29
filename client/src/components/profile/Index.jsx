@@ -11,9 +11,10 @@ export default function Profile(props) {
     userName,
     avatar,
     handleLogout,
-    userId,
+    currentUserId,
     allClothing,
-    conversations
+    conversations,
+    handleReceivedConversation
   } = props;
 
   // tabs: closet, convos, camera
@@ -38,7 +39,7 @@ export default function Profile(props) {
         <Button onClick={() => handleLogoutClick()} primary label="LOG OUT" />
       </nav>
       <img
-        src="./images/final_project_header_wave_1.png"
+        src="/images/final_project_header_wave_1.png"
         alt="Top wave decoration."
       ></img>
       <header>
@@ -70,10 +71,10 @@ export default function Profile(props) {
       </header>
       <main>
         <div className="profile-feed-placeholder">
-          {tab === "convos" && conversations && <ConversationsList conversations={conversations}/>}
+          {tab === "convos" && conversations && <ConversationsList conversations={conversations} handleReceivedConversation={handleReceivedConversation}/>}
           {tab === "closet" && 
             <Closet
-            userId={userId}
+            currentUserId={currentUserId}
             allClothing={allClothing}
             userName={userName}
             ></Closet>}
