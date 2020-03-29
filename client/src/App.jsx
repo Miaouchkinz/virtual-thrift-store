@@ -25,7 +25,11 @@ export default function App(props) {
     handleLogout,
     addToCart,
     emptyCart,
-    removeFromCart
+    removeFromCart,
+    addNewConversation,
+    addNewMessageToConversation,
+    handleReceivedMessage,
+    handleReceivedConversation
   } = useApplicationData();
 
   return (
@@ -76,17 +80,23 @@ export default function App(props) {
               {...props}
               userName={state.currentUser.name}
               avatar={state.currentUser.avatar_url}
-              userId={state.currentUser.id}
+              currentUserId={state.currentUser.id}
               handleLogout={handleLogout}
               allClothing={state.allClothing}
               conversations={state.conversations}
+              handleReceivedConversation = {handleReceivedConversation}
             />
           )}>
           </Route>}
           {state.conversations && <Route
             exact
             path={"/chat"}>
-            <ChatWindow currentUser={state.currentUser} conversations={state.conversations}/>
+            <ChatWindow 
+              currentUser={state.currentUser}
+              conversations={state.conversations}
+              addNewMessageToConversation={addNewMessageToConversation}
+              handleReceivedMessage={handleReceivedMessage}
+            />
           </Route>}
           <Route
             exact
@@ -107,7 +117,7 @@ export default function App(props) {
             />
           </Route>
           <Route exact path={"/checkout"}>
-            <Checkout cart={state.cart} users={state.users} currentUser={state.currentUser} />
+            <Checkout cart={state.cart} users={state.users} currentUser={state.currentUser} addNewConversation={addNewConversation} />
           </Route>
           <Route exact path={"/confirmation"}>
             <OrderConfirmation
