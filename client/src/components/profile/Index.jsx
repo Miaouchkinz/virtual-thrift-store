@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import Button from "./common/textButton";
-import Icon from "./common/iconButton";
-import Closet from "./Closet";
 import axios from "axios";
+import Button from "../common/textButton";
+import Icon from "../common/iconButton";
+import Closet from "./Closet";
+import ConversationsList from "../chat/ConversationsList";
 
 export default function Profile(props) {
   const {
@@ -10,8 +11,10 @@ export default function Profile(props) {
     userName,
     avatar,
     handleLogout,
-    userId,
-    allClothing
+    currentUserId,
+    allClothing,
+    conversations,
+    handleReceivedConversation
   } = props;
 
   // tabs: closet, convos, camera
@@ -36,7 +39,7 @@ export default function Profile(props) {
         <Button onClick={() => handleLogoutClick()} primary label="LOG OUT" />
       </nav>
       <img
-        src="./images/final_project_header_wave_1.png"
+        src="/images/final_project_header_wave_1.png"
         alt="Top wave decoration."
       ></img>
       <header>
@@ -67,13 +70,14 @@ export default function Profile(props) {
         </div>
       </header>
       <main>
-        {" "}
         <div className="profile-feed-placeholder">
-          <Closet
-            userId={userId}
+          {tab === "convos" && conversations && <ConversationsList conversations={conversations} handleReceivedConversation={handleReceivedConversation}/>}
+          {tab === "closet" && 
+            <Closet
+            currentUserId={currentUserId}
             allClothing={allClothing}
             userName={userName}
-          ></Closet>
+            ></Closet>}
         </div>
       </main>
     </div>

@@ -1,9 +1,11 @@
 import React from "react";
-import Icon from "./common/iconButton";
-import Button from "./common/textButton";
+import Icon from "../common/iconButton";
+import Button from "../common/textButton";
 import { Link } from "react-router-dom";
 
-export default function Checkout({ cart, users }) {
+
+export default function Checkout({ cart, users, addNewConversation }) {
+
   const listOwnersOfItem = function(cartItems) {
     let owners = [];
     for (let item of cartItems) {
@@ -60,9 +62,16 @@ export default function Checkout({ cart, users }) {
     </div>
   ));
 
+  const sendAutomatedMessages = () => {
+    let ownerIds = listOwnersOfItem(cart)
+
+    ownerIds.forEach(user => addNewConversation(user));
+  }
+
   const checkIfCartEmpty = function() {
     let finalResult = null;
-    if (listOwnersOfItem(cart).length === 0) {
+    let ownerIds = listOwnersOfItem(cart)
+    if (ownerIds.length === 0) {
       finalResult = <h2>Your cart is empty.</h2>;
     } else {
       finalResult = (
@@ -72,7 +81,7 @@ export default function Checkout({ cart, users }) {
               pathname: "/confirmation"
             }}
           >
-            <Button primary label="CONFIRM ALL" />
+            <Button onClick={() => sendAutomatedMessages()} primary label="CONFIRM ALL" />
           </Link>
         </div>
       );
