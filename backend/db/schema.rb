@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 2020_03_29_015541) do
     t.bigint "clothing_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "left_offset_percent"
-    t.integer "right_offset_percent"
-    t.integer "top_offset_percent"
+    t.decimal "left_offset_percent"
+    t.decimal "right_offset_percent"
+    t.decimal "top_offset_percent"
     t.index ["clothing_category_id"], name: "index_clothings_on_clothing_category_id"
     t.index ["user_id"], name: "index_clothings_on_user_id"
   end
