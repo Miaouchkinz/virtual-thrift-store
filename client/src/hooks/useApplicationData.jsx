@@ -19,6 +19,7 @@ const useApplicationData = () => {
   const [state, dispatch] = useReducer(dataReducer, {
     users: [],
     clothing: [],
+    allClothing: [],
     clothingCategories: [],
     loading: true,
     currentUser: {},
