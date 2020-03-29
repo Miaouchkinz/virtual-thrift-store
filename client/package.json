@@ -4,6 +4,9 @@
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
+    "@tensorflow-models/posenet": "^2.2.1",
+    "@tensorflow/tfjs-converter": "^1.7.0",
+    "@tensorflow/tfjs-core": "^1.7.1",
     "axios": "^0.19.2",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",

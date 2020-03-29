@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "../common/iconButton";
+import DressingRoom from "./DressingRoom";
 
 export default function Cart({ cart, availableClothing, removeFromCart }) {
+  const [selectedItemForTrying, setSelectedItemForTrying] = useState([
+    {
+      itemId: null,
+      itemUrl: null,
+      itemLeft: null,
+      itemRight: null,
+      itemTop: null
+    }
+  ]);
+
   const itemsInCartId = function() {
     let finalIdList = [];
     if (cart) {
@@ -19,6 +30,15 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
     .map(clothingItem => (
       <div className="clothingItem_of_cart_container" key={clothingItem.id}>
         <img
+          onClick={() =>
+            setSelectedItemForTrying({
+              itemId: clothingItem.id,
+              itemUrl: clothingItem.image_url,
+              itemLeft: clothingItem.left_offset_percent,
+              itemRight: clothingItem.right_offset_percent,
+              itemTop: clothingItem.top_offset_percent
+            })
+          }
           className="clothingItem_image_of_cart_container"
           src={clothingItem.image_url}
           alt={
@@ -92,6 +112,9 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
         <div>
           <h1>Future machine learning cool stuff here</h1>
         </div>
+      </div>
+      <div className="dressing_room_container">
+        <DressingRoom selectedItemForTrying={selectedItemForTrying} />
       </div>
       <footer className="orange_footer_cart">
         <img
