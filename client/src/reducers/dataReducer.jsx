@@ -3,7 +3,7 @@ export const SET_AVAILABLE_CLOTHING = "SET_AVAILABLE_CLOTHING";
 export const SET_CLOTHING_CATEGORIES = "SET_CLOTHING_CATEGORIES";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const ADD_TO_CART = "ADD_TO_CART";
-export const SET_CLOTHING = "SET_CLOTHING";
+export const SET_ALL_CLOTHING = "SET_ALL_CLOTHING";
 export const EMPTY_CART = "EMPTY_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const SET_USER_CONVERSATIONS = "SET_USER_CONVERSATIONS";
@@ -24,7 +24,7 @@ const dataReducer = (state, action) => {
         currentUser: action.value.currentUser,
         loggedInStatus: action.value.loggedInStatus
       };
-    case SET_CLOTHING:
+    case SET_ALL_CLOTHING:
       return {
         ...state,
         allClothing: action.allClothing,
@@ -33,7 +33,7 @@ const dataReducer = (state, action) => {
     case SET_AVAILABLE_CLOTHING:
       return {
         ...state,
-        clothing: action.clothing,
+        availableClothing: action.availableClothing,
         loading: false
       };
     case SET_CLOTHING_CATEGORIES:

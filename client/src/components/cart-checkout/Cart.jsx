@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Icon from "../common/iconButton";
 
-export default function Cart({ cart, clothing, removeFromCart }) {
+export default function Cart({ cart, availableClothing, removeFromCart }) {
   const itemsInCartId = function() {
     let finalIdList = [];
     if (cart) {
@@ -14,7 +14,7 @@ export default function Cart({ cart, clothing, removeFromCart }) {
     return finalIdList;
   };
 
-  const cartItemList = clothing
+  const cartItemList = availableClothing
     .filter(item => itemsInCartId().includes(item.id))
     .map(clothingItem => (
       <div className="clothingItem_of_cart_container" key={clothingItem.id}>

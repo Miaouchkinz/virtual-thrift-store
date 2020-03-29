@@ -39,6 +39,7 @@ export default function Profile(props) {
         <Button onClick={() => handleLogoutClick()} primary label="LOG OUT" />
       </nav>
       <img
+        className="profile-header"
         src="/images/final_project_header_wave_1.png"
         alt="Top wave decoration."
       ></img>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Feed({
-  clothing,
+  availableClothing,
   clothingCategories,
   cart,
   addToCart
@@ -108,19 +108,19 @@ export default function Feed({
     }
   };
 
-  const clothingList = clothing;
+  const clothingList = availableClothing;
 
-  const clothingFilteredByCategory = clothing.filter(clothingItem =>
+  const clothingFilteredByCategory = availableClothing.filter(clothingItem =>
     Object.values(activeCategories).includes(clothingItem.clothing_category_id)
   );
 
-  const clothingFilteredBySize = clothing.filter(
+  const clothingFilteredBySize = availableClothing.filter(
     clothingItem =>
       Object.keys(size).find(sizeKey => size[sizeKey] === true) ===
       clothingItem.size
   );
 
-  const clothingFilteredByAll = clothing
+  const clothingFilteredByAll = availableClothing
     .filter(
       clothingItem =>
         Object.keys(size).find(sizeKey => size[sizeKey] === true) ===
@@ -132,7 +132,7 @@ export default function Feed({
       )
     );
 
-  const filteredClothingList = function(clothing, activeCategories, size) {
+  const filteredClothingList = function(availableClothing, activeCategories, size) {
     let finalFilteredClothingList = null;
     let contentOfStateCategory = Object.entries(activeCategories).length;
     let contentOfSizeTrue = Object.values(size).includes(true);
@@ -293,7 +293,7 @@ export default function Feed({
         </form>
       </div>
       <div className="availables_grid_container">
-        {filteredClothingList(clothing, activeCategories, size)}
+        {filteredClothingList(availableClothing, activeCategories, size)}
       </div>
       <footer className="orange_footer">
         <img
