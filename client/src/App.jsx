@@ -72,43 +72,34 @@ export default function App(props) {
               addToCart={addToCart}
             />
           </Route>}
-          {state.currentUser && <Route
-            exact
-            path="/user/profile"
-            render={props => (
-            <Profile
-              {...props}
-              userName={state.currentUser.name}
-              avatar={state.currentUser.avatar_url}
-              currentUserId={state.currentUser.id}
-              handleLogout={handleLogout}
-              allClothing={state.allClothing}
-              conversations={state.conversations}
-              handleReceivedConversation = {handleReceivedConversation}
-            />
-          )}>
-          </Route>}
-          {state.conversations && <Route
-            exact
-            path={"/chat"}>
-            <ChatWindow 
-              currentUser={state.currentUser}
-              conversations={state.conversations}
-              addNewMessageToConversation={addNewMessageToConversation}
-              handleReceivedMessage={handleReceivedMessage}
-            />
-          </Route>}
-          <Route
-            exact
-            path={"/dashboard"}
-            render={props => (
-              <Dashboard
-                {...props}
-                loggedInStatus={state.loggedInStatus}
-                handleLogout={handleLogout}
+          {state.currentUser && 
+            <Route
+              exact
+              path="/user/profile"
+              render={props => (
+                <Profile
+                  {...props}
+                  userName={state.currentUser.name}
+                  avatar={state.currentUser.avatar_url}
+                  currentUserId={state.currentUser.id}
+                  handleLogout={handleLogout}
+                  allClothing={state.allClothing}
+                  conversations={state.conversations}
+                  handleReceivedConversation = {handleReceivedConversation}
+                />
+                )}>
+            </Route>}
+          {state.conversations && 
+            <Route
+              exact
+              path={"/chat"}>
+              <ChatWindow 
+                currentUser={state.currentUser}
+                conversations={state.conversations}
+                addNewMessageToConversation={addNewMessageToConversation}
+                handleReceivedMessage={handleReceivedMessage}
               />
-            )}
-          ></Route>
+            </Route>}
           <Route exact path={"/cart"}>
             <Cart
               clothing={state.clothing}
