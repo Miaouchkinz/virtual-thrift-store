@@ -24,9 +24,9 @@ export default function DressingRoom({ selectedItemForTrying }) {
           const leftShoulder = pose.keypoints[6].position.x;
           const rightShoulder = pose.keypoints[5].position.x;
 
-          const leftOffsetPercent = Number(selectedItemForTrying.itemLeft);
-          const rightOffsetPercent = Number(selectedItemForTrying.itemRight);
-          const topOffsetPercent = Number(selectedItemForTrying.itemTop);
+          const leftOffsetPercent = selectedItemForTrying.itemLeft;
+          const rightOffsetPercent = selectedItemForTrying.itemRight;
+          const topOffsetPercent = selectedItemForTrying.itemTop;
 
           const leftOffset = selectedItem.current.width * leftOffsetPercent;
           const rightOffset = selectedItem.current.width * rightOffsetPercent;
