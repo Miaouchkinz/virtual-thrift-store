@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ConvoPreview from './ConvoPreview';
 
 
-export default function ConversationsList({conversations, handleReceivedConversation}) {
+export default function ConversationsList({conversations, handleReceivedConversation, currentUserId}) {
 
   const mapConversations = (conversations) => {
     const orderedConversations = conversations.sort(
@@ -19,11 +19,12 @@ export default function ConversationsList({conversations, handleReceivedConversa
     });
 
     return orderedConversations.map((conversation, i) => {
+      const correspondentUser = currentUserId === conversation.user_1[0].id ? conversation.user_2[0] : conversation.user_1[0];
       return (
-        <div className="ind-conv-preview-container">
-          <li key={conversation.id}>
+        <div className="ind-conv-preview-container" key={conversation.id}>
+          <li>
           <Link to={`/chat?id=${conversation.id}`}>
-            <ConvoPreview avatar={conversation.user_2[0].avatar_url} userName={conversation.user_2[0].name} conversation={conversation} latestMessageTime={latestMessageTime[i]}/>
+            <ConvoPreview avatar={correspondentUser.avatar_url} userName={correspondentUser.name} conversation={conversation} latestMessageTime={latestMessageTime[i]}/>
           </Link>
 
           </li>
