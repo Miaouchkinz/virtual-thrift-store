@@ -13,6 +13,11 @@
     padding: 1rem;
   }
 
+  .profile-header {
+    position: absolute;
+    z-index: -1;
+  }
+
   header {
     display: flex;
     flex-direction: column;

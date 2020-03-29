@@ -2,15 +2,20 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Landing from "./components/Landing";
-import Dashboard from "./components/Dashboard";
 import Feed from "./components/Feed";
-import Login from "./components/auth/Login";
-import Profile from "./components/Profile";
-import Cart from "./components/Cart";
-import Registration from "./components/auth/Registration";
-import Checkout from "./components/Checkout";
-import useApplicationData from "./hooks/useApplicationData";
-import OrderConfirmation from "./components/OrderConfirmation";
+import Login from './components/auth/Login';
+import Registration from './components/auth/Registration';
+
+import Profile from './components/profile/Index';
+
+import Cart from "./components/cart-checkout/Cart";
+import Checkout from "./components/cart-checkout/Checkout";
+import OrderConfirmation from "./components/cart-checkout/OrderConfirmation";
+
+import ChatWindow from "./components/chat/ChatWindow";
+
+import useApplicationData from './hooks/useApplicationData';
+
 
 export default function App(props) {
   const {
@@ -19,7 +24,11 @@ export default function App(props) {
     handleLogout,
     addToCart,
     emptyCart,
-    removeFromCart
+    removeFromCart,
+    addNewConversation,
+    addNewMessageToConversation,
+    handleReceivedMessage,
+    handleReceivedConversation
   } = useApplicationData();
 
   return (
@@ -54,48 +63,51 @@ export default function App(props) {
               />
             )}
           ></Route>
-          <Route exact path="/feed">
+          {state.availableClothing && <Route exact path="/feed">
             <Feed
-              clothing={state.clothing}
+              availableClothing={state.availableClothing}
               clothingCategories={state.clothingCategories}
               cart={state.cart}
               addToCart={addToCart}
             />
-          </Route>
-          <Route
-            exact
-            path="/user/profile"
-            render={props => (
-              <Profile
-                {...props}
-                userName={state.currentUser.name}
-                avatar={state.currentUser.avatar_url}
-                handleLogout={handleLogout}
-                userId={state.currentUser.id}
-                allClothing={state.allClothing}
+          </Route>}
+          {state.currentUser && 
+            <Route
+              exact
+              path="/user/profile"
+              render={props => (
+                <Profile
+                  {...props}
+                  userName={state.currentUser.name}
+                  avatar={state.currentUser.avatar_url}
+                  currentUserId={state.currentUser.id}
+                  handleLogout={handleLogout}
+                  allClothing={state.allClothing}
+                  conversations={state.conversations}
+                  handleReceivedConversation = {handleReceivedConversation}
+                />
+                )}>
+            </Route>}
+          {state.conversations && 
+            <Route
+              exact
+              path={"/chat"}>
+              <ChatWindow 
+                currentUser={state.currentUser}
+                conversations={state.conversations}
+                addNewMessageToConversation={addNewMessageToConversation}
+                handleReceivedMessage={handleReceivedMessage}
               />
-            )}
-          ></Route>
-          <Route
-            exact
-            path={"/dashboard"}
-            render={props => (
-              <Dashboard
-                {...props}
-                loggedInStatus={state.loggedInStatus}
-                handleLogout={handleLogout}
-              />
-            )}
-          ></Route>
+            </Route>}
           <Route exact path={"/cart"}>
             <Cart
-              clothing={state.clothing}
+              availableClothing={state.availableClothing}
               cart={state.cart}
               removeFromCart={removeFromCart}
             />
           </Route>
           <Route exact path={"/checkout"}>
-            <Checkout cart={state.cart} users={state.users} />
+            <Checkout cart={state.cart} users={state.users} currentUser={state.currentUser} addNewConversation={addNewConversation} />
           </Route>
           <Route exact path={"/confirmation"}>
             <OrderConfirmation
