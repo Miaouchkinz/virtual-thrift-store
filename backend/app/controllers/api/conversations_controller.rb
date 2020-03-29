@@ -9,7 +9,7 @@ class Api::ConversationsController < ApplicationController
 
   # Get the current user's conversations
   def show
-    conversations = Conversation.where(user_1: params[:id])
+    conversations = Conversation.where(user_1: params[:id]).or(Conversation.where(user_2: params[:id]))
 
     structured_conversations = []
     conversations.each do | conversation |

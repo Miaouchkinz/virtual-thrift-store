@@ -19,7 +19,8 @@ export default function ChatWindow({ conversations, currentUser, addNewMessageTo
 
   const findCorrespondentUser = (conversations, activeConversationID) => {
     const conversation = findActiveConversation(conversations, activeConversationID)
-    return conversation.user_2[0]
+    const correspondentUser = currentUser.id === conversation.user_1[0].id ? conversation.user_2[0] : conversation.user_1[0];
+    return correspondentUser;
   }
 
   const correspondentUser = findCorrespondentUser(conversations, activeConversationID)

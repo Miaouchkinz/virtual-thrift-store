@@ -5,10 +5,9 @@ export default function Closet({ allClothing, currentUserId, userName }) {
     return clothingList
                     .filter(item => item.user_id === userId)
                     .map(item => (
-                      <div className="item_image_container">
+                      <div key={item.id} className="item_image_container">
                         <img
                           className="item_image"
-                          key={item.id}
                           src={item.image_url}
                           alt={"Clothing item of: " + userName}
                         ></img>
