@@ -7,7 +7,7 @@ export default function DressingRoom({ selectedItemForTrying }) {
   const [top, setTop] = useState("");
 
   let imageElement = React.createRef();
-  let selectedShirt = React.createRef();
+  let selectedItem = React.createRef();
   const checkLimage = () => {
     if (selectedItemForTrying.selectedItemUrl !== null) {
       posenet
@@ -26,10 +26,11 @@ export default function DressingRoom({ selectedItemForTrying }) {
 
           const leftOffsetPercent = 0.21;
           const rightOffsetPercent = 0.275;
+          const topOffsetPercent = 0.37;
 
-          const leftOffset = selectedShirt.current.width * leftOffsetPercent;
-          const rightOffset = selectedShirt.current.width * rightOffsetPercent;
-          const topOffset = selectedShirt.current.height * 0.37;
+          const leftOffset = selectedItem.current.width * leftOffsetPercent;
+          const rightOffset = selectedItem.current.width * rightOffsetPercent;
+          const topOffset = selectedItem.current.height * topOffsetPercent;
 
           const leftPos = leftShoulder - leftOffset;
           const rightPos = rightShoulder + rightOffset;
@@ -51,7 +52,7 @@ export default function DressingRoom({ selectedItemForTrying }) {
   return (
     <div className="images">
       <img
-        ref={selectedShirt}
+        ref={selectedItem}
         className="trying_item"
         position="absolute"
         src={selectedItemForTrying.selectedItemUrl}
@@ -63,40 +64,10 @@ export default function DressingRoom({ selectedItemForTrying }) {
         id="person_standing"
         src="./images/person_1.jpg"
       />
-      <button onClick={checkLimage}> TRY ME </button>
+      <button type="button" className="try_button" onClick={checkLimage}>
+        {" "}
+        TRY ME{" "}
+      </button>
     </div>
   );
 }
-
-// const getImage = elem => {
-//   let imageElement = elem;
-//   return imageElement;
-// };
-
-// const pose = estimatePoseOnImage(imageElement.current);
-
-// const checkLimage = () => {
-//   posenet.load().then(function(net) {
-//     const pose = estimatePoseOnImage(imageElement.current, {
-//       flipHorizontal: false
-//     });
-//     pose.then(res => res);
-//     console.log(pose);
-//     return pose;
-//   });
-
-//   // pose.then(res => console.log(res));
-// };
-
-// let imgElement = imageElement.current;
-// posenet
-//   .load()
-//   .then(function(net) {
-//     const pose = net.estimateSinglePose(imgElement, {
-//       flipHorizontal: false
-//     });
-//     return pose;
-//   })
-//   .then(function(pose) {
-//     console.log(pose);
-//   });
