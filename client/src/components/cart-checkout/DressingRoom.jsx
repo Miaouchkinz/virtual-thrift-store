@@ -12,7 +12,7 @@ export default function DressingRoom({ itemData }) {
   }, [itemData.itemUrl]);
 
   let imageElement = React.createRef();
-  // let selectedItem = React.createRef();
+
   const checkLimage = () => {
     if (itemData.itemUrl !== null) {
       posenet
@@ -24,7 +24,6 @@ export default function DressingRoom({ itemData }) {
           return pose;
         })
         .then(function(pose) {
-          console.log(pose);
           const leftShoulder = pose.keypoints[6].position.x;
           const rightShoulder = pose.keypoints[5].position.x;
           const selectedItem = document.getElementById("trying_item");
@@ -47,9 +46,6 @@ export default function DressingRoom({ itemData }) {
           const topDistance =
             (topLeftOfShoulder + topRightOfShoulder) / 2 - topOffset;
 
-          console.log(width);
-          console.log(selectedItem.width);
-          console.log(selectedItem.style.width);
           setWidth(`${width}px`);
           setLeft(`${leftPos}px`);
           setTop(`${topDistance}px`);
