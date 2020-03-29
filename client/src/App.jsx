@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Landing from "./components/Landing";
-import Dashboard from "./components/Dashboard";
 import Feed from "./components/Feed";
 import Login from './components/auth/Login';
 import Registration from './components/auth/Registration';
@@ -64,9 +63,9 @@ export default function App(props) {
               />
             )}
           ></Route>
-          {state.clothing && <Route exact path="/feed">
+          {state.availableClothing && <Route exact path="/feed">
             <Feed
-              clothing={state.clothing}
+              availableClothing={state.availableClothing}
               clothingCategories={state.clothingCategories}
               cart={state.cart}
               addToCart={addToCart}
@@ -102,7 +101,7 @@ export default function App(props) {
             </Route>}
           <Route exact path={"/cart"}>
             <Cart
-              clothing={state.clothing}
+              availableClothing={state.availableClothing}
               cart={state.cart}
               removeFromCart={removeFromCart}
             />

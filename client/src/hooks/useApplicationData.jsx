@@ -2,7 +2,7 @@ import { useEffect, useReducer } from "react";
 import dataReducer, {
   SET_USERS,
   SET_CURRENT_USER,
-  SET_CLOTHING,
+  SET_ALL_CLOTHING,
   SET_AVAILABLE_CLOTHING,
   SET_CLOTHING_CATEGORIES,
   ADD_TO_CART,
@@ -18,7 +18,8 @@ import { API_ROOT, HEADERS } from '../constants';
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(dataReducer, {
     users: [],
-    clothing: [],
+    availableClothing: [],
+    allClothing: [],
     clothingCategories: [],
     loading: true,
     currentUser: {},
@@ -167,11 +168,11 @@ const useApplicationData = () => {
         });
         // Gets all clothes
         dispatch({
-          type: SET_CLOTHING,
+          type: SET_ALL_CLOTHING,
           allClothing: all[3].data
         });
         // Gets all clothes that are set to available_for_exchange
-        dispatch({ type: SET_AVAILABLE_CLOTHING, clothing: all[4].data });
+        dispatch({ type: SET_AVAILABLE_CLOTHING, availableClothing: all[4].data });
       })
       .catch(err => console.log(err));
   }, []);

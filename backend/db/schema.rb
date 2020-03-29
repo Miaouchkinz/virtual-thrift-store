@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_200221) do
+ActiveRecord::Schema.define(version: 2020_03_29_015541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "bookmarks", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "clothing_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["clothing_id"], name: "index_bookmarks_on_clothing_id"
-    t.index ["user_id"], name: "index_bookmarks_on_user_id"
-  end
 
   create_table "clothing_categories", force: :cascade do |t|
     t.string "name"
@@ -38,6 +29,9 @@ ActiveRecord::Schema.define(version: 2020_03_24_200221) do
     t.bigint "clothing_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "left_offset_percent"
+    t.decimal "right_offset_percent"
+    t.decimal "top_offset_percent"
     t.index ["clothing_category_id"], name: "index_clothings_on_clothing_category_id"
     t.index ["user_id"], name: "index_clothings_on_user_id"
   end
@@ -71,8 +65,6 @@ ActiveRecord::Schema.define(version: 2020_03_24_200221) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "bookmarks", "clothings"
-  add_foreign_key "bookmarks", "users"
   add_foreign_key "clothings", "clothing_categories"
   add_foreign_key "clothings", "users"
   add_foreign_key "messages", "conversations"
