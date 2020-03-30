@@ -305,8 +305,10 @@ export default function Feed({
           </div>
         </form>
       </div>
-      <div className="availables_grid_container">
-        {filteredClothingList(availableClothing, activeCategories, size)}
+      <div className="availables_container">
+        <div className="availables_grid_container">
+          {filteredClothingList(availableClothing, activeCategories, size)}
+        </div>
       </div>
       <footer className="orange_footer">
         <img
