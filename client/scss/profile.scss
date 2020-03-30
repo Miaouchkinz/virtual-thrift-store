@@ -1,38 +1,49 @@
 #profile-page {
   display: flex;
   flex-direction: column;
+  
+  nav { 
+    position: relative;
+    width: 100%;
+    background: #70774B;
 
-  nav {
-    position: absolute;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-  }
+    .profile-menu {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1rem 0;
+    }
 
-  .profile-header {
-    position: absolute;
-    z-index: -1;
-  }
+    .wave-spacer {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      padding-top: 8rem;
+      background: #70774B;
+    }
+    
+    .profile-wave {
+      position: absolute;
+      width: 100%;
+    }
+}
 
   header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 2rem;
 
     .avatar_url-image {
-      width: 9rem;
-      height: 9rem;
+      width: 10rem;
+      height: 10rem;
       border-radius: 100%;
       padding: 1rem;
     }
 
     .user-name {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
+      padding-bottom: 0.5rem;
       color: white;
       text-shadow: 2px 2px 2px #555;
       font-weight: 700;
@@ -45,9 +56,6 @@
 
   .profile-feed-placeholder {
     background-color: #c2a877;
-    margin-top: 4rem;
-    padding: 1rem 1.5rem;
-    padding-bottom: 100%;
-    opacity: 0.8;
+    margin-top: 2rem;
   }
 }

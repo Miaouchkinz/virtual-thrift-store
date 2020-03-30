@@ -27,7 +27,7 @@
 }
 
 .content_container {
-  margin-top: -100px;
+  margin-top: 6rem;
   h1 {
     margin-left: 20px;
     z-index: 1;
@@ -42,9 +42,10 @@
   position: absolute;
   top: 420px;
   z-index: -1;
+  width: 100%;
 }
 
-.orange_footer_wave_cart {
-  width: 414px;
+.orange-footer-wave-cart {
+  width: 100%;
   z-index: -1;
 }

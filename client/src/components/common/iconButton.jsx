@@ -7,6 +7,7 @@ export default function Icon(props) {
     selected,
     onClick,
     large,
+    small,
     icon,
     label,
     type
@@ -17,6 +18,7 @@ export default function Icon(props) {
   else if (secondary) classList.push("secondary");
 
   if (large) classList.push("large");
+
   if (selected) classList.push("selected");
 
   const content = icon ? <img src={`/images/${icon}.png`} alt={`${icon} button`} /> : label;

@@ -2,10 +2,6 @@ h2 {
   margin-left: 10px;
 }
 
-.content_container {
-  z-index: 2;
-}
-
 .checkout_main_section h1 {
   margin-left: 10px;
 }
@@ -22,6 +18,7 @@ h2 {
   justify-content: space-between;
   background: #e5e5e5;
   margin: 10px;
+  border-radius: 1rem;
 }
 
 .items_of_owner_section {
@@ -43,13 +40,29 @@ h2 {
 
 // STYLINGS FOR CONFIRMATION PAGE BELOW
 
+.confirmation-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  margin-top: 2rem;
+  h1 {
+    margin-left: 20px;
+    z-index: 1;
+  }
+  h2 {
+    margin-left: 20px;
+    z-index: 1;
+  }
+}
+
+
 .thank_you_message {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-left: 57px;
-  margin-top: 40px;
   background: rgba(229, 229, 229, 0.5);
   width: 300px;
   height: 400px;

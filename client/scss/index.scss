@@ -5,6 +5,9 @@
 @import "./Cart.scss";
 @import "./Checkout.scss";
 @import "./closet.scss";
+@import "./dressingRoom.scss";
+@import "./convoList.scss";
+@import "./chatWindow.scss";
 
 body {
   font-family: "Roboto", sans-serif;
@@ -64,9 +67,9 @@ body {
 }
 
 .logo-placeholder {
-  width: 8rem;
-  height: 8rem;
-  background-color: pink;
+  // width: 8rem;
+  // height: 8rem;
+  // background-color: pink;
   border-radius: 100%;
 }
 

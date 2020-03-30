@@ -45,7 +45,7 @@ export default function OrderConfirmation({ cart, users, emptyCart }) {
             }}
           >
             <img
-              alt="Go to Home page button."
+              alt="Home page link"
               id="feed_profile_icon"
               src="./images/home_full.png"
             ></img>
@@ -57,7 +57,7 @@ export default function OrderConfirmation({ cart, users, emptyCart }) {
           src="./images/final_project_header_wave_2.png"
         ></img>
       </header>
-      <div className="content_container">
+      <div className="confirmation-modal">
         <div className="thank_you_message">
           <img
             alt="Earth Icon"
@@ -65,8 +65,8 @@ export default function OrderConfirmation({ cart, users, emptyCart }) {
             src="./images/earth.png"
           />
           <h4>
-            A message have successfully <br />
-            been sent to each owners.
+            A message was sent <br />
+            out to each other member.
           </h4>
           <h1>
             Together, we're <br /> saving the <br /> planet.
@@ -76,7 +76,7 @@ export default function OrderConfirmation({ cart, users, emptyCart }) {
       </div>
       <footer className="orange_footer_cart">
         <img
-          className="orange_footer_wave_cart"
+          className="orange-footer-wave-cart"
           alt="Wave decoration"
           src="./images/footer_orange_resized.png"
         ></img>
