@@ -65,10 +65,6 @@ export default function DressingRoom({ selectedItemForTrying }) {
         id="person_standing"
         src="./images/person_1.jpg"
       />
-      <button type="button" className="try_button" onClick={checkLimage}>
-        {" "}
-        TRY ME{" "}
-      </button>
     </div>
   );
 }

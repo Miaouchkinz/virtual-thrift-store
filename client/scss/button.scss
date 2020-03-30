@@ -9,11 +9,9 @@
     width: 100%;
   }
 
-
   &.small {
     font-size: 1rem;
   }
-
 }
 
 .icon-btn {
@@ -37,7 +35,6 @@
     width: 5rem;
     height: 5rem;
     padding: 1rem;
-
   }
 
   img {
@@ -46,7 +43,7 @@
 
   &.selected {
     // box-shadow: x y blur spread color;
-    box-shadow: 0 8px 8px 2px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 8px 2px rgba(0, 0, 0, 0.25);
   }
 }
 
@@ -58,6 +55,6 @@
 
 .secondary {
   background-color: transparent;
-  border: .125rem solid white;
+  border: 0.125rem solid white;
   color: white;
 }

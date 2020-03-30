@@ -1,11 +1,11 @@
 #chat-window-header {
   display: flex;
   flex-direction: column;
-  
-  nav { 
+
+  nav {
     position: relative;
     width: 100%;
-    background: #70774B;
+    background: #70774b;
 
     .chat-menu {
       justify-content: space-between;
@@ -13,31 +13,31 @@
       padding: 0.5rem 0.5rem 0;
       color: white;
 
-        .back-to-profile {
-          margin-left: 0.5rem;
-          font-size: 0.75rem;
+      .back-to-profile {
+        margin-left: 0.5rem;
+        font-size: 0.75rem;
+      }
+
+      .corresponding-user-info {
+        padding: 0 2rem;
+        display: flex;
+        flex-direction: row;
+
+        .chat-window-avatar {
+          width: 3.5rem;
+          height: 3.5rem;
+          border-radius: 100%;
+          padding: 0.5rem;
         }
 
-        .corresponding-user-info {
-          padding: 0 2rem;
-          display: flex;
-          flex-direction: row;
-
-          .chat-window-avatar {
-            width: 3.5rem;
-            height: 3.5rem;
-            border-radius: 100%;
-            padding: 0.5rem;
-          }
-      
-          .chat-correspondent-name {
-            margin-top: 2rem;
-            font-size: 1rem;
-            color: white;
-            text-shadow: 2px 2px 2px #555;
-            font-weight: 700;
-          }
+        .chat-correspondent-name {
+          margin-top: 2rem;
+          font-size: 1rem;
+          color: white;
+          text-shadow: 2px 2px 2px #555;
+          font-weight: 700;
         }
+      }
     }
 
     .wave-spacer {
@@ -45,9 +45,9 @@
       z-index: -1;
       width: 100%;
       padding-top: 1.75rem;
-      background: #70774B;
+      background: #70774b;
     }
-    
+
     .chat-wave {
       position: absolute;
       width: 100%;
@@ -74,7 +74,7 @@
       padding: 0.5rem;
       margin: 0.5rem 1rem;
       border: 0.1rem solid white;
-      box-shadow: 1.75px 1.75px 1.75px #555;;
+      box-shadow: 1.75px 1.75px 1.75px #555;
     }
   }
 
@@ -88,7 +88,7 @@
     }
 
     ul {
-      list-style: none; 
+      list-style: none;
       padding: 0;
       display: flex;
       flex-direction: column;
@@ -132,13 +132,11 @@
       .message-text {
         padding: 0.25rem 0;
       }
-      
+
       .message-timestamp {
         color: #555;
         justify-self: flex-end;
       }
     }
-
-
   }
 }

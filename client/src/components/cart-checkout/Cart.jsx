@@ -51,10 +51,11 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
         ></img>
         <div>
           <img
+            className="delete_item_button"
             alt="Remove item from cart button."
             onClick={() => removeFromCart(cart, clothingItem.id)}
             src="./images/remove_item_from_cart.png"
-            width="40px"
+            width="30px"
           ></img>
         </div>
       </div>
@@ -81,19 +82,15 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
           >
             <Icon secondary label="<"></Icon>
           </Link>
-          <Link
-            to={{
-              pathname: "/checkout"
-            }}
-          >
-            <span className="feed_header_profile_icon">
-              <img
-                alt="Go to profile page button."
-                id="feed_profile_icon"
-                src="./images/checkout_full.png"
-              ></img>
-            </span>
-          </Link>
+          <span className="span_eclo_logo">
+            <Link
+              to={{
+                pathname: "/feed"
+              }}
+            >
+              <img id="eclo_logo" src="./images/eclo_main_logo.png" />
+            </Link>
+          </span>
         </div>
         <img
           alt="Top wave decoration."
@@ -108,6 +105,15 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
         </h1>
         <div className="clothingItem_cart_carousel">
           {checkIfCartEmpty(cartItemList)}
+        </div>
+        <div className="ready_to_checkout">
+          <Link
+            to={{
+              pathname: "/checkout"
+            }}
+          >
+            <h3> Ready to checkout -> </h3>
+          </Link>
         </div>
       </div>
       <div className="dressing_room_container">
