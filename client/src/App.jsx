@@ -118,7 +118,6 @@ export default function App(props) {
           </Route>
         </Switch>
       </Router>
-      <footer></footer>
     </div>
   );
 }
