@@ -1,9 +1,6 @@
 .filters_available {
   display: flex;
   flex-direction: column;
-  margin-left: 50px;
-  margin-top: -140px;
-  margin-bottom: 40px;
 
   h2 {
     margin-bottom: 10px;
@@ -27,11 +24,12 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  z-index: 1;
+  margin: 2.5rem 0 0;
+  background: #c6aa73
 }
 
 .clothingItem_image_of_grid_container {
-  width: 190px;
+  max-width: 160px;
 }
 
 .clothingItem_of_grid_container {
@@ -96,10 +94,10 @@ a {
 }
 
 .header_wave_green {
-  position: relative;
+  position: absolute;
   z-index: -1;
-  top: -75px;
-  width: 446px;
+  top: 0;
+  width: 100%;
 }
 
 #feed_hanger_icon {
@@ -121,7 +119,7 @@ a {
 }
 
 .orange_footer_wave {
-  width: 414px;
+  width: 100%;
   height: 925px;
   z-index: -1;
 }
