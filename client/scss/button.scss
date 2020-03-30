@@ -8,6 +8,12 @@
   &.full-width {
     width: 100%;
   }
+
+
+  &.small {
+    font-size: 1rem;
+  }
+
 }
 
 .icon-btn {
@@ -28,12 +34,14 @@
   }
 
   &.large {
-    width: 6rem;
-    height: 6rem;
-    
-    img {
-      max-width: 100%;
-    }
+    width: 5rem;
+    height: 5rem;
+    padding: 1rem;
+
+  }
+
+  img {
+    max-width: 100%;
   }
 
   &.selected {
@@ -44,6 +52,8 @@
 
 .primary {
   background-color: white;
+  border: 1px solid #ccc;
+  color: #222;
 }
 
 .secondary {
