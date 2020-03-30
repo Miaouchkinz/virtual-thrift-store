@@ -152,24 +152,36 @@
   right: 0;
 
   form {
-    display: flex;
-    flex-direction: row;
-    // justify-content: center;
-    width: 100%;
-
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: .25rem 0.5rem;
+    align-items: center;
+    background-color: #e0d1b5;
+    
     .message-textfield {
-      align-self: flex-start;
-      width: 75%;
       height: 2rem;
+      margin-right: 0.25rem;
+      padding: .125rem .75rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+
+      &::placeholder {
+        font-size: 1rem;
+        font-style: italic;
+      }
     }
   
     .submit-message {
-      align-self: flex-end;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
       height: 2.3rem;
-      width: 25%;
+      border-radius: 8px;
       font-weight: 500;
       font-size: 1rem;
-      background-color: silver;
+      background-color: #4381C1;
+      color: #efefef;
     }
   }
 
