@@ -18,7 +18,8 @@ export default function Profile(props) {
   } = props;
 
   // tabs: closet, convos, camera
-  const [tab, setTab] = useState("closet");
+  // const [tab, setTab] = useState("closet");
+  const [tab, setTab] = useState("convos");
 
   const handleLogoutClick = () => {
     axios
@@ -35,17 +36,21 @@ export default function Profile(props) {
   return (
     <div id="profile-page">
       <nav>
-        <Icon secondary onClick={() => history.push("/feed")} label="<"></Icon>
-        <Button onClick={() => handleLogoutClick()} primary label="LOG OUT" />
+        <div className="wave-spacer">
+          <img
+            className="profile-wave"
+            src="/images/final_project_header_wave_1.png"
+            alt="Top wave decoration."
+          ></img>
+        </div>
+        <div className="profile-menu">
+          <Icon secondary onClick={() => history.push("/feed")} label="<"></Icon>
+          <Button onClick={() => handleLogoutClick()} primary small label="LOG OUT" />
+        </div>
       </nav>
-      <img
-        className="profile-header"
-        src="/images/final_project_header_wave_1.png"
-        alt="Top wave decoration."
-      ></img>
       <header>
         <img className="avatar_url-image" src={avatar} alt="user_avatar" />
-        <span className="user-name">{userName}</span>
+        <span className="user-name">{userName}'s Profile</span>
         <div>
           <Icon
             primary
@@ -60,6 +65,7 @@ export default function Profile(props) {
             onClick={() => setTab("convos")}
             selected={tab === "convos"}
             icon="convos"
+            label="chat"
           ></Icon>
           <Icon
             primary
