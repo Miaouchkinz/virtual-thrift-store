@@ -113,7 +113,7 @@ export default function Checkout({ cart, users, addNewConversation }) {
       </div>
       <footer className="orange_footer_cart">
         <img
-          className="orange_footer_wave_cart"
+          className="orange-footer-wave-cart"
           alt="Wave decoration"
           src="./images/footer_orange_resized.png"
         ></img>
