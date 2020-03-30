@@ -297,7 +297,7 @@ Clothing.create(
 # User 4's closet:
 # TSHIRTS
 Clothing.create(
-  size: 'L',
+  size: 'S',
   image_url: '/images/clothing/TSHIRT_2_CSS.png',
   available_for_exchange: true, 
   user_id: 4,
