@@ -11,23 +11,26 @@ const orderedMessages = messages => {
   );
   return sortedMessages.map(message => {
     const user = message.user_id === user_1[0].id ? user_1[0] : user_2[0];
-
+    const isCurrentUser = currentUser.id === message.user_id;
     return (
-      <div className="ind-message-container" key={message.id}>
+      <div className={`ind-message-container ${isCurrentUser ? 'sender' : 'receiver'}`} key={message.id}>
         <li>
           <img
             className="message-area-avatar"
             src={user.avatar_url}
             alt="chat-correspondent-avatar"
           />
-          {user.name} said: {message.text}
+          <div className="message-details">
+            <div className="username">{user.name}</div>
+            <div className="message-text">{message.text}</div>
+            <Moment 
+              className="message-timestamp" 
+              fromNow
+            >
+              {message.created_at}
+            </Moment>
+          </div>
         </li>
-        <Moment 
-          className="message-timestamp" 
-          fromNow
-        >
-          {message.created_at}
-        </Moment>
       </div>
     );
   });
@@ -39,7 +42,6 @@ const orderedMessages = messages => {
         channel={{ channel: 'MessagesChannel', conversation: id }}
         onReceived={handleReceivedMessage}
       />
-      <h2>{title}</h2>
       <ul>{orderedMessages(messages)}</ul>
       <NewMessageForm conversation_id={id} currentUser_id={currentUser.id} addNewMessageToConversation={addNewMessageToConversation} />
     </div>
