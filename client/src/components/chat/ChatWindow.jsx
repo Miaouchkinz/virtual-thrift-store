@@ -26,20 +26,40 @@ export default function ChatWindow({ conversations, currentUser, addNewMessageTo
   const correspondentUser = findCorrespondentUser(conversations, activeConversationID)
 
   return (
-    <div className="chat-window-header">   
+    <div id="chat-window-header">   
       <nav>
-        <Link to={'/user/profile'}>
-          <Icon secondary label="<"></Icon>
-        </Link>
+        <div className="wave-spacer">
+          <img
+            className="chat-wave"
+            src="/images/final_project_header_wave_1.png"
+            alt="Top wave decoration."
+          ></img>
+        </div>
+        <div className="chat-menu">
+          <div className="chat-navigation">
+            <Link to={'/user/profile'}>
+              <Icon id="chat-back" secondary label="<"></Icon>
+            </Link>
+            <span className="back-to-profile">Back to profile</span>
+          </div>
+          <div className="corresponding-user-info">
+            <img
+              className="chat-window-avatar"
+              src={correspondentUser.avatar_url}
+              alt="chat-correspondent-avatar"
+            />
+            <span className="chat-correspondent-name">Conversation with {correspondentUser.name}</span>
+          </div>
+        </div>
       </nav> 
       <header>
-        <img
-          className="chat-window-avatar"
-          src={correspondentUser.avatar_url}
-          alt="chat-correspondent-avatar"
-        />
-        <span className="chat-correspondent-name">{correspondentUser.name}</span>
+        <h3>A new request was sent :</h3>
+        <h4 className="message-title">{findActiveConversation(
+            conversations,
+            activeConversationID
+          ).title}</h4>
       </header>
+      <div id="message-area-container">
         <MessagesArea
           currentUser={currentUser}
           addNewMessageToConversation={addNewMessageToConversation}
@@ -49,6 +69,7 @@ export default function ChatWindow({ conversations, currentUser, addNewMessageTo
             activeConversationID
           )}
         />
+      </div>
     </div> 
   )
 }
