@@ -22,7 +22,6 @@ export default function NewMessageForm({currentUser_id, conversation_id, addNewM
   return (
     <div className="newMessageForm">
       <form onSubmit={handleSubmit}>
-        <br />
         <input
           className="message-textfield"
           placeholder="Enter new message"
@@ -30,7 +29,9 @@ export default function NewMessageForm({currentUser_id, conversation_id, addNewM
           value={state.text}
           onChange={handleChange}
         />
-        <input className="submit-message" type="submit" />
+        <button className="submit-message" type="submit" value="Submit">Send
+          <i className="fas fa-paper-plane"></i>
+        </button>
       </form>
     </div>
   );
