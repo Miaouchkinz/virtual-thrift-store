@@ -109,16 +109,13 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
         <div className="clothingItem_cart_carousel">
           {checkIfCartEmpty(cartItemList)}
         </div>
-        <div>
-          <h1>Future machine learning cool stuff here</h1>
-        </div>
       </div>
       <div className="dressing_room_container">
         <DressingRoom selectedItemForTrying={selectedItemForTrying} />
       </div>
       <footer className="orange_footer_cart">
         <img
-          className="orange_footer_wave_cart"
+          className="orange-footer-wave-cart"
           alt="Wave decoration"
           src="./images/footer_orange_resized.png"
         ></img>
