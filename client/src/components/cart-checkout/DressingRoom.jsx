@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as posenet from "@tensorflow-models/posenet";
 
 export default function DressingRoom({ itemData }) {
-  const [width, setWidth] = useState("100%");
+  const [width, setWidth] = useState("");
   const [left, setLeft] = useState("");
   const [top, setTop] = useState("");
 
@@ -32,7 +32,6 @@ export default function DressingRoom({ itemData }) {
           const topOffsetPercent = itemData.itemTop;
 
           const selectedItem = document.getElementById("selected-item");
-          console.log(selectedItem.width)
 
           const leftOffset = selectedItem.width * leftOffsetPercent;
           const rightOffset = selectedItem.width * rightOffsetPercent;
@@ -48,16 +47,7 @@ export default function DressingRoom({ itemData }) {
           const topDistance =
             (topLeftOfShoulder + topRightOfShoulder) / 2 - topOffset;
 
-<<<<<<< HEAD
           setWidth(`${width}px`);
-=======
-
-          console.log('left', leftPos);          
-          console.log('width', width);
-          console.log('img width', selectedItem.width);
-          console.log('topDistance', topDistance);
-
->>>>>>> d755559550c32108b48187a8bc5bbb890558a47b
           setLeft(`${leftPos}px`);
           setWidth(`${width}px`);
           setTop(`${topDistance}px`);
@@ -69,7 +59,6 @@ export default function DressingRoom({ itemData }) {
     <div className="images">
       <img
         onClick={checkLimage}
-        // ref={selectedItem}
         id="selected-item"
         src={itemData.itemUrl}
         style={{ width, left, top }}
@@ -79,9 +68,6 @@ export default function DressingRoom({ itemData }) {
         id="person_standing"
         src="./images/person_1.jpg"
       />
-      <button type="button" className="try_button" onClick={checkLimage}>
-        TRY ME
-      </button>
     </div>
   );
 }
