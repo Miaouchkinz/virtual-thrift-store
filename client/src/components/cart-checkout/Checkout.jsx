@@ -3,9 +3,7 @@ import Icon from "../common/iconButton";
 import Button from "../common/textButton";
 import { Link } from "react-router-dom";
 
-
 export default function Checkout({ cart, users, addNewConversation }) {
-
   const listOwnersOfItem = function(cartItems) {
     let owners = [];
     for (let item of cartItems) {
@@ -63,14 +61,14 @@ export default function Checkout({ cart, users, addNewConversation }) {
   ));
 
   const sendAutomatedMessages = () => {
-    let ownerIds = listOwnersOfItem(cart)
+    let ownerIds = listOwnersOfItem(cart);
 
     ownerIds.forEach(user => addNewConversation(user));
-  }
+  };
 
   const checkIfCartEmpty = function() {
     let finalResult = null;
-    let ownerIds = listOwnersOfItem(cart)
+    let ownerIds = listOwnersOfItem(cart);
     if (ownerIds.length === 0) {
       finalResult = <h2>Your cart is empty.</h2>;
     } else {
@@ -81,7 +79,11 @@ export default function Checkout({ cart, users, addNewConversation }) {
               pathname: "/confirmation"
             }}
           >
-            <Button onClick={() => sendAutomatedMessages()} primary label="CONFIRM ALL" />
+            <Button
+              onClick={() => sendAutomatedMessages()}
+              primary
+              label="CONFIRM ALL"
+            />
           </Link>
         </div>
       );
@@ -99,6 +101,15 @@ export default function Checkout({ cart, users, addNewConversation }) {
           >
             <Icon secondary label="<"></Icon>
           </Link>
+          <span className="span_eclo_logo">
+            <Link
+              to={{
+                pathname: "/feed"
+              }}
+            >
+              <img id="eclo_logo" src="./images/eclo_main_logo.png" />
+            </Link>
+          </span>
         </div>
         <img
           alt="Top wave decoration."
@@ -106,7 +117,7 @@ export default function Checkout({ cart, users, addNewConversation }) {
           src="./images/final_project_header_wave_2.png"
         ></img>
       </header>
-      <div className="content_container">
+      <div className="content_checkout_container">
         <h1>Ready to checkout?</h1>
         {displaySectionOfOwners}
         {checkIfCartEmpty()}

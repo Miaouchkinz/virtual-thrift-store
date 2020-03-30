@@ -25,31 +25,18 @@ export default function OrderConfirmation({ cart, users, emptyCart }) {
     <div>
       <header>
         <div className="feed_header_block">
-          <Link
-            to={{
-              pathname: "/user/profile"
-            }}
-          >
-            <img
-              alt="Go to profile page button."
-              id="feed_profile_icon"
-              src="./images/profile_avatar_full.png"
-            ></img>
-          </Link>
-          <Link
-            onClick={() => {
-              emptyCart();
-            }}
-            to={{
-              pathname: "/feed"
-            }}
-          >
-            <img
-              alt="Home page link"
-              id="feed_profile_icon"
-              src="./images/home_full.png"
-            ></img>
-          </Link>
+          <span className="confirmation_eclo_logo">
+            <Link
+              onClick={() => {
+                emptyCart();
+              }}
+              to={{
+                pathname: "/feed"
+              }}
+            >
+              <img id="eclo_logo" src="./images/eclo_main_logo.png" />
+            </Link>
+          </span>
         </div>
         <img
           alt="Top wave decoration."

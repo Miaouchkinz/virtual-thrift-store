@@ -80,14 +80,13 @@
   }
 
   #message-area-container {
-
     .messagesArea {
       margin-top: 2rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-    
+
     ul {
       list-style: none;
       padding: 0;
@@ -142,9 +141,6 @@
     }
   }
 }
-<<<<<<< HEAD
-=======
-
 .newMessageForm {
   position: fixed;
   bottom: 0;
@@ -162,7 +158,7 @@
       width: 75%;
       height: 2rem;
     }
-  
+
     .submit-message {
       align-self: flex-end;
       height: 2.3rem;
@@ -172,6 +168,4 @@
       background-color: silver;
     }
   }
-
 }
->>>>>>> b25dd909a13d9866280f36318392463e7cf95a3b

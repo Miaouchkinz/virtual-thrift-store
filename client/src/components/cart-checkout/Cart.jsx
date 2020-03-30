@@ -29,6 +29,15 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
     .filter(item => itemsInCartId().includes(item.id))
     .map(clothingItem => (
       <div className="clothingItem_of_cart_container" key={clothingItem.id}>
+        <div>
+          <img
+            className="delete_item_button"
+            alt="Remove item from cart button."
+            onClick={() => removeFromCart(cart, clothingItem.id)}
+            src="./images/remove_item_from_cart.png"
+            width="30px"
+          ></img>
+        </div>
         <img
           onClick={() =>
             setSelectedItemForTrying({
@@ -49,15 +58,6 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
           }
           id={clothingItem.size}
         ></img>
-        <div>
-          <img
-            className="delete_item_button"
-            alt="Remove item from cart button."
-            onClick={() => removeFromCart(cart, clothingItem.id)}
-            src="./images/remove_item_from_cart.png"
-            width="30px"
-          ></img>
-        </div>
       </div>
     ));
 
@@ -100,7 +100,7 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
       </header>
       <div className="content_container">
         <h1>
-          Selected items
+          Click an item <br /> to try it on!
           <span className="total_item_in_cart">{cart.length}</span>
         </h1>
         <div className="clothingItem_cart_carousel">
@@ -112,7 +112,7 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
               pathname: "/checkout"
             }}
           >
-            <h3> Ready to checkout -> </h3>
+            <h3> Ready to checkout </h3>
           </Link>
         </div>
       </div>
