@@ -1,0 +1,45 @@
+.conversationsList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // margin: 0.25rem;
+
+  ul {
+    list-style: none; 
+    padding: 0;
+    margin: 1rem 0;
+    max-width: 40rem;
+  }
+}
+
+.chat-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  background: #e5e5e5;
+  margin: 1rem;
+  
+  .chat-preview-avatar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100%;
+    padding: 0.5rem;
+  }
+
+  .message-preview {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+
+    .last-message {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+}
