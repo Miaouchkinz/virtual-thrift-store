@@ -150,4 +150,27 @@
   bottom: 0;
   left: 0;
   right: 0;
+
+  form {
+    display: flex;
+    flex-direction: row;
+    // justify-content: center;
+    width: 100%;
+
+    .message-textfield {
+      align-self: flex-start;
+      width: 75%;
+      height: 2rem;
+    }
+  
+    .submit-message {
+      align-self: flex-end;
+      height: 2.3rem;
+      width: 25%;
+      font-weight: 500;
+      font-size: 1rem;
+      background-color: silver;
+    }
+  }
+
 }
