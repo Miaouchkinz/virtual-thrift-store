@@ -2,7 +2,11 @@
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
-  background-color: #e0bfbf;
+  background-color: #e5e5e5;
+  border-radius: 15px;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 5px;
   z-index: 1;
 }
 
@@ -12,14 +16,14 @@
   border-radius: 50%;
   height: 100px;
   width: 100px;
-  z-index: 1;
 }
 
 .total_item_in_cart {
   border-radius: 50%;
-  width: 10px;
-  height: 10px;
   padding: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 3px;
   border: 2px solid rgb(0, 0, 0);
   color: rgb(0, 0, 0);
   text-align: center;
@@ -27,14 +31,20 @@
 }
 
 .content_container {
-  margin-top: 6rem;
+  margin-top: 2.8rem;
   h1 {
     margin-left: 20px;
     z-index: 1;
+    font-size: 24px;
+    color: white;
+    text-shadow: 2px 1px 3px #000000;
   }
   h2 {
     margin-left: 20px;
     z-index: 1;
+  }
+  h3 {
+    margin-left: 20px;
   }
 }
 
@@ -48,4 +58,30 @@
 .orange-footer-wave-cart {
   width: 100%;
   z-index: -1;
+}
+
+.ready_to_checkout {
+  background-color: white;
+  margin-top: 10px;
+  margin-left: 245px;
+  margin-right: 5px;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 3px;
+  h3 {
+    margin: 0;
+  }
+}
+
+.span_eclo_logo {
+  #eclo_logo {
+    width: 100px;
+    margin-right: 145px;
+  }
+}
+
+.delete_item_button {
+  width: 20px;
+  padding-left: 80px;
+  margin-bottom: -20px;
 }

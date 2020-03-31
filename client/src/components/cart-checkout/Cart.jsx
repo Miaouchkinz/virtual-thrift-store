@@ -29,6 +29,15 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
     .filter(item => itemsInCartId().includes(item.id))
     .map(clothingItem => (
       <div className="clothingItem_of_cart_container" key={clothingItem.id}>
+        <div>
+          <img
+            className="delete_item_button"
+            alt="Remove item from cart button."
+            onClick={() => removeFromCart(cart, clothingItem.id)}
+            src="./images/remove_item_from_cart.png"
+            width="30px"
+          ></img>
+        </div>
         <img
           onClick={() =>
             setSelectedItemForTrying({
@@ -49,14 +58,6 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
           }
           id={clothingItem.size}
         ></img>
-        <div>
-          <img
-            alt="Remove item from cart button."
-            onClick={() => removeFromCart(cart, clothingItem.id)}
-            src="./images/remove_item_from_cart.png"
-            width="40px"
-          ></img>
-        </div>
       </div>
     ));
 
@@ -81,19 +82,15 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
           >
             <Icon secondary label="<"></Icon>
           </Link>
-          <Link
-            to={{
-              pathname: "/checkout"
-            }}
-          >
-            <span className="feed_header_profile_icon">
-              <img
-                alt="Go to profile page button."
-                id="feed_profile_icon"
-                src="./images/checkout_full.png"
-              ></img>
-            </span>
-          </Link>
+          <span className="span_eclo_logo">
+            <Link
+              to={{
+                pathname: "/feed"
+              }}
+            >
+              <img id="eclo_logo" src="./images/eclo_main_logo.png" />
+            </Link>
+          </span>
         </div>
         <img
           alt="Top wave decoration."
@@ -102,12 +99,18 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
         ></img>
       </header>
       <div className="content_container">
-        <h1>
-          Selected items
-          <span className="total_item_in_cart">{cart.length}</span>
-        </h1>
+        <h1>Click an item to try it on!</h1>
         <div className="clothingItem_cart_carousel">
           {checkIfCartEmpty(cartItemList)}
+        </div>
+        <div className="ready_to_checkout">
+          <Link
+            to={{
+              pathname: "/checkout"
+            }}
+          >
+            <h3> Ready to checkout </h3>
+          </Link>
         </div>
       </div>
       <div className="dressing_room_container">

@@ -1,11 +1,11 @@
 #chat-window-header {
   display: flex;
   flex-direction: column;
-  
-  nav { 
+
+  nav {
     position: relative;
     width: 100%;
-    background: #70774B;
+    background: #70774b;
 
     .chat-menu {
       justify-content: space-between;
@@ -13,9 +13,21 @@
       padding: 0.5rem 0.5rem 0;
       color: white;
 
-        .back-to-profile {
-          margin-left: 0.5rem;
-          font-size: 0.75rem;
+      .back-to-profile {
+        margin-left: 0.5rem;
+        font-size: 0.75rem;
+      }
+
+      .corresponding-user-info {
+        padding: 0 2rem;
+        display: flex;
+        flex-direction: row;
+
+        .chat-window-avatar {
+          width: 3.5rem;
+          height: 3.5rem;
+          border-radius: 100%;
+          padding: 0.5rem;
         }
 
         .corresponding-user-info {
@@ -29,7 +41,7 @@
             border-radius: 100%;
             padding: 0.5rem;
           }
-      
+
           .chat-correspondent-name {
             margin-top: 2rem;
             font-size: 1rem;
@@ -38,6 +50,7 @@
             font-weight: 700;
           }
         }
+      }
     }
 
     .wave-spacer {
@@ -45,9 +58,9 @@
       z-index: -1;
       width: 100%;
       padding-top: 1.25rem;
-      background: #70774B;
+      background: #70774b;
     }
-    
+
     .chat-wave {
       position: absolute;
       width: 100%;
@@ -82,9 +95,9 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center; 
+      align-items: center;
       ul {
-        list-style: none; 
+        list-style: none;
         padding: 0;
         width: 100%;
         margin-bottom: 3rem;
@@ -93,7 +106,6 @@
         flex-direction: column;
       }
     }
-    
   }
 }
 
@@ -133,17 +145,14 @@
       .message-text {
         padding: 0.25rem 0;
       }
-      
+
       .message-timestamp {
         color: #555;
         justify-self: flex-end;
       }
     }
-
-
   }
 }
-
 .newMessageForm {
   position: fixed;
   bottom: 0;
@@ -153,14 +162,14 @@
   form {
     display: grid;
     grid-template-columns: 1fr auto;
-    padding: .25rem 0.5rem;
+    padding: 0.25rem 0.5rem;
     align-items: center;
     background-color: #e0d1b5;
-    
+
     .message-textfield {
       height: 2rem;
       margin-right: 0.25rem;
-      padding: .125rem .75rem;
+      padding: 0.125rem 0.75rem;
       border: none;
       border-radius: 8px;
       font-size: 1rem;
@@ -170,7 +179,7 @@
         font-style: italic;
       }
     }
-  
+
     .submit-message {
       display: flex;
       justify-content: space-evenly;
@@ -179,7 +188,7 @@
       border-radius: 8px;
       font-weight: 500;
       font-size: 1rem;
-      background-color: #4381C1;
+      background-color: #4381c1;
       color: #efefef;
 
       span {
@@ -187,5 +196,4 @@
       }
     }
   }
-
 }

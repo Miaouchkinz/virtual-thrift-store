@@ -1,11 +1,11 @@
 #profile-page {
   display: flex;
   flex-direction: column;
-  
-  nav { 
+
+  nav {
     position: relative;
     width: 100%;
-    background: #70774B;
+    background: #70774b;
 
     .profile-menu {
       display: flex;
@@ -28,14 +28,14 @@
       z-index: -1;
       width: 100%;
       padding-top: 8rem;
-      background: #70774B;
+      background: #70774b;
     }
-    
+
     .profile-wave {
       position: absolute;
       width: 100%;
     }
-}
+  }
 
   header {
     display: flex;
