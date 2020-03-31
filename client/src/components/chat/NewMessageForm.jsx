@@ -29,7 +29,8 @@ export default function NewMessageForm({currentUser_id, conversation_id, addNewM
           value={state.text}
           onChange={handleChange}
         />
-        <button className="submit-message" type="submit" value="Submit">Send
+        <button className="submit-message" type="submit" value="Submit">
+          <span>Send</span>
           <i className="fas fa-paper-plane"></i>
         </button>
       </form>
