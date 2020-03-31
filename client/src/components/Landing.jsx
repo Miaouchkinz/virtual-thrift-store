@@ -3,7 +3,7 @@ import Button from "./common/textButton";
 
 export default function Landing({ history }) {
   return (
-    <main id="landing">
+    <div>
       <header>
         <img
           className="landing_header_wave_green"
@@ -11,23 +11,27 @@ export default function Landing({ history }) {
           alt="Top wave decoration."
         ></img>
       </header>
-
-      <div className="logo-placeholder">
-        <img src="./images/eclo_main_logo.png" width="250px" />
-      </div>
-      <h1 className="welcome-message">Welcome to TraderJane's</h1>
-      <Button
-        onClick={() => history.push("/login")}
-        label="LOGIN"
-        primary
-        fullWidth
-      />
-      <Button
-        onClick={() => history.push("/register")}
-        label="SIGN UP"
-        secondary
-        fullWidth
-      />
+      <main id="landing">
+        <div>
+          <img src="./images/eclo_main_logo.png" width="250px" />
+          <h1 className="welcome-message">
+            A community-focused, online thrift store where you can 
+            try on clothes in the virtual dressing room.
+          </h1>
+          <Button
+            onClick={() => history.push("/login")}
+            label="LOGIN"
+            primary
+            fullWidth
+          />
+          <Button
+            onClick={() => history.push("/register")}
+            label="SIGN UP"
+            secondary
+            fullWidth
+          />
+        </div>
+      </main>
       <footer>
         <img
           className="landing_footer_wave_green"
@@ -35,6 +39,6 @@ export default function Landing({ history }) {
           alt="Bottom wave decoration."
         ></img>
       </footer>
-    </main>
+    </div>
   );
 }
