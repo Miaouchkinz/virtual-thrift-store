@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as posenet from "@tensorflow-models/posenet";
 
 export default function DressingRoom({ selectedItemForTrying }) {
-  const [width, setWidth] = useState();
+  const [width, setWidth] = useState("");
   const [left, setLeft] = useState("");
   const [top, setTop] = useState("");
 
-  let imageElement = React.createRef();
+  let modelStanding = React.createRef();
   let selectedItem = React.createRef();
-  const checkLimage = () => {
+
+  useEffect(() => {
+    activateTrying();
+  }, [selectedItemForTrying.itemUrl]);
+
+  const activateTrying = () => {
     if (selectedItemForTrying.itemUrl !== null) {
       posenet
         .load()
         .then(function(net) {
-          const pose = net.estimateSinglePose(imageElement.current, {
+          const pose = net.estimateSinglePose(modelStanding.current, {
             flipHorizontal: false
           });
           return pose;
@@ -24,26 +29,36 @@ export default function DressingRoom({ selectedItemForTrying }) {
           const leftShoulder = pose.keypoints[6].position.x;
           const rightShoulder = pose.keypoints[5].position.x;
 
-          const leftOffsetPercent = Number(selectedItemForTrying.itemLeft);
-          const rightOffsetPercent = Number(selectedItemForTrying.itemRight);
-          const topOffsetPercent = Number(selectedItemForTrying.itemTop);
+          const leftOffsetPercent = selectedItemForTrying.itemLeft;
+          const rightOffsetPercent = selectedItemForTrying.itemRight;
+          const topOffsetPercent = selectedItemForTrying.itemTop;
 
           const leftOffset = selectedItem.current.width * leftOffsetPercent;
           const rightOffset = selectedItem.current.width * rightOffsetPercent;
-          const topOffset = selectedItem.current.height * topOffsetPercent;
+          // const topOffset = selectedItem.current.height * topOffsetPercent;
 
-          const leftPos = leftShoulder - leftOffset;
-          const rightPos = rightShoulder + rightOffset;
-          const width = rightPos - leftPos;
+          const distBetweenShoulderItem =
+            selectedItem.current.width - leftOffset - rightOffset;
+
+          const distBetweenShoulderModel = rightShoulder - leftShoulder;
+
+          const scalingRatio =
+            distBetweenShoulderItem / distBetweenShoulderModel;
+
+          const width = selectedItem.current.width / scalingRatio;
+          const distBetweenLeftAndLeftShoulderOfItem =
+            width * leftOffsetPercent;
+
+          const leftOffsetOfItemOnModel =
+            leftShoulder - distBetweenLeftAndLeftShoulderOfItem;
 
           const topLeftOfShoulder = pose.keypoints[6].position.y;
-          const topRightOfShoulder = pose.keypoints[5].position.y;
+          // const topRightOfShoulder = pose.keypoints[5].position.y;
 
-          const topDistance =
-            (topLeftOfShoulder + topRightOfShoulder) / 2 - topOffset;
+          const topDistance = topLeftOfShoulder - width * topOffsetPercent;
 
           setWidth(`${width}px`);
-          setLeft(`${leftPos}px`);
+          setLeft(`${leftOffsetOfItemOnModel}px`);
           setTop(`${topDistance}px`);
         });
     }
@@ -52,7 +67,6 @@ export default function DressingRoom({ selectedItemForTrying }) {
   return (
     <div className="images">
       <img
-        onClick={checkLimage}
         ref={selectedItem}
         className="trying_item"
         position="absolute"
@@ -61,14 +75,10 @@ export default function DressingRoom({ selectedItemForTrying }) {
         style={{ left: left, top: top }}
       />
       <img
-        ref={imageElement}
+        ref={modelStanding}
         id="person_standing"
-        src="./images/person_1.jpg"
+        src="./images/ariana_standing.jpg"
       />
-      <button type="button" className="try_button" onClick={checkLimage}>
-        {" "}
-        TRY ME{" "}
-      </button>
     </div>
   );
 }
