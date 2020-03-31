@@ -6,21 +6,36 @@ export default function DressingRoom({ selectedItemForTrying }) {
   const [left, setLeft] = useState("");
   const [top, setTop] = useState("");
 
-  let modelStanding = React.createRef();
+  let videoElement = React.createRef();
   let selectedItem = React.createRef();
 
-  useEffect(() => {
-    activateTrying();
-  }, [selectedItemForTrying.itemUrl]);
+  // useEffect(() => {
+  //   activateTrying();
+  // }, [selectedItemForTrying.itemUrl]);
+
+  const startWebcam = () => {
+    const constraints = { video: true };
+    const webcam = document.getElementById("user_camera");
+    navigator.mediaDevices.getUserMedia(constraints).then(video => {
+      webcam.srcObject = video;
+    });
+    return webcam;
+  };
 
   const activateTrying = () => {
     if (selectedItemForTrying.itemUrl !== null) {
       posenet
         .load()
         .then(function(net) {
-          const pose = net.estimateSinglePose(modelStanding.current, {
-            flipHorizontal: false
-          });
+          const imageScaleFactor = 0.5;
+          const flipHorizontal = false;
+          const outputStride = 16;
+          const pose = net.estimateSinglePose(
+            videoElement.current,
+            imageScaleFactor,
+            flipHorizontal,
+            outputStride
+          );
           return pose;
         })
         .then(function(pose) {
@@ -66,19 +81,20 @@ export default function DressingRoom({ selectedItemForTrying }) {
 
   return (
     <div className="images">
+      <button onClick={startWebcam}>OPEN CAMERA</button>
       <img
         ref={selectedItem}
-        className="trying_item"
-        position="absolute"
+        onClick={activateTrying}
+        id="selected-item"
         src={selectedItemForTrying.itemUrl}
-        width={width}
-        style={{ left: left, top: top }}
+        style={{ width, left, top }}
       />
-      <img
-        ref={modelStanding}
-        id="person_standing"
-        src="./images/ariana_standing.jpg"
-      />
+      <video
+        ref={videoElement}
+        style={{ width: 400, height: 500, backgroundColor: "black" }}
+        autoPlay
+        id="user_camera"
+      ></video>
     </div>
   );
 }
