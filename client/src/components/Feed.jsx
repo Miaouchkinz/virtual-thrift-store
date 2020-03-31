@@ -218,13 +218,14 @@ export default function Feed({
             </button>
           </div>
           <Link to={{pathname: "/cart"}}>
-            <div className="feed_header_hanger_icon">
+            <div className="feed-cart-nav">
+              <span className="cart-quantity">{cart.length}</span>
               <img
                 alt="Go to cart to see all items selected button."
                 id="feed_hanger_icon"
                 src="./images/hanger_full.png"
               ></img>
-              {cart.length}
+              <span className="dressing-room-copy">Dressing Room</span>
             </div>
           </Link>
         </div>

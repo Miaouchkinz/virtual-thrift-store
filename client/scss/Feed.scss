@@ -91,6 +91,8 @@ a {
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
+  font-weight: 700;
+  font-size: 1rem;
 
   .profile-nav-block {
     display: flex;
@@ -106,8 +108,9 @@ a {
 
     .feed-username {
       color: white;
-      font-weight: 300;
-      font-size: 0.75rem;
+      // font-weight: 700;
+      // font-size: 1rem;
+      margin-top: 0.25rem;
     }
   }
 
@@ -120,10 +123,22 @@ a {
     }
   }
 
-  .feed_header_hanger_icon {
-    font-weight: bold;
+  .feed-cart-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    font-size: 1rem;
     color: white;
+    max-width: 4rem;
+    text-align: center;
+    .cart-quantity {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
+
 }
 
 .header_wave_green {
