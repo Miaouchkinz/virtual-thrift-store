@@ -92,8 +92,8 @@ export default function Checkout({ cart, users, addNewConversation }) {
   };
   return (
     <div className="checkout_main_section">
-      <header>
-        <div className="feed_header_block">
+      <header className="checkout_header">
+        <div className="checkout_header_block">
           <Link
             to={{
               pathname: "/cart"
@@ -110,6 +110,7 @@ export default function Checkout({ cart, users, addNewConversation }) {
               <img id="eclo_logo" src="./images/eclo_main_logo.png" />
             </Link>
           </span>
+          <div></div>
         </div>
         <img
           alt="Top wave decoration."

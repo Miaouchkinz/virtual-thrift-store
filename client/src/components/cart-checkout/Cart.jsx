@@ -73,8 +73,8 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
 
   return (
     <div>
-      <header className="feed_header">
-        <div className="feed_header_block">
+      <header className="cart_header">
+        <div className="cart_header_block">
           <Link
             to={{
               pathname: "/feed"
@@ -91,6 +91,7 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
               <img id="eclo_logo" src="./images/eclo_main_logo.png" />
             </Link>
           </span>
+          <div></div>
         </div>
         <img
           alt="Top wave decoration."

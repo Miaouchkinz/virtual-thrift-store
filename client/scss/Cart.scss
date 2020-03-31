@@ -73,15 +73,38 @@
   }
 }
 
-.span_eclo_logo {
-  #eclo_logo {
-    width: 100px;
-    margin-right: 145px;
-  }
-}
-
 .delete_item_button {
   width: 20px;
   padding-left: 80px;
   margin-bottom: -20px;
+}
+
+.checkout_header_block,
+.cart_header_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0.5rem;
+  }
+
+  .span_eclo_logo {
+    background: transparent;
+    border: none;
+    
+    #eclo_logo {
+      width: 6.5rem;
+      text-shadow: 2px 2px 2px whitesmoke;
+    }
+  }
+
+  div {
+    width: 2rem;
+    height: 2rem;
+  }
 }
