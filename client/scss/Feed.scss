@@ -86,11 +86,44 @@ a {
   justify-items: space-between;
 }
 
-.feed_header_block {
+.feed_header_menu {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
+
+  .profile-nav-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0.5rem;
+
+    .feed_profile_icon {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 100%;
+    }
+
+    .feed-username {
+      color: white;
+      font-weight: 300;
+      font-size: 0.75rem;
+    }
+  }
+
+  .home-button {
+    background: transparent;
+    border: none;
+    img {
+      width: 6.5rem;
+      text-shadow: 2px 2px 2px whitesmoke;
+    }
+  }
+
+  .feed_header_hanger_icon {
+    font-weight: bold;
+    color: white;
+  }
 }
 
 .header_wave_green {
@@ -104,14 +137,6 @@ a {
   height: 50px;
 }
 
-#feed_profile_icon {
-  height: 50px;
-}
-
-.feed_header_hanger_icon {
-  font-weight: bold;
-  color: white;
-}
 
 .orange_footer {
   bottom: -500px;

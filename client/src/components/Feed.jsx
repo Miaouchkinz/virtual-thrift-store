@@ -5,7 +5,8 @@ export default function Feed({
   availableClothing,
   clothingCategories,
   cart,
-  addToCart
+  addToCart,
+  currentUser
 }) {
   const [size, setSize] = useState({
     S: false,
@@ -204,33 +205,27 @@ export default function Feed({
   return (
     <div className="Feed">
       <header className="feed_header">
-        <div className="feed_header_block">
-          <Link
-            to={{
-              pathname: "/user/profile"
-            }}
-          >
-            <span className="feed_header_profile_icon">
-              <img
-                alt="Go to profile page button"
-                id="feed_profile_icon"
-                src="./images/profile_avatar_full.png"
-              ></img>
-            </span>
+        <div className="feed_header_menu">
+          <Link to={{pathname: "/user/profile"}}>
+            <div className="profile-nav-block">
+              <img className="feed_profile_icon" src={currentUser.avatar_url} alt="user_avatar" />
+              <span className="feed-username">{currentUser.name}</span>
+            </div>
           </Link>
-          <Link
-            to={{
-              pathname: "/cart"
-            }}
-          >
-            <span className="feed_header_hanger_icon">
+          <div className="feed-logo-header">
+            <button className="home-button" onClick={() => history.push("/feed")}>
+              <img src={`/images/eclo_main_logo.png`} alt="Home button"/>
+            </button>
+          </div>
+          <Link to={{pathname: "/cart"}}>
+            <div className="feed_header_hanger_icon">
               <img
                 alt="Go to cart to see all items selected button."
                 id="feed_hanger_icon"
                 src="./images/hanger_full.png"
               ></img>
               {cart.length}
-            </span>
+            </div>
           </Link>
         </div>
         <img
@@ -242,12 +237,12 @@ export default function Feed({
       <div className="filters_available">
         <h2>Filter by:</h2>
         <form className="typeForm">
-          <p>Category</p>
+          <p>Category: </p>
           {categoryList(clothingCategories)}
         </form>
 
         <form className="sizeForm">
-          <p className="title_size">Size</p>
+          <p className="title_size">Size: </p>
           <div className="label_container">
             <label>
               <input
