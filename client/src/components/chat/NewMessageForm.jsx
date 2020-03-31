@@ -22,14 +22,17 @@ export default function NewMessageForm({currentUser_id, conversation_id, addNewM
   return (
     <div className="newMessageForm">
       <form onSubmit={handleSubmit}>
-        <label>New Message:</label>
-        <br />
         <input
+          className="message-textfield"
+          placeholder="Enter new message"
           type="text"
           value={state.text}
           onChange={handleChange}
         />
-        <input type="submit" />
+        <button className="submit-message" type="submit" value="Submit">
+          <span>Send</span>
+          <i className="fas fa-paper-plane"></i>
+        </button>
       </form>
     </div>
   );

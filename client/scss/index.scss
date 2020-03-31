@@ -9,6 +9,40 @@
 @import "./convoList.scss";
 @import "./chatWindow.scss";
 
+html,
+body {
+  height: 100%;
+  position: relative;
+}
+
+.App {
+  header {
+    .landing_header_wave_green,
+    .login_header_wave_green {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: -1;
+    }
+  }
+  #auth, #landing {
+    overflow: hidden;
+    display: block;
+    position: relative;
+  }
+
+  footer {
+    .signup_footer_wave_green,
+    .landing_footer_wave_green,
+    .login_footer_wave_green {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      z-index: -1;
+    }
+  }
+}
+
 body {
   font-family: "Roboto", sans-serif;
   background-color: #ded0b6;
@@ -16,14 +50,23 @@ body {
 }
 
 #landing {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 85%;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 175px;
+  }
 
   .welcome-message {
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin: 1.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: white;
+    text-shadow: 1px 1px 1px #555, 0 0 2px #555;
+    margin: 1rem;
   }
 
   .btn {
@@ -37,7 +80,9 @@ body {
 }
 
 #auth {
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
   max-width: 85%;
 
   form {
@@ -64,43 +109,4 @@ body {
       margin-bottom: 0.75rem;
     }
   }
-}
-
-.logo-placeholder {
-  // width: 8rem;
-  // height: 8rem;
-  // background-color: pink;
-  border-radius: 100%;
-}
-
-.landing_header_wave_green {
-  position: relative;
-  z-index: -1;
-  width: 31rem;
-}
-
-.landing_footer_wave_green {
-  width: 28rem;
-  position: relative;
-  z-index: -1;
-  bottom: 0;
-  margin-top: 8rem;
-}
-
-.login_header_wave_green {
-  position: relative;
-  z-index: -1;
-  width: 31rem;
-  top: -4rem;
-}
-
-.login_footer_wave_green {
-  width: 28rem;
-  position: relative;
-}
-
-.signup_footer_wave_green {
-  width: 28rem;
-  position: relative;
-  bottom: 4rem;
 }
