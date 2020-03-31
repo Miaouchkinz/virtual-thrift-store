@@ -99,10 +99,7 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
         ></img>
       </header>
       <div className="content_container">
-        <h1>
-          Click an item <br /> to try it on!
-          <span className="total_item_in_cart">{cart.length}</span>
-        </h1>
+        <h1>Click an item to try it on!</h1>
         <div className="clothingItem_cart_carousel">
           {checkIfCartEmpty(cartItemList)}
         </div>

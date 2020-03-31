@@ -2,8 +2,11 @@
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
-  background-color: #e0bfbf;
-  padding: 10px;
+  background-color: #e5e5e5;
+  border-radius: 15px;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 5px;
   z-index: 1;
 }
 
@@ -13,7 +16,6 @@
   border-radius: 50%;
   height: 100px;
   width: 100px;
-  z-index: 1;
 }
 
 .total_item_in_cart {
@@ -29,10 +31,13 @@
 }
 
 .content_container {
-  margin-top: 2.5rem;
+  margin-top: 2.8rem;
   h1 {
     margin-left: 20px;
     z-index: 1;
+    font-size: 24px;
+    color: white;
+    text-shadow: 2px 1px 3px #000000;
   }
   h2 {
     margin-left: 20px;
@@ -76,8 +81,7 @@
 }
 
 .delete_item_button {
-  padding-left: 80px;
   width: 20px;
-  z-index: 999;
-  position: absolute;
+  padding-left: 80px;
+  margin-bottom: -20px;
 }
