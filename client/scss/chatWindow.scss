@@ -19,9 +19,9 @@
         }
 
         .corresponding-user-info {
-          padding: 0 2rem;
+          padding: 1rem;
           display: flex;
-          flex-direction: row;
+          justify-content: center;
 
           .chat-window-avatar {
             width: 3.5rem;
@@ -44,7 +44,7 @@
       position: absolute;
       z-index: -1;
       width: 100%;
-      padding-top: 1.75rem;
+      padding-top: 1.25rem;
       background: #70774B;
     }
     
@@ -70,31 +70,30 @@
       font-size: 0.875rem;
       font-style: italic;
       color: white;
-      // background-color: #ccc;
       border-radius: 1rem;
-      padding: 0.5rem;
       margin: 0 1rem;
-      // border: 0.1rem solid white;
-      // box-shadow: 1.75px 1.75px 1.75px #555;;
     }
   }
 
   #message-area-container {
+    margin-top: 3rem;
 
     .messagesArea {
-      margin-top: 2rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center; 
+      ul {
+        list-style: none; 
+        padding: 0;
+        width: 100%;
+        margin-bottom: 3rem;
+        max-width: 40rem;
+        display: flex;
+        flex-direction: column;
+      }
     }
     
-    ul {
-      list-style: none; 
-      padding: 0;
-      max-width: 40rem;
-      display: flex;
-      flex-direction: column;
-    }
   }
 }
 
@@ -102,7 +101,7 @@
   display: flex;
   flex-direction: column;
   width: 75%;
-  margin: 1rem;
+  margin: 0.5rem 1rem;
   border-radius: 4px;
 
   &.sender {
@@ -182,6 +181,10 @@
       font-size: 1rem;
       background-color: #4381C1;
       color: #efefef;
+
+      span {
+        padding-right: 0.5rem;
+      }
     }
   }
 
