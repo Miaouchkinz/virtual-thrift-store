@@ -9,14 +9,6 @@
 @import "./convoList.scss";
 @import "./chatWindow.scss";
 
-* {
-  box-sizing: border-box;
-  &:before,
-  &:after {
-    box-sizing: border-box;
-  }
-}
-
 html,
 body {
   height: 100%;
@@ -118,37 +110,3 @@ body {
     }
   }
 }
-
-// .landing_header_wave_green {
-//   position: relative;
-//   z-index: -1;
-//   width: 100%;
-// }
-// .signup_footer_wave_green
-// .landing_footer_wave_green {
-//   width: 100%;
-//   position: relative;
-//   z-index: -1;
-//   bottom: 0;
-//   margin-top: 8rem;
-// }
-
-// .login_header_wave_green {
-//   position: relative;
-//   z-index: -1;
-//   width: 100%;
-//   top: -4rem;
-//   max-height: 12rem;
-// }
-
-// .login_footer_wave_green {
-//   width: 100%;
-//   position: relative;
-//   max-height: 12rem;
-// }
-
-// .signup_footer_wave_green {
-//   width: 100%;
-//   position: relative;
-//   bottom: 4rem;
-// }
