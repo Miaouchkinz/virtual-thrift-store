@@ -13,6 +13,14 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 1rem 0;
+      .home-button {
+        background: transparent;
+        border: none;
+        img {
+          width: 5rem;
+          text-shadow: 2px 2px 2px whitesmoke;
+        }
+      }
     }
 
     .wave-spacer {
@@ -49,13 +57,31 @@
       font-weight: 700;
     }
 
-    .icon-btn {
-      margin: 0.75rem;
+    #profile-toggle-menu {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      #closet-profile-toggle, #convos-profile-toggle, #camera-profile-toggle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        font-size: 1.25rem;
+        font-weight: 700;
+        text-shadow: 2px 2px 2px #555;
+        padding: 0.75rem;
+
+        span {
+          padding-top: 0.5rem;
+        }
+      }
+
     }
   }
 
   .profile-feed-placeholder {
     background-color: #c2a877;
-    margin-top: 2rem;
+    margin-top: 1.25rem;
   }
 }
