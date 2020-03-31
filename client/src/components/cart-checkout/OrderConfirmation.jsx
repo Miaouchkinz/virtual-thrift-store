@@ -6,7 +6,7 @@ export default function OrderConfirmation({ cart, users, emptyCart }) {
     let ownersList = [];
     for (let user of users) {
       for (let item of cart) {
-        if (user.id === item.userId) {
+        if (user.id === item.userId && !ownersList.includes(user)) {
           ownersList.push(user);
         }
       }

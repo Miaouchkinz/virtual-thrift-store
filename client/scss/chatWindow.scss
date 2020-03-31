@@ -30,12 +30,25 @@
           padding: 0.5rem;
         }
 
-        .chat-correspondent-name {
-          margin-top: 2rem;
-          font-size: 1rem;
-          color: white;
-          text-shadow: 2px 2px 2px #555;
-          font-weight: 700;
+        .corresponding-user-info {
+          padding: 1rem;
+          display: flex;
+          justify-content: center;
+
+          .chat-window-avatar {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 100%;
+            padding: 0.5rem;
+          }
+
+          .chat-correspondent-name {
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: white;
+            text-shadow: 2px 2px 2px #555;
+            font-weight: 700;
+          }
         }
       }
     }
@@ -44,7 +57,7 @@
       position: absolute;
       z-index: -1;
       width: 100%;
-      padding-top: 1.75rem;
+      padding-top: 1.25rem;
       background: #70774b;
     }
 
@@ -70,29 +83,28 @@
       font-size: 0.875rem;
       font-style: italic;
       color: white;
-      // background-color: #ccc;
       border-radius: 1rem;
-      padding: 0.5rem;
-      margin: 0.5rem 1rem;
-      border: 0.1rem solid white;
-      box-shadow: 1.75px 1.75px 1.75px #555;
+      margin: 0 1rem;
     }
   }
 
   #message-area-container {
+    margin-top: 3.5rem;
+
     .messagesArea {
-      margin-top: 2rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      max-width: 40rem;
-      display: flex;
-      flex-direction: column;
+      align-items: center;
+      ul {
+        list-style: none;
+        padding: 0;
+        width: 100%;
+        margin-bottom: 3rem;
+        max-width: 40rem;
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 }
@@ -101,7 +113,7 @@
   display: flex;
   flex-direction: column;
   width: 75%;
-  margin: 1rem;
+  margin: 0.5rem 1rem;
   border-radius: 4px;
 
   &.sender {
@@ -148,24 +160,40 @@
   right: 0;
 
   form {
-    display: flex;
-    flex-direction: row;
-    // justify-content: center;
-    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 0.25rem 0.5rem;
+    align-items: center;
+    background-color: #e0d1b5;
 
     .message-textfield {
-      align-self: flex-start;
-      width: 75%;
       height: 2rem;
+      margin-right: 0.25rem;
+      padding: 0.125rem 0.75rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+
+      &::placeholder {
+        font-size: 1rem;
+        font-style: italic;
+      }
     }
 
     .submit-message {
-      align-self: flex-end;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
       height: 2.3rem;
-      width: 25%;
+      border-radius: 8px;
       font-weight: 500;
       font-size: 1rem;
-      background-color: silver;
+      background-color: #4381c1;
+      color: #efefef;
+
+      span {
+        padding-right: 0.5rem;
+      }
     }
   }
 }

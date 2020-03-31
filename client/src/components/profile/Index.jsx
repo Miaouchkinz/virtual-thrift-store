@@ -18,7 +18,6 @@ export default function Profile(props) {
   } = props;
 
   // tabs: closet, convos, camera
-  // const [tab, setTab] = useState("closet");
   const [tab, setTab] = useState("convos");
 
   const handleLogoutClick = () => {
@@ -44,36 +43,47 @@ export default function Profile(props) {
           ></img>
         </div>
         <div className="profile-menu">
-          <Icon secondary onClick={() => history.push("/feed")} label="<"></Icon>
+          <button className="home-button" onClick={() => history.push("/feed")}>
+            <img src={`/images/eclo_main_logo.png`} alt="Home button"/>
+          </button>
           <Button onClick={() => handleLogoutClick()} primary small label="LOG OUT" />
         </div>
       </nav>
       <header>
         <img className="avatar_url-image" src={avatar} alt="user_avatar" />
         <span className="user-name">{userName}'s Profile</span>
-        <div>
-          <Icon
-            primary
-            large
-            onClick={() => setTab("closet")}
-            selected={tab === "closet"}
-            icon="hanger"
-          ></Icon>
-          <Icon
-            primary
-            large
-            onClick={() => setTab("convos")}
-            selected={tab === "convos"}
-            icon="convos"
-            label="chat"
-          ></Icon>
-          <Icon
-            primary
-            large
-            onClick={() => setTab("camera")}
-            selected={tab === "camera"}
-            icon="camera"
-          ></Icon>
+        <div id="profile-toggle-menu">
+          <div id="closet-profile-toggle">
+            <Icon
+              primary
+              large
+              onClick={() => setTab("closet")}
+              selected={tab === "closet"}
+              icon="hanger"
+            ></Icon>
+            <span>Closet</span>
+          </div>
+          <div id="convos-profile-toggle">
+            <Icon
+              primary
+              large
+              onClick={() => setTab("convos")}
+              selected={tab === "convos"}
+              icon="convos"
+              label="chat"
+            ></Icon>
+            <span>Chat</span>
+          </div>
+          <div id="camera-profile-toggle">
+            <Icon
+              primary
+              large
+              onClick={() => setTab("camera")}
+              selected={tab === "camera"}
+              icon="camera"
+            ></Icon>
+            <span>Camera</span>
+          </div>
         </div>
       </header>
       <main>
