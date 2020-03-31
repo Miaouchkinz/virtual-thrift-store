@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as posenet from "@tensorflow-models/posenet";
 
 export default function DressingRoom({ selectedItemForTrying }) {
-  const [width, setWidth] = useState();
+  const [width, setWidth] = useState("");
   const [left, setLeft] = useState("");
   const [top, setTop] = useState("");
 
   let imageElement = React.createRef();
   let selectedItem = React.createRef();
+
+  useEffect(() => {
+    checkLimage();
+  }, [selectedItemForTrying.itemUrl]);
+
   const checkLimage = () => {
     if (selectedItemForTrying.itemUrl !== null) {
       posenet
@@ -72,7 +77,7 @@ export default function DressingRoom({ selectedItemForTrying }) {
   return (
     <div className="images">
       <img
-        onClick={checkLimage}
+        // onClick={checkLimage}
         ref={selectedItem}
         className="trying_item"
         position="absolute"
@@ -83,7 +88,7 @@ export default function DressingRoom({ selectedItemForTrying }) {
       <img
         ref={imageElement}
         id="person_standing"
-        src="./images/person_1.jpg"
+        src="./images/tess_standing.jpg"
       />
     </div>
   );
