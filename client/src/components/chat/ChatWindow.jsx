@@ -11,19 +11,24 @@ export default function ChatWindow({ conversations, currentUser, addNewMessageTo
 
   const activeConversationID = Number(query.get('id'));
 
-  const findActiveConversation = (conversations, activeConversationID) => {
+  const findActiveConversation = () => {
     return conversations.find(
       conversation => conversation.id === activeConversationID
     );
   };
 
-  const findCorrespondentUser = (conversations, activeConversationID) => {
+  const findCorrespondentUser = () => {
     const conversation = findActiveConversation(conversations, activeConversationID)
     const correspondentUser = currentUser.id === conversation.user_1[0].id ? conversation.user_2[0] : conversation.user_1[0];
     return correspondentUser;
   }
 
-  const correspondentUser = findCorrespondentUser(conversations, activeConversationID)
+  const isSender = () => {
+    const conversation = findActiveConversation();
+    return conversation.user_1[0].id === currentUser.id;
+  }
+
+  const correspondentUser = findCorrespondentUser()
 
   return (
     <div id="chat-window-header">   
@@ -53,11 +58,13 @@ export default function ChatWindow({ conversations, currentUser, addNewMessageTo
         </div>
       </nav> 
       <header>
-        <h3>A new request was sent :</h3>
-        <h4 className="message-title">{findActiveConversation(
-            conversations,
-            activeConversationID
-          ).title}</h4>
+        {!isSender() && 
+          <h4 className="message-title">{findActiveConversation(
+              conversations,
+              activeConversationID
+            ).title}</h4>}
+        {isSender() && 
+          <h4 className="message-title">You're interested in some clothes {correspondentUser.name} has to offer!</h4>}
       </header>
       <div id="message-area-container">
         <MessagesArea
