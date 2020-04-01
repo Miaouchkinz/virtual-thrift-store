@@ -77,7 +77,7 @@ export default function DressingRoom({ selectedItemForTrying }) {
       <img
         ref={modelStanding}
         id="person_standing"
-        src="./images/ariana_standing.jpg"
+        src="./images/arianna_standing.jpg"
       />
     </div>
   );
