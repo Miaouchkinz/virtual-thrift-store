@@ -30,25 +30,12 @@
           padding: 0.5rem;
         }
 
-        .corresponding-user-info {
-          padding: 1rem;
-          display: flex;
-          justify-content: center;
-
-          .chat-window-avatar {
-            width: 3.5rem;
-            height: 3.5rem;
-            border-radius: 100%;
-            padding: 0.5rem;
-          }
-
-          .chat-correspondent-name {
-            margin-top: 2rem;
-            font-size: 1rem;
-            color: white;
-            text-shadow: 2px 2px 2px #555;
-            font-weight: 700;
-          }
+        .chat-correspondent-name {
+          margin-top: 2rem;
+          font-size: 1rem;
+          color: white;
+          text-shadow: 2px 2px 2px #555;
+          font-weight: 700;
         }
       }
     }
