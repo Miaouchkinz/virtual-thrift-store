@@ -43,9 +43,9 @@ export default function OrderConfirmation({ cart, users, emptyCart }) {
       <div className="confirmation-modal">
         <div className="thank_you_message">
           <img
-            alt="Earth Icon"
-            className="earth_icon"
-            src="./images/earth.png"
+            alt="Clothes Pile"
+            className="clothes-pile"
+            src="./images/pile_de_linge_2.png"
           />
           <h4>
             A trade request was sent out <br />
