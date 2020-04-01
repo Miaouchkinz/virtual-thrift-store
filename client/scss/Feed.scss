@@ -22,7 +22,8 @@
     .feed_profile_icon {
       width: 2.75rem;
       height: 2.75rem;
-      border: 2px solid white;
+      // border: 2px solid white;
+      border: 2px solid #555;
       border-radius: 100%;
     }
 
@@ -138,10 +139,29 @@ a {
   z-index: -1;
 
   .clothing-item {
-    // background-color: #c6aa73aa;
     background-color: #efefef55;
     border-radius: 4px;
     margin: 1.5rem 1rem;
+
+    .size {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      position: relative;
+      top: 0;
+      left: 0;
+      margin: 1rem;
+      width: 2.5rem;
+
+      background-color: #aab5aabb;
+      border: 1px solid #555;
+      border-radius: 4px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      text-shadow: 1px 1px 1px #555, 1px 1px 2px #333;
+      color: white;
+    }
     .clothing-img {
       width: 325px;
       height: 325px;
@@ -187,7 +207,6 @@ a {
 }
 
 .orange_footer {
-  // bottom: -500px;
   position: absolute;
 }
 

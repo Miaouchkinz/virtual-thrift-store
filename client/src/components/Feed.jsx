@@ -166,9 +166,9 @@ export default function Feed({
 
     return finalFilteredClothingList.map(clothingItem => (
       <div className="clothing-item" key={clothingItem.id}>
-        {/* <header>
+        <header>
           <div className="size">{clothingItem.size}</div>
-        </header> */}
+        </header>
         <img
           className="clothing-img"
           src={clothingItem.image_url}
@@ -323,9 +323,6 @@ export default function Feed({
           {filteredClothingList(availableClothing, activeCategories, size)}
         </div>
       </div>
-      {/* <footer className="orange_footer">
-        
-      </footer> */}
     </div>
   );
 }
