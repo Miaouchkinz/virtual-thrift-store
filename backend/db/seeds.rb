@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-require ('faker')
+# require ('faker')
 
 Clothing.destroy_all
 ClothingCategory.destroy_all
@@ -22,7 +22,7 @@ User.create(
   email: 'ariana@email.com', 
   password: '12345',
   password_confirmation: '12345',
-  avatar_url: '/images/user_avatar/Ariana.jpg');
+  avatar_url: '/images/user_avatar/Arianna.jpg');
 
 User.create(
   name: 'Antoine', 
@@ -45,6 +45,20 @@ User.create(
   password_confirmation: '12345',
   avatar_url: '/images/user_avatar/Tess.jpg');
 
+User.create(
+  name: 'Mikael', 
+  email: 'mikael@email.com', 
+  password: '12345',
+  password_confirmation: '12345',
+  avatar_url: '/images/user_avatar/Mikael.jpg');
+
+User.create(
+  name: 'Jay', 
+  email: 'jay@email.com', 
+  password: '12345',
+  password_confirmation: '12345',
+  avatar_url: '/images/user_avatar/jay.jpg');
+
 ClothingCategory.create(name: "tshirt");
 ClothingCategory.create(name: "sweater");
 ClothingCategory.create(name: "dress");
@@ -53,6 +67,29 @@ ClothingCategory.create(name: "pants");
 
 # User 1's closet:
 # TSHIRTS
+# CHEMISE
+Clothing.create(
+  size: 'L',
+  image_url: '/images/clothing/CHEMISE_2_FLOWERS.png',
+  available_for_exchange: true, 
+  user_id: 2,
+  clothing_category_id: 1,
+  left_offset_percent: 0.281,
+  right_offset_percent: 0.313,
+  top_offset_percent: 0.236 
+)
+
+# TSHIRTS
+Clothing.create(
+  size: 'M',
+  image_url: '/images/clothing/TSHIRT_4_STARTREK.png',
+  available_for_exchange: true, 
+  user_id: 3,
+  clothing_category_id: 1,
+  left_offset_percent: 0.225,
+  right_offset_percent: 0.211,
+  top_offset_percent: 0.0888 
+)
 Clothing.create(
   size: 'S',
   image_url: '/images/clothing/TSHIRT_8_FLOWER.png',
@@ -135,7 +172,7 @@ Clothing.create(
 # User 2's closet:
 # TSHIRTS
 Clothing.create(
-  size: 'M',
+  size: 'S',
   image_url: '/images/clothing/TSHIRT_6_GOLLUM.png',
   available_for_exchange: true, 
   user_id: 2,
@@ -153,17 +190,6 @@ Clothing.create(
   left_offset_percent: 0.268,
   right_offset_percent: 0.288,
   top_offset_percent: 0.0116 
-)
-# CHEMISE
-Clothing.create(
-  size: 'L',
-  image_url: '/images/clothing/CHEMISE_2_FLOWERS.png',
-  available_for_exchange: true, 
-  user_id: 2,
-  clothing_category_id: 1,
-  left_offset_percent: 0.281,
-  right_offset_percent: 0.313,
-  top_offset_percent: 0.236 
 )
 # HOODIE
 Clothing.create(
@@ -214,17 +240,6 @@ Clothing.create(
 # ========================
 
 # User 3's closet:
-# TSHIRTS
-Clothing.create(
-  size: 'S',
-  image_url: '/images/clothing/TSHIRT_4_STARTREK.png',
-  available_for_exchange: true, 
-  user_id: 3,
-  clothing_category_id: 1,
-  left_offset_percent: 0.225,
-  right_offset_percent: 0.211,
-  top_offset_percent: 0.0888 
-)
 Clothing.create(
   size: 'M',
   image_url: '/images/clothing/TSHIRT_3_CHILDISH.png',
@@ -237,7 +252,7 @@ Clothing.create(
 )
 # CHEMISE
 Clothing.create(
-  size: 'L',
+  size: 'S',
   image_url: '/images/clothing/CHEMISE_3_PATTERN.png',
   available_for_exchange: true, 
   user_id: 3,
@@ -371,3 +386,41 @@ Clothing.create(
   right_offset_percent: 0.21,
   top_offset_percent: 0.15 
 )
+
+#Conversations
+Conversation.create(
+  title: 'Mikael is interested in some items you have to offer. Please let them know if you are still open for an exchange! :)',
+  user_1_id: 1,
+  user_2_id: 5
+);
+
+Conversation.create(
+  title: 'Jay is interested in some items you have to offer. Please let them know if you are still open for an exchange! :)',
+  user_1_id: 1,
+  user_2_id: 6
+);
+
+Conversation.create(
+  title: 'Raphaelle is interested in some items you have to offer. Please let them know if you are still open for an exchange! :)',
+  user_1_id: 1,
+  user_2_id: 3
+);
+
+#Messages
+Message.create(
+  text: 'Yo! Is that flower shirt still up for grabs?',
+  conversation_id: 1,
+  user_id: 5
+);
+
+Message.create(
+  text: 'Hayyyyyy! love that hoodie, would go great with skirt! ',
+  conversation_id: 2,
+  user_id: 6
+);
+
+Message.create(
+  text: 'Hey! did you see the new shorts I uploaded? They would look great on you!',
+  conversation_id: 2,
+  user_id: 3
+);

@@ -64,7 +64,7 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
   const checkIfCartEmpty = function(cartItemList) {
     let result = null;
     if (cart.length === 0) {
-      result = <h2>Your cart is empty.</h2>;
+      result = <h4>There's nothing hung up in your dressing room.</h4>;
     } else {
       result = cartItemList;
     }
@@ -73,8 +73,8 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
 
   return (
     <div>
-      <header className="feed_header">
-        <div className="feed_header_block">
+      <header className="cart_header">
+        <div className="cart_header_block">
           <Link
             to={{
               pathname: "/feed"
@@ -91,6 +91,7 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
               <img id="eclo_logo" src="./images/eclo_main_logo.png" />
             </Link>
           </span>
+          <div></div>
         </div>
         <img
           alt="Top wave decoration."
@@ -99,30 +100,27 @@ export default function Cart({ cart, availableClothing, removeFromCart }) {
         ></img>
       </header>
       <div className="content_container">
-        <h1>Click an item to try it on!</h1>
+        <h2>Your Dressing Room</h2>
+        <p>Click on one of your finds below to try it on!</p>
         <div className="clothingItem_cart_carousel">
           {checkIfCartEmpty(cartItemList)}
         </div>
         <div className="ready_to_checkout">
-          <Link
-            to={{
-              pathname: "/checkout"
-            }}
-          >
-            <h3> Ready to checkout </h3>
-          </Link>
+          <span>Find something that fits?</span>
+          <div>
+            <Link
+              to={{
+                pathname: "/checkout"
+              }}
+            >
+              <button class="btn primary">Request Trades</button>
+            </Link>
+          </div>
         </div>
       </div>
       <div className="dressing_room_container">
         <DressingRoom selectedItemForTrying={selectedItemForTrying} />
       </div>
-      <footer className="orange_footer_cart">
-        <img
-          className="orange-footer-wave-cart"
-          alt="Wave decoration"
-          src="./images/footer_orange_resized.png"
-        ></img>
-      </footer>
     </div>
   );
 }

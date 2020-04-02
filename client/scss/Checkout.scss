@@ -17,7 +17,7 @@ h2 {
   flex-direction: row;
   justify-content: space-between;
   background: #e5e5e5;
-  margin: 10px;
+  margin: 10px 0;
   border-radius: 1rem;
 }
 
@@ -38,20 +38,27 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  p {
+    margin: 0;
+  }
 }
 
 .content_checkout_container {
-  margin-top: 3.8rem;
+  margin: 4rem 2rem 4rem;
   h1 {
     margin-left: 20px;
     z-index: 1;
   }
   h2 {
-    margin-left: 20px;
-    z-index: 1;
+    margin: 1rem 0 0.5rem;
   }
   h3 {
     margin-left: 20px;
+  }
+  & > p {
+    margin: 0.5rem 0 1rem;
+    font-style: italic;
   }
 }
 
@@ -82,11 +89,13 @@ h2 {
   background: rgba(229, 229, 229, 0.5);
   width: 300px;
   height: 400px;
+  text-align: center;
   h1 {
     margin: 10px;
   }
-  .earth_icon {
+  .clothes-pile {
     width: 150px;
+    padding-top: 1rem;
   }
 }
 
@@ -120,5 +129,6 @@ h2 {
   #eclo_logo {
     width: 100px;
     margin-left: 145px;
+    padding: 1rem 0.5rem;
   }
 }

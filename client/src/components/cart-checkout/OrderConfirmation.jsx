@@ -27,12 +27,8 @@ export default function OrderConfirmation({ cart, users, emptyCart }) {
         <div className="feed_header_block">
           <span className="confirmation_eclo_logo">
             <Link
-              onClick={() => {
-                emptyCart();
-              }}
-              to={{
-                pathname: "/feed"
-              }}
+              onClick={() => emptyCart()}
+              to={{ pathname: "/feed" }}
             >
               <img id="eclo_logo" src="./images/eclo_main_logo.png" />
             </Link>
@@ -47,16 +43,18 @@ export default function OrderConfirmation({ cart, users, emptyCart }) {
       <div className="confirmation-modal">
         <div className="thank_you_message">
           <img
-            alt="Earth Icon"
-            className="earth_icon"
-            src="./images/earth.png"
+            alt="Clothes Pile"
+            className="clothes-pile"
+            src="./images/pile_de_linge_2.png"
           />
           <h4>
-            A message was sent <br />
-            out to each other member.
+            A trade request was sent out <br />
+            to each other member. <br />
+            <br />
+            Thank you for supporting <br /> your local community,
           </h4>
           <h1>
-            Together, we're <br /> saving the <br /> planet.
+            Happy Thriftin'!
           </h1>
         </div>
         <div className="owner_avatar_carousel">{createOwnersList()}</div>

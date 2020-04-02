@@ -82,7 +82,7 @@ export default function Checkout({ cart, users, addNewConversation }) {
             <Button
               onClick={() => sendAutomatedMessages()}
               primary
-              label="CONFIRM ALL"
+              label="Send Trade Requests"
             />
           </Link>
         </div>
@@ -92,24 +92,17 @@ export default function Checkout({ cart, users, addNewConversation }) {
   };
   return (
     <div className="checkout_main_section">
-      <header>
-        <div className="feed_header_block">
-          <Link
-            to={{
-              pathname: "/cart"
-            }}
-          >
+      <header className="checkout_header">
+        <div className="checkout_header_block">
+          <Link to={{ pathname: "/cart" }}>
             <Icon secondary label="<"></Icon>
           </Link>
           <span className="span_eclo_logo">
-            <Link
-              to={{
-                pathname: "/feed"
-              }}
-            >
+            <Link to={{ pathname: "/feed" }}>
               <img id="eclo_logo" src="./images/eclo_main_logo.png" />
             </Link>
           </span>
+          <div></div>
         </div>
         <img
           alt="Top wave decoration."
@@ -118,7 +111,8 @@ export default function Checkout({ cart, users, addNewConversation }) {
         ></img>
       </header>
       <div className="content_checkout_container">
-        <h1>Ready to checkout?</h1>
+        <h2>Trade Requests</h2>
+        <p>Send a message to the other thrifters to let them know you're interested in some clothes they have to offer.</p>
         {displaySectionOfOwners}
         {checkIfCartEmpty()}
       </div>

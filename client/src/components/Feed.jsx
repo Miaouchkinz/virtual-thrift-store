@@ -5,7 +5,8 @@ export default function Feed({
   availableClothing,
   clothingCategories,
   cart,
-  addToCart
+  addToCart,
+  currentUser
 }) {
   const [size, setSize] = useState({
     S: false,
@@ -14,6 +15,10 @@ export default function Feed({
   });
 
   const [activeCategories, setActiveCategories] = useState([]);
+
+  const toggleSelected = (e) => {
+    e.target.classList.toggle("selected")
+  }
 
   const [addToCartCount, setaddToCartCount] = useState([
     {
@@ -158,13 +163,14 @@ export default function Feed({
         finalFilteredClothingList = clothingFilteredBySize;
       }
     }
+
     return finalFilteredClothingList.map(clothingItem => (
-      <div className="clothingItem_of_grid_container" key={clothingItem.id}>
+      <div className="clothing-item" key={clothingItem.id}>
         <header>
-          <div className="clothingItem_size">{clothingItem.size}</div>
+          <div className="size">{clothingItem.size}</div>
         </header>
         <img
-          className="clothingItem_image_of_grid_container"
+          className="clothing-img"
           src={clothingItem.image_url}
           alt={
             "This is an item of type " +
@@ -172,11 +178,11 @@ export default function Feed({
             ", size " +
             clothingItem.size
           }
-          id={clothingItem.size}
         ></img>
-        <footer>
+        <footer className="add-to-cart-footer">
           <div
-            onClick={() =>
+            onClick={(e) => {
+              toggleSelected(e);
               addToCartButtonClicked(
                 clothingItem.id,
                 clothingItem.size,
@@ -188,13 +194,14 @@ export default function Feed({
                 clothingItem.top_offset_percent,
                 addToCart
               )
-            }
+            }}
           >
             <img
+              className="hanger-icon"
               alt="Add item to cart button."
-              id="add_to_cart_button"
               src="./images/hanger_border_black.png"
             ></img>
+            <span>HANG IT UP!</span>
           </div>
         </footer>
       </div>
@@ -204,33 +211,29 @@ export default function Feed({
   return (
     <div className="Feed">
       <header className="feed_header">
-        <div className="feed_header_block">
-          <Link
-            to={{
-              pathname: "/user/profile"
-            }}
-          >
-            <span className="feed_header_profile_icon">
-              <img
-                alt="Go to profile page button"
-                id="feed_profile_icon"
-                src="./images/profile_avatar_full.png"
-              ></img>
-            </span>
+        <div className="feed_header_menu">
+          <Link to={{pathname: "/user/profile"}}>
+            <div className="profile-nav-block">
+              <img className="feed_profile_icon" src={currentUser.avatar_url} alt="user_avatar" />
+              <span className="feed-username">{currentUser.name}</span>
+            </div>
           </Link>
-          <Link
-            to={{
-              pathname: "/cart"
-            }}
-          >
-            <span className="feed_header_hanger_icon">
+          <div className="feed-logo-header">
+            <button className="home-button" onClick={() => history.push("/feed")}>
+              <img src={`/images/eclo_main_logo.png`} alt="Home button"/>
+            </button>
+          </div>
+          <Link to={{pathname: "/cart"}}>
+            <div className="feed-cart-nav">
+              <span className="cart-quantity">{cart.length}</span>
               <img
                 alt="Go to cart to see all items selected button."
                 id="feed_hanger_icon"
-                src="./images/hanger_full.png"
+                className="btn icon-btn"
+                src="./images/hanger_border_black.png"
               ></img>
-              {cart.length}
-            </span>
+              <span className="dressing-room-copy">Dressing Room</span>
+            </div>
           </Link>
         </div>
         <img
@@ -240,83 +243,86 @@ export default function Feed({
         ></img>
       </header>
       <div className="filters_available">
-        <h2>Filter by:</h2>
+        <h2>Community Thrift-Pile</h2>
+        <p>Dig through some clothes, hang 'em up, and then try 'em on in the Dressing Room!</p>
         <form className="typeForm">
           <p>Category</p>
-          {categoryList(clothingCategories)}
+          <div>
+            {categoryList(clothingCategories)}
+          </div>
         </form>
 
         <form className="sizeForm">
-          <p className="title_size">Size</p>
-          <div className="label_container">
-            <label>
-              <input
-                className="hidden_checkbox"
-                name="isSmall"
-                type="checkbox"
-                checked={size["S"]}
-                onChange={() => setSize({ ...size, S: !size["S"] })}
-              />
-              <div className="size_icon">
-                <img
-                  alt="Checkbox for size Small"
-                  src="./images/small_size_icon.png"
-                  width="25px"
-                ></img>
-              </div>
-            </label>
-          </div>
-          <div className="label_container">
-            <label>
-              <input
-                className="hidden_checkbox"
-                name="isMedium"
-                type="checkbox"
-                checked={size["M"]}
-                onChange={() => setSize({ ...size, M: !size["M"] })}
-              />
-              <div className="size_icon">
-                <img
-                  alt="Checkbox for size Medium"
-                  src="./images/medium_size_icon.png"
-                  width="25px"
-                ></img>
-              </div>
-            </label>
-          </div>
-          <div className="label_container">
-            <label>
-              <input
-                id="toggle"
-                className="hidden_checkbox"
-                name="isLarge"
-                type="checkbox"
-                checked={size["L"]}
-                onChange={() => setSize({ ...size, L: !size["L"] })}
-              />
-              <div className="size_icon">
-                <img
-                  alt="Checkbox for size Large"
-                  src="./images/large_size_icon.png"
-                  width="25px"
-                ></img>
-              </div>
-            </label>
+          <p>Size</p>
+          <div>
+            <div className="label_container">
+              <label>
+                <input
+                  className="hidden_checkbox"
+                  name="isSmall"
+                  type="checkbox"
+                  checked={size["S"]}
+                  onChange={() => setSize({ ...size, S: !size["S"] })}
+                />
+                <div className="size_icon">
+                  <img
+                    alt="Checkbox for size Small"
+                    src="./images/small_size_icon.png"
+                    width="25px"
+                  ></img>
+                </div>
+              </label>
+            </div>
+            <div className="label_container">
+              <label>
+                <input
+                  className="hidden_checkbox"
+                  name="isMedium"
+                  type="checkbox"
+                  checked={size["M"]}
+                  onChange={() => setSize({ ...size, M: !size["M"] })}
+                />
+                <div className="size_icon">
+                  <img
+                    alt="Checkbox for size Medium"
+                    src="./images/medium_size_icon.png"
+                    width="25px"
+                  ></img>
+                </div>
+              </label>
+            </div>
+            <div className="label_container">
+              <label>
+                <input
+                  id="toggle"
+                  className="hidden_checkbox"
+                  name="isLarge"
+                  type="checkbox"
+                  checked={size["L"]}
+                  onChange={() => setSize({ ...size, L: !size["L"] })}
+                />
+                <div className="size_icon">
+                  <img
+                    alt="Checkbox for size Large"
+                    src="./images/large_size_icon.png"
+                    width="25px"
+                  ></img>
+                </div>
+              </label>
+            </div>
           </div>
         </form>
       </div>
       <div className="availables_container">
-        <div className="availables_grid_container">
-          {filteredClothingList(availableClothing, activeCategories, size)}
-        </div>
-      </div>
-      <footer className="orange_footer">
         <img
           className="orange_footer_wave"
           alt="Wave decoration"
           src="./images/footer_orange_resized.png"
         ></img>
-      </footer>
+        <div className="availables_grid_container">
+          {filteredClothingList(availableClothing, activeCategories, size)}
+        </div>
+      </div>
     </div>
   );
 }

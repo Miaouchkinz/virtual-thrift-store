@@ -1,17 +1,127 @@
+.header_wave_green {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  width: 100%;
+}
+
+.feed_header_menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+
+  .profile-nav-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0.5rem;
+
+    .feed_profile_icon {
+      width: 2.75rem;
+      height: 2.75rem;
+      // border: 2px solid white;
+      border: 2px solid #555;
+      border-radius: 100%;
+    }
+
+    .feed-username {
+      color: white;
+      margin-top: 0.25rem;
+    }
+  }
+
+  .home-button {
+    background: transparent;
+    border: none;
+    img {
+      width: 6.5rem;
+      text-shadow: 2px 2px 2px whitesmoke;
+    }
+  }
+
+  .feed-cart-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    font-size: 1rem;
+    color: white;
+    max-width: 4rem;
+    text-align: center;
+
+    .cart-quantity {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    #feed_hanger_icon {
+      padding: 0.25rem;
+      width: 2.25rem;
+      height: 2.25rem;
+      background-color: white;
+      border: 2px solid #555;
+    } 
+  }
+}
+
 .filters_available {
   display: flex;
   flex-direction: column;
+  margin: 2rem 2rem 4rem;
+  color: #222;
 
   h2 {
-    margin-bottom: 10px;
+    margin: 1rem 0 0.25rem;
   }
 
-  p {
-    font-weight: bold;
+  h4 {
+    margin: 0;
   }
 
-  .title_size {
-    margin-right: 34px;
+  & > p {
+    margin: 0.25rem 0 1rem;
+    font-style: italic;
+  }
+
+  .typeForm,
+  .sizeForm {
+    p {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin: 0.25rem 0;
+    }
+  }
+
+  .typeForm div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 4px;
+  }
+  .sizeForm div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-right: 10px;
+  } 
+  .label_container {
+    .hidden_checkbox {
+      display: none;
+    } 
+
+    .size_icon img {
+      width: 3rem;
+      transition: filter 150ms ease-in;
+    }
+
+    .hidden_checkbox:checked ~ .size_icon img {
+      filter: invert(95%);
+    }
   }
 }
 
@@ -24,115 +134,84 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin: 2.5rem 0 0;
+  margin: -2.5rem 0 0;
   background: #c6aa73;
-}
-
-.clothingItem_image_of_grid_container {
-  max-width: 160px;
-}
-
-.clothingItem_of_grid_container {
-  position: relative;
-  z-index: 1;
-}
-
-#add_to_cart_button {
-  height: 30px;
-  position: relative;
-  float: right;
-  z-index: 2;
-  top: -35px;
-  right: 2px;
-
-  &:hover {
-    cursor: pointer;
-    opacity: 70%;
-  }
-  &:active {
-    height: 25px;
-    opacity: 30%;
-  }
-}
-
-.clothingItem_size {
-  position: relative;
-  float: right;
-  top: 25px;
-  font-weight: bold;
-  background-color: #e0bfbf;
-  border: 1px solid black;
-  padding: 2px;
-}
-
-.typeForm {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-left: 10px;
-}
-
-.sizeForm {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-left: 10px;
-}
-
-.label_container {
-  display: flex;
-  justify-items: space-between;
-}
-
-.feed_header_block {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 10px;
-}
-
-.header_wave_green {
-  position: absolute;
   z-index: -1;
-  top: 0;
-  width: 100%;
-}
 
-#feed_hanger_icon {
-  height: 50px;
-}
+  .clothing-item {
+    background-color: #efefef55;
+    border-radius: 4px;
+    margin: 1.5rem 1rem;
 
-#feed_profile_icon {
-  height: 50px;
-}
+    .size {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      position: relative;
+      top: 0;
+      left: 0;
+      margin: 1rem;
+      width: 2.5rem;
 
-.feed_header_hanger_icon {
-  font-weight: bold;
-  color: white;
+      background-color: #aab5aabb;
+      border: 1px solid #555;
+      border-radius: 4px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      text-shadow: 1px 1px 1px #555, 1px 1px 2px #333;
+      color: white;
+    }
+    .clothing-img {
+      width: 325px;
+      height: 325px;
+    }
+  
+    .add-to-cart-footer {
+      position: relative;
+
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: 1rem;
+
+        background-color: #aab5aabb;
+        border: 1px solid #555;
+        border-radius: 4px;
+
+        .hanger-icon {
+          width: 4rem;
+          margin-right: 0.5rem;
+        }
+        span {
+          font-size: 1.25rem;
+          font-weight: 600;
+          letter-spacing: 1.5px;
+          color: white;
+          text-shadow: 1px 1px 1px #555, 1px 1px 2px #333;
+        }
+
+        &.selected {
+          background-color:  #385538bb;
+        }
+
+      }
+    }
+  }
 }
 
 .orange_footer {
-  bottom: -500px;
   position: absolute;
 }
 
 .orange_footer_wave {
   width: 100%;
-  height: 925px;
+  max-height: 100px;
   z-index: -1;
-}
-
-.hidden_checkbox {
-  display: none;
-}
-
-.size_icon {
-  opacity: 100%;
-  padding: 5px;
-}
-
-.hidden_checkbox:checked ~ .size_icon {
-  opacity: 40%;
 }

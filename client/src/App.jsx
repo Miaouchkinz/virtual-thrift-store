@@ -69,6 +69,7 @@ export default function App(props) {
               clothingCategories={state.clothingCategories}
               cart={state.cart}
               addToCart={addToCart}
+              currentUser={state.currentUser}
             />
           </Route>}
           {state.currentUser && 

@@ -62,12 +62,9 @@ body {
   }
 
   .welcome-message {
-    text-align: center;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: white;
-    text-shadow: 1px 1px 1px #555, 0 0 2px #555;
-    margin: 1rem;
+    margin: 0.75rem 0;
+    font-style: italic;
+    color: #222;
   }
 
   .btn {

@@ -14,10 +14,10 @@ export default function Landing({ history }) {
       <main id="landing">
         <div>
           <img src="./images/eclo_main_logo.png" width="250px" />
-          <h1 className="welcome-message">
+          <p className="welcome-message">
             A community-focused, online thrift store where you can 
-            try on clothes in the virtual dressing room.
-          </h1>
+            try on clothes in your virtual dressing room.
+          </p>
           <Button
             onClick={() => history.push("/login")}
             label="LOGIN"
