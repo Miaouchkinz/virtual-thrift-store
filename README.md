@@ -1,11 +1,14 @@
 ![éclo logo](/client/public/images/eclo_main_logo.png)
 
+# Éclo
 
 A community-focused, online thrift store built using React, SCSS on the front-end and Ruby on Rails, PSQL on the back-end. You can try on clothes in the virtual dressing room using the Tensorflow API's Posenet model.
 
 We used Figma to create our mockups, Draw.io for our ERDs, and Trello to organize and split up our work.
 
-**Project Contributors:** Frédérique Bordeleau and Gab Richard
+**Project Contributors:**
+- [Frédérique Bordeleau](https://github.com/fredbordel)
+- [Gab Richard](https://github.com/Miaouchkinz)
 
 ## Final Product
 
@@ -27,12 +30,30 @@ Available Clothing Feed and Virtual Dressing Room
 - Sass
 - Tensorflow API
 - Posenet model
-- Moment
 - Bcrypt
  
 ## Getting Started
-1. Install all dependencies (using `npm install` on the client-side and `bundle install` on the backend-side).
-2. Reset the database and seed (rails `db:migrate:reset` followed by `rails db:seed`)
-3. Start the web server using the `npm start` command. The app will be served at <http://localhost:3000/>.
-4. Start the api server using the `rails s -p 3001` command. The api will be served at <http://localhost:3001/>.
-4. Go to <http://localhost:3000/> in your browser.
+
+### Front-End Setup
+Install dependencies and start server on <http://localhost:3000/>
+
+Run these commands from the root directory:
+```
+cd client
+npm i
+npm run start
+```
+
+### Back-End Setup
+Install dependencies, reset and seed database, and start API server on <http://localhost:3001/>
+
+Run these commands from the root directory:
+```
+cd backend
+bundle i
+
+rails db:migrate:reset
+rails db:seed
+
+rails s -p 3001
+```
