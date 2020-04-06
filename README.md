@@ -11,7 +11,7 @@ We used Figma to create our mockups, Draw.io for our ERDs, and Trello to organiz
 
 Complete walkthrough: https://recordit.co/otHseFCmhk
 
-![Profile and Chat](https://user-images.githubusercontent.com/8763915/78585093-44a52800-7807-11ea-970d-813bdc202272.png)
+![Profile and Chat](https://user-images.githubusercontent.com/8763915/78585285-9352c200-7807-11ea-819b-75e5118dd0c6.png)
 ![Feed and Dressing Room](https://user-images.githubusercontent.com/8763915/78585098-45d65500-7807-11ea-90e6-6be5414ee260.png)
 
 
