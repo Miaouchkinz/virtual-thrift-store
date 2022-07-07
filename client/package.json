@@ -8,7 +8,7 @@
     "@tensorflow/tfjs-converter": "^1.7.1",
     "@tensorflow/tfjs-core": "^1.7.1",
     "axios": "^0.19.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "node-sass": "^4.13.1",
     "react": "^16.13.0",
     "react-actioncable-provider": "1.0.3",
